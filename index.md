@@ -21,21 +21,24 @@ graph TD
     A[Portal Centralizado <br> L4.docs-organizacion] --> B(Procesos Globales)
     A --> C(Guias de Onboarding)
     A --> D(Catalogo de Sistemas)
+    A --> K(Requerimientos Globales /req)
     
     D -->|Enlaces a Repos| E[Repo: API Gateway]
     D -->|Enlaces a Repos| F[Repo: App Movil]
-    D -->|Enlaces a Repos| G[Repo: Web Front]
     
-    E -->|Docs Vivas| H[docs/arquitectura.md]
-    F -->|Docs Vivas| I[docs/setup.md]
-    G -->|Docs Vivas| J[docs/readme.md]
+    E -->|Detalle Tecnico| H[docs/arquitectura.md]
+    E -->|Casos de Uso| L[req/CU-01-registro.md]
+    
+    F -->|Detalle Tecnico| I[docs/setup.md]
     
     style A fill:#4F46E5,stroke:#312E81,stroke-width:2px,color:#fff
     style D fill:#10B981,stroke:#065F46,stroke-width:2px,color:#fff
+    style K fill:#F59E0B,stroke:#B45309,stroke-width:2px,color:#fff
 ```
 
-1. **El Portal Central (Este Repositorio):** Aloja las políticas de ingeniería, guías de estilo, onboarding y el catálogo que redirige a los repositorios de cada sistema.
-2. **Documentación Viva (Cada Repositorio):** Los detalles específicos de instalación, arquitectura de software, endpoints de API y guías de despliegue de cada sistema residen directamente en la carpeta `/docs` de su propio repositorio, versionados al lado del código.
+1. **El Portal Central (Este Repositorio):** Aloja las políticas de ingeniería, guías de estilo, onboarding globales, el catálogo de sistemas y los requerimientos de negocio transversales en `/req`.
+2. **Documentación Técnica Viva (Cada Repositorio en `/docs`):** Los detalles específicos de instalación, arquitectura de software, endpoints de API y guías de despliegue residen en la carpeta `/docs` de su propio repositorio.
+3. **Casos de Uso de Negocio Viva (Cada Repositorio en `/req`):** Los requerimientos de negocio, flujos y validaciones funcionales específicas residen en la carpeta `/req` de cada repositorio.
 
 ---
 
@@ -43,9 +46,10 @@ graph TD
 
 Navega a través de los menús laterales o utiliza los enlaces directos a continuación:
 
-*   **[🗺️ Catálogo de Sistemas](repositorios.md):** Accede a la documentación técnica específica de cada uno de los microservicios, APIs y aplicaciones de LAND4.
+*   **[🗺️ Catálogo de Sistemas](repositorios.md):** Accede a la documentación técnica y funcional específica de cada uno de los microservicios, APIs y aplicaciones de LAND4.
+*   **[🎯 Requerimientos de Negocio](req/index.md):** Casos de uso globales y plantillas para la definición de flujos funcionales.
 *   **[🚀 Guía de Onboarding](onboarding/bienvenida.md):** Si eres nuevo en el equipo de tecnología, sigue esta guía paso a paso para configurar tus accesos y tu entorno local.
-*   **[📝 Guía: ¿Cómo Documentar?](como-documentar.md):** Aprende el estándar para estructurar y mantener actualizada la documentación técnica en tu repositorio de código.
+*   **[📝 Guía: ¿Cómo Documentar?](como-documentar.md):** Aprende el estándar para estructurar y mantener la documentación técnica (`/docs`) y de negocio (`/req`) en tu repositorio.
 
 ---
 

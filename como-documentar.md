@@ -18,10 +18,12 @@ Cada repositorio de código en la organización debe mantener la siguiente estru
 
 ```text
 nombre-del-repositorio/
-├── docs/
+├── docs/                    # Carpeta para Documentación TÉCNICA
 │   ├── arquitectura.md      # Diseño del sistema, diagramas, decisiones técnicas
 │   ├── setup.md             # Guía paso a paso para levantar el entorno local
 │   └── despliegue.md        # Pasos y requerimientos para desplegar en ambientes
+├── req/                     # Carpeta para Requerimientos de NEGOCIO (Casos de Uso)
+│   └── CU-01-registro.md    # Especificaciones funcionales y flujos de negocio
 ├── README.md                # Presentación rápida del proyecto y accesos directos
 └── ... (código fuente)
 ```
@@ -34,10 +36,15 @@ Debe ser conciso y proporcionar una visión general del sistema. Evita poner gu�
 *   Enlace rápido a la arquitectura: `[Arquitectura y Diseño](docs/arquitectura.md)`.
 
 ### 2. La carpeta `/docs` (Detalle Técnico)
-Aquí vive el grueso del conocimiento. Divide el contenido en archivos temáticos (evita un único archivo gigante de 5000 líneas):
+Aquí vive el grueso del conocimiento de implementación. Divide el contenido en archivos temáticos:
 *   `setup.md`: Requisitos previos (Docker, variables de entorno, comandos de base de datos) y comandos para iniciar el proyecto.
-*   `arquitectura.md`: Diagramas de arquitectura (idealmente usando **Mermaid**), decisiones técnicas importantes (ADRs) y dependencias con otros servicios.
+*   `arquitectura.md`: Diagramas de arquitectura (usando **Mermaid**), decisiones técnicas importantes (ADRs) y dependencias con otros servicios.
 *   `despliegue.md`: Configuración de CI/CD, variables de producción y cómo validar que el despliegue fue exitoso.
+
+### 3. La carpeta `/req` (Requerimientos de Negocio)
+Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
+*   Contiene casos de uso redactados en lenguaje no técnico, facilitando la comprensión y validación entre ingenieros y tomadores de decisiones/Product Owners.
+*   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.md)**.
 
 ---
 

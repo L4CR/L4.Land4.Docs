@@ -21,3 +21,7 @@ aux_links:
 
 # Configuración de URL base para despliegue
 url: ""
+
+# Configuración de diagramas Mermaid
+mermaid:
+  version: "10.1.0"
