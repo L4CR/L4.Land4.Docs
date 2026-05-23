@@ -1,6 +1,11 @@
-title: Portal de Ingeniería y Documentación
+title: LAND4 knowledge
 description: Espacio centralizado para procesos, guías y arquitectura de la Organización.
-theme: jekyll-theme-just-the-docs
+# 1. Reemplaza "theme" por "remote_theme" apuntando al repositorio oficial del tema
+remote_theme: just-the-docs/just-the-docs
+
+# 2. Activa el plugin necesario para que GitHub Pages acepte temas remotos
+plugins:
+  - jekyll-remote-theme
 
 # Configuración del buscador nativo
 search_enabled: true
