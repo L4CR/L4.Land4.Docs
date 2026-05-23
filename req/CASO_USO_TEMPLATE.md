@@ -19,6 +19,12 @@ nav_order: 1
 
 Ejemplo: Permitir que un nuevo comercio se registre en la plataforma LAND4 para poder recibir pagos electrónicos, recopilando sus datos legales e información bancaria básica.
 
+### 🗣️ Lenguaje Ubicuo (Alineación Negocio-TI)
+*Define los términos clave y conceptos de negocio que se utilizan en este documento. Esto evita ambigüedades y establece un lenguaje común (Ubiquitous Language) entre el equipo técnico y el de negocio.*
+*   **Comercio Solicitante (Merchant Candidate):** El comercio que está en proceso de onboarding y aún no ha sido aprobado.
+*   **Identificación Legal (Legal ID):** Cédula física, jurídica o DIMEX válida utilizada para registrar el comercio.
+*   **Código de Verificación (OTP):** Clave de un solo uso y de corta duración enviada para verificar el canal de comunicación.
+
 ---
 
 ## 👥 2. Actores
@@ -49,17 +55,25 @@ Ejemplo: Permitir que un nuevo comercio se registre en la plataforma LAND4 para 
 ---
 
 ## 🔄 5. Flujos Alternativos y Excepciones
-*Describe qué sucede si las cosas no van por el camino principal (errores, decisiones, cancelaciones).*
+*Describe los caminos secundarios que pueden ocurrir durante el flujo. Utiliza la nomenclatura `[Paso de desvío].[Letra]` para referenciar en qué parte del Flujo Principal ocurre la desviación. Define al final de cada flujo si el usuario reingresa o si termina el proceso.*
 
-### 5.1. Correo ya registrado (Paso 4)
-*   **5.1.1.** El sistema detecta que el correo ya tiene una cuenta asociada.
-*   **5.1.2.** El sistema muestra un mensaje indicando que el correo ya existe y ofrece un enlace para "Recuperar Contraseña".
-*   **5.1.3.** El flujo vuelve al paso 2.
+### 5.1. Flujos Alternativos (Caminos secundarios con éxito)
+*Caminos alternos que toma el usuario pero que eventualmente permiten cumplir el objetivo del caso de uso.*
 
-### 5.2. Código de verificación inválido o expirado (Paso 6)
-*   **5.2.1.** El usuario ingresa un código incorrecto.
-*   **5.2.2.** El sistema muestra un mensaje de error: "Código inválido. Te quedan N intentos".
-*   **5.2.3.** Si supera los 3 intentos, el sistema expira el código y el usuario debe solicitar un nuevo código (volver al paso 5).
+#### **[Paso].[Letra] — [Nombre del Flujo Alternativo] (Se desvía en Paso [X])**
+*   **[Paso].[Letra].1.** [Paso 1 del flujo alterno]
+*   **[Paso].[Letra].2.** [Paso 2 del flujo alterno]
+*   **[Paso].[Letra].X.** **Retornar al Paso [Y]** del Flujo Principal.
+
+---
+
+### 5.2. Flujos de Excepción (Errores o cancelaciones sin éxito)
+*Caminos de error o decisiones del usuario que impiden completar el objetivo del caso de uso, terminando el proceso sin éxito.*
+
+#### **[Paso].[Letra] — [Nombre del Flujo de Excepción] (Se desvía en Paso [X])**
+*   **[Paso].[Letra].1.** [Paso 1 del flujo de excepción]
+*   **[Paso].[Letra].2.** [Paso 2 del flujo de excepción]
+*   **[Paso].[Letra].X.** **Fin del Caso de Uso (Sin éxito).**
 
 ---
 
