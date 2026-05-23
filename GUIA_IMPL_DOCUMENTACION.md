@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Guía de Implementación del Portal de Documentación
-nav_order: 1
+nav_exclude: true
 ---
 
 # 📖 Guía Definitiva: Portal de Documentación Centralizado e Híbrido

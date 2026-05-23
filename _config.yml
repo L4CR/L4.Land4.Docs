@@ -1,19 +1,23 @@
-title: LAND4 knowledge
-description: Espacio centralizado para procesos, guías y arquitectura de la Organización.
-# 1. Reemplaza "theme" por "remote_theme" apuntando al repositorio oficial del tema
+title: LAND4 Knowledge
+description: Espacio centralizado para procesos, guías y arquitectura de LAND4.
+
+# Tema remoto para GitHub Pages
 remote_theme: just-the-docs/just-the-docs
 
-# 2. Activa el plugin necesario para que GitHub Pages acepte temas remotos
+# Plugins necesarios para compilar en GitHub Pages
 plugins:
   - jekyll-remote-theme
 
-# Configuración del buscador nativo
+# Configuración del motor de búsqueda integrado
 search_enabled: true
 search:
   tokenizer: separator
   preview_words_before: 5
   preview_words_after: 5
 
-# Si tu repositorio es privado y usas GitHub Enterprise, la URL cambiará. 
-# Por ahora, para la configuración base:
+# Enlaces auxiliares en la barra superior derecha
+aux_links:
+  "GitHub Repository": "https://github.com/L4CR/L4.docs-organizacion"
+
+# Configuración de URL base para despliegue
 url: ""
