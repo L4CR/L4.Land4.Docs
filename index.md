@@ -18,27 +18,30 @@ Para garantizar que la documentación técnica no se quede obsoleta y evolucione
 
 ```mermaid
 graph TD
-    A[Portal Centralizado <br> L4.docs-organizacion] --> B(Procesos Globales)
+    A[Portal Centralizado <br> L4.docs-organizacion] --> P(Procesos Transversales /procesos)
     A --> C(Guias de Onboarding)
     A --> D(Catalogo de Sistemas)
     A --> K(Requerimientos Globales /req)
-    
+
     D -->|Enlaces a Repos| E[Repo: API Gateway]
     D -->|Enlaces a Repos| F[Repo: App Movil]
-    
+
     E -->|Detalle Tecnico| H[docs/arquitectura.md]
     E -->|Casos de Uso| L[req/CU-01-registro.md]
-    
+
     F -->|Detalle Tecnico| I[docs/setup.md]
-    
+
     style A fill:#4F46E5,stroke:#312E81,stroke-width:2px,color:#fff
     style D fill:#10B981,stroke:#065F46,stroke-width:2px,color:#fff
     style K fill:#F59E0B,stroke:#B45309,stroke-width:2px,color:#fff
 ```
 
-1. **El Portal Central (Este Repositorio):** Aloja las políticas de ingeniería, guías de estilo, onboarding globales, el catálogo de sistemas y los requerimientos de negocio transversales en `/req`.
-2. **Documentación Técnica Viva (Cada Repositorio en `/docs`):** Los detalles específicos de instalación, arquitectura de software, endpoints de API y guías de despliegue residen en la carpeta `/docs` de su propio repositorio.
-3. **Casos de Uso de Negocio Viva (Cada Repositorio en `/req`):** Los requerimientos de negocio, flujos y validaciones funcionales específicas residen en la carpeta `/req` de cada repositorio.
+1. **El Portal Central (Este Repositorio):** Aloja políticas de ingeniería, procesos globales, onboarding, catálogo de sistemas y requerimientos de negocio transversales.
+2. **README principal (`README.md`):** Es la entrada inicial de cada repositorio: resume el propósito, tecnologías y enlaces a documentación relevante.
+3. **Requerimientos de Negocio (`/req`):** Define qué necesita el negocio mediante casos de uso, historias de usuario, reglas y criterios de aceptación.
+4. **Procesos Transversales (`/procesos`):** Define cómo colaboran Producto y TI para desarrollar, revisar, integrar y entregar cambios.
+5. **Documentación Técnica Viva (Cada Repositorio en `/docs`):** Los detalles específicos de instalación, arquitectura de software, endpoints de API y guías de despliegue residen en la carpeta `/docs` de su propio repositorio.
+6. **Casos de Uso de Negocio Viva (Cada Repositorio en `/req`):** Los requerimientos de negocio, flujos y validaciones funcionales específicas residen en la carpeta `/req` de cada repositorio.
 
 ---
 
@@ -48,6 +51,7 @@ Navega a través de los menús laterales o utiliza los enlaces directos a contin
 
 *   **[🗺️ Catálogo de Sistemas](repositorios.md):** Accede a la documentación técnica y funcional específica de cada uno de los microservicios, APIs y aplicaciones de LAND4.
 *   **[🎯 Requerimientos de Negocio](req/index.md):** Casos de uso globales y plantillas para la definición de flujos funcionales.
+*   **[🔄 Procesos Transversales](procesos/index.md):** Flujos de trabajo compartidos entre Producto y TI, incluyendo el GitHub Flow de LAND4.
 *   **[🚀 Guía de Onboarding](onboarding/bienvenida.md):** Si eres nuevo en el equipo de tecnología, sigue esta guía paso a paso para configurar tus accesos y tu entorno local.
 *   **[📝 Guía: ¿Cómo Documentar?](como-documentar.md):** Aprende el estándar para estructurar y mantener la documentación técnica (`/docs`) y de negocio (`/req`) en tu repositorio.
 

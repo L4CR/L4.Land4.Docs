@@ -69,6 +69,6 @@ Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto im
 Cuando agregues una nueva funcionalidad, cambies una variable de entorno o modifiques la base de datos:
 
 1. Crea tu rama de Git para desarrollar la funcionalidad.
-2. Realiza los cambios en el código **y edita los archivos correspondientes en `docs/` o el `README.md` en esa misma rama**.
+2. Realiza los cambios en el código **y edita los archivos correspondientes en `README.md`, `docs/` o `req/` en esa misma rama**.
 3. Envía tu Pull Request. El revisor evaluará tanto la calidad del código como que la documentación refleje el nuevo cambio.
 4. Una vez fusionado en `main`, tu documentación estará actualizada.
