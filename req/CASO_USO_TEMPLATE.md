@@ -91,3 +91,17 @@ Ejemplo: Permitir que un nuevo comercio se registre en la plataforma LAND4 para 
 | :--- | :--- | :--- |
 | **RN-01** | Mayoría de Edad | Solo se permite el registro a representantes legales mayores de 18 años. |
 | **RN-02** | Jurisdicción | Solo se permiten registros con identificaciones legales válidas en Costa Rica (cédula física, jurídica, DIMEX). |
+
+---
+
+## 📋 8. Criterios de Aceptación
+*Define los criterios formales para dar por terminado este caso de uso. Puedes usar formato declarativo (Checklist) o descriptivo de escenarios (Dado/Cuando/Entonces). Consulta la **[Guía de Criterios de Aceptación](criterios-aceptacion.md)** para ver buenas prácticas.*
+
+### Escenario 1: [Nombre del escenario descriptivo]
+*   **Dado** [Contexto o estado inicial]
+*   **Cuando** [Acción o evento ejecutado]
+*   **Entonces** [Resultado esperado o consecuencia]
+
+### Criterios Generales (Checklist)
+*   [ ] [Criterio general de UI/UX, ej: deshabilitar botones al procesar]
+*   [ ] [Criterio de rendimiento o accesibilidad]

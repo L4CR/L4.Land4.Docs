@@ -18,6 +18,7 @@ A diferencia de la carpeta `/docs` (que está orientada a la implementación té
 
 En este directorio encontrarás:
 *   **[📝 Plantilla de Caso de Uso](CASO_USO_TEMPLATE.md):** El estándar formal que debes copiar y completar para redactar nuevos casos de uso.
+*   **[📋 Guía: Criterios de Aceptación](criterios-aceptacion.md):** Formatos de redacción y buenas prácticas para definir criterios claros y verificables.
 *   *Otros casos de uso de negocio globales cuando sea pertinente.*
 
 ---
