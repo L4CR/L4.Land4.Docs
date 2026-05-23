@@ -1,0 +1,14 @@
+title: Portal de Ingeniería y Documentación
+description: Espacio centralizado para procesos, guías y arquitectura de la Organización.
+theme: jekyll-theme-just-the-docs
+
+# Configuración del buscador nativo
+search_enabled: true
+search:
+  tokenizer: separator
+  preview_words_before: 5
+  preview_words_after: 5
+
+# Si tu repositorio es privado y usas GitHub Enterprise, la URL cambiará. 
+# Por ahora, para la configuración base:
+url: ""
