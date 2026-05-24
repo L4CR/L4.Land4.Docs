@@ -10,7 +10,7 @@ permalink: /req
 
 En esta sección se consolidan los requerimientos, flujos lógicos, casos de uso e historias de usuario expresados en **lenguaje de negocio**.
 
-A diferencia de `README.md` (entrada principal del repositorio) y de `/docs` (documentación técnica y arquitectura de software), la carpeta `/req` define **qué necesita el negocio** y sirve como puente de comunicación entre Producto, Operaciones y Desarrollo. El proceso operativo para entregar esos cambios se documenta en **[Procesos](../procesos/)**.
+A diferencia de `README.md` (entrada principal del repositorio) y de `/docs` (documentación técnica y arquitectura de software), la carpeta `/req` define **qué necesita el negocio** y sirve como puente de comunicación entre Producto, Operaciones y Desarrollo. El proceso operativo para entregar esos cambios se documenta en **[Procesos](../procesos/index.md)**.
 
 ---
 
