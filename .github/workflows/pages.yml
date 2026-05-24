@@ -28,6 +28,9 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v4
 
+      - name: Generar documentación de Skills
+        run: bash scripts/generate-skills-docs.sh
+
       - name: Configurar Jekyll y compilar
         uses: actions/jekyll-build-pages@v1
         with:
