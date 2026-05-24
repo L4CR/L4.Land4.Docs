@@ -13,31 +13,30 @@ En LAND4, una HU debe nacer preferiblemente de un **Caso de Uso (CU)** o de una 
 
 ---
 
-## 🔗 Relación entre Caso de Uso, HU, Tareas y Pruebas
+## 🔗 Relación entre Caso de Uso, HU, Tareas y Validación
 
 ```mermaid
 flowchart TD
-    CU[Caso de Uso<br/>CU-XXX] --> HU[Historia de Usuario]
-    CA[Criterios de Aceptación] --> HU
-    HU --> Tareas[Tareas de desarrollo]
-    HU --> QA1[Caso de prueba positivo]
-    HU --> QA2[Caso de prueba negativo]
+    UseCase["Caso de Uso"] --> UserStory["Historia de Usuario"]
+    AcceptanceCriteria["Criterios de Aceptacion"] --> UserStory
+    UserStory --> Tasks["Tareas de desarrollo"]
+    UserStory --> Validation["Validacion QA y UAT"]
 
-    HU --> Backlog[Backlog]
-    Backlog --> Ready[Ready]
-    Ready --> Progress[In Progress]
-    Progress --> Blocked[Blocked]
+    UserStory --> Backlog["Backlog"]
+    Backlog --> Ready["Ready"]
+    Ready --> Progress["In Progress"]
+    Progress --> Blocked["Blocked"]
     Blocked --> Progress
-    Progress --> Done[Done]
+    Progress --> Done["Done"]
 ```
 
 *   **Caso de Uso:** Define el contexto de negocio, actores, precondiciones, flujo principal, flujos alternos, postcondiciones y reglas de negocio.
 *   **Historia de Usuario:** Define una necesidad concreta que puede ser implementada y validada.
 *   **Criterios de Aceptación:** Definen las condiciones verificables para aceptar la HU.
 *   **Tareas:** Dividen la implementación en actividades técnicas manejables.
-*   **Casos de Prueba:** Validan el comportamiento esperado, tanto en escenarios positivos como negativos.
+*   **Validación QA y UAT:** Confirma que la HU cumple los criterios de aceptación y la necesidad de negocio.
 
-El avance operativo de la HU se rige por el **[GitHub Flow LAND4](../procesos/github-flow.md)**. Esta guía define cómo la HU pasa por ramas, Pull Requests, CI, aprobaciones y entrega.
+Los casos de prueba se documentan en la guía técnica **[Casos de Prueba](../docs/casos-prueba.md)**. El avance operativo de la HU se rige por el **[GitHub Flow LAND4](../procesos/github-flow.md)**.
 
 ---
 
@@ -56,7 +55,7 @@ Toda Historia de Usuario debe contener:
 | **Criterios de Aceptación** | Condiciones verificables para aceptar la historia. |
 | **Descripción** | Contexto adicional necesario para implementar sin ambigüedad. |
 | **Tareas** | Trabajo técnico requerido para completar la HU. |
-| **Casos de Prueba** | Pruebas funcionales que validan la HU. |
+| **Validación esperada** | Indica si requiere QA, UAT o ambas. El detalle de casos de prueba vive en `/docs/casos-prueba.md`. |
 
 ---
 
@@ -136,7 +135,7 @@ Evita usar la descripción como sustituto de los criterios de aceptación. Si un
 | **Ready** | La HU tiene alcance, criterios de aceptación y contexto suficiente para iniciar desarrollo. |
 | **In Progress** | La HU está siendo implementada en una rama de trabajo. |
 | **Blocked** | Hay un impedimento que debe resolverse antes de continuar. |
-| **Done** | La HU fue integrada a `main`, pasó revisión/CI y cumple sus criterios de aceptación. |
+| **Done** | La HU fue integrada a `main`, pasó revisión/CI, completó QA/UAT cuando aplique y cumple sus criterios de aceptación. |
 
 Para el detalle de ramas, PRs, CI, aprobaciones y entrega, consulta el **[GitHub Flow LAND4](../procesos/github-flow.md)**.
 
@@ -175,24 +174,20 @@ Buenas prácticas:
 
 ---
 
-## 🧪 Casos de Prueba
+## 🧪 Validación esperada
 
-Cada HU debe tener al menos casos de prueba para validar:
+La HU debe indicar qué validaciones aplican, sin documentar ahí el detalle completo de cada caso de prueba.
 
-*   **Caso positivo:** El usuario completa el flujo esperado correctamente.
-*   **Caso negativo:** El sistema responde correctamente ante datos inválidos, permisos insuficientes, errores o condiciones no permitidas.
-
-Formato sugerido:
+Ejemplo:
 
 ```text
-Título: Registro exitoso con datos válidos
-Descripción: Validar que un comercio solicitante puede guardar sus datos básicos y avanzar al siguiente paso.
+Validación esperada:
+- QA: Requerido
+- UAT / PO: Requerido
+- Casos de prueba: Ver docs/casos-prueba.md
 ```
 
-```text
-Título: Correo ya registrado
-Descripción: Validar que el sistema no permite continuar cuando el correo ingresado ya pertenece a otra cuenta.
-```
+Los casos de prueba deben documentarse o referenciarse según el estándar definido en **[Casos de Prueba](../docs/casos-prueba.md)**.
 
 ---
 
@@ -243,13 +238,9 @@ Descripción: Validar que el sistema no permite continuar cuando el correo ingre
 ### Done
 *   [x] [Tarea completada]
 
-## Casos de Prueba
+## Validación esperada
 
-### Caso positivo
-**Título:** [Nombre del caso]  
-**Descripción:** [Qué valida]
-
-### Caso negativo
-**Título:** [Nombre del caso]  
-**Descripción:** [Qué valida]
+*   **QA:** [N/A / Requerido]
+*   **UAT / PO:** [N/A / Requerido]
+*   **Casos de prueba:** [Referencia a docs/casos-prueba.md, issue, PR o herramienta de gestión]
 ```
