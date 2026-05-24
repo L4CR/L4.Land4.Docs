@@ -8,7 +8,7 @@ nav_order: 3
 
 Para garantizar que nuestra documentación técnica se mantenga actualizada y siga el ciclo de vida del código, en **LAND4** aplicamos el concepto de **Docs-as-Code** (Documentación como Código).
 
-Esto significa que la documentación técnica específica de un sistema vive en su propio repositorio de Git y se revisa mediante Pull Requests al igual que el código de producción.
+Esto significa que la documentación vive junto al código, se versiona en Git y se revisa mediante Pull Requests al igual que el código de producción.
 
 ---
 
@@ -18,22 +18,25 @@ Cada repositorio de código en la organización debe mantener la siguiente estru
 
 ```text
 nombre-del-repositorio/
+├── README.md                # Entrada principal del proyecto
 ├── docs/                    # Carpeta para Documentación TÉCNICA
 │   ├── arquitectura.md      # Diseño del sistema, diagramas, decisiones técnicas
 │   ├── setup.md             # Guía paso a paso para levantar el entorno local
 │   └── despliegue.md        # Pasos y requerimientos para desplegar en ambientes
 ├── req/                     # Carpeta para Requerimientos de NEGOCIO (Casos de Uso)
 │   └── CU-01-registro.md    # Especificaciones funcionales y flujos de negocio
-├── README.md                # Presentación rápida del proyecto y accesos directos
+├── procesos/                # Solo si el repositorio define procesos propios
 └── ... (código fuente)
 ```
 
 ### 1. El archivo `README.md` (La Entrada)
-Debe ser conciso y proporcionar una visión general del sistema. Evita poner guías gigantes de instalación aquí; en su lugar, utiliza enlaces a la carpeta `/docs`. Un buen `README.md` contiene:
+Es el índice principal del repositorio. Debe ser conciso y proporcionar una visión general del sistema. Evita poner guías extensas aquí; en su lugar, utiliza enlaces a `/docs`, `/req` y procesos relevantes. Un buen `README.md` contiene:
 *   Una breve descripción de qué hace el proyecto.
 *   Tecnologías principales (ej. Node.js, React, Python).
 *   Enlace rápido a la guía de desarrollo local: `[Guía de Setup Local](docs/setup.md)`.
 *   Enlace rápido a la arquitectura: `[Arquitectura y Diseño](docs/arquitectura.md)`.
+*   Enlace al catálogo central: `[Catálogo de Sistemas](https://github.com/L4CR/L4.docs-organizacion/blob/main/docs/repositorios.md)`.
+*   Enlaces a casos de uso o historias relevantes cuando existan en `/req`.
 
 ### 2. La carpeta `/docs` (Detalle Técnico)
 Aquí vive el grueso del conocimiento de implementación. Divide el contenido en archivos temáticos:
@@ -45,6 +48,9 @@ Aquí vive el grueso del conocimiento de implementación. Divide el contenido en
 Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
 *   Contiene casos de uso redactados en lenguaje no técnico, facilitando la comprensión y validación entre ingenieros y tomadores de decisiones/Product Owners.
 *   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.md)**.
+
+### 4. La carpeta `/procesos` (Procesos del Repositorio)
+Esta carpeta solo debe existir cuando el repositorio necesite documentar procesos propios que no estén cubiertos por el portal central. Para el flujo estándar de ramas, Pull Requests, CI y entregas, usa el **[GitHub Flow LAND4](/procesos/github-flow)** del portal.
 
 ---
 

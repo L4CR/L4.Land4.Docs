@@ -1,7 +1,9 @@
 ---
 layout: default
 title: Catálogo de Sistemas
-nav_order: 2
+parent: Documentación Técnica
+nav_order: 1
+permalink: /docs/repositorios
 ---
 
 # 🗺️ Catálogo de Sistemas y Repositorios
@@ -29,7 +31,7 @@ La documentación técnica detallada (arquitectura, setup local, guías de desar
 
 Si has creado un nuevo repositorio o quieres registrar uno existente en este catálogo:
 
-1. Asegúrate de que tu repositorio cumpla con el estándar de documentación (con un `README.md` claro y una carpeta `/docs`). Puedes guiarte con nuestra **[Guía: ¿Cómo Documentar?](como-documentar.md)**.
+1. Asegúrate de que tu repositorio cumpla con el estándar de documentación (con un `README.md` claro y una carpeta `/docs`). Puedes guiarte con nuestra **[Guía: ¿Cómo Documentar?](../como-documentar.md)**.
 2. Edita este archivo (`repositorios.md`) agregando una fila a la tabla anterior con:
    * **Nombre del Sistema:** Nombre del proyecto.
    * **Tipo:** Backend, Frontend, Microservicio, Infraestructura, etc.
@@ -37,3 +39,4 @@ Si has creado un nuevo repositorio o quieres registrar uno existente en este cat
    * **Enlace a Docs Vivas:** El link directo a la carpeta `/docs` o al `README.md` en GitHub de tu repositorio.
    * **Equipo Responsable:** Quién o quiénes mantienen el sistema.
 3. Envía tu Pull Request para actualizar la tabla.
+4. Agrega un enlace al catálogo en el `README.md` del repositorio o en su documentación principal para que el equipo pueda volver fácilmente a este inventario central.

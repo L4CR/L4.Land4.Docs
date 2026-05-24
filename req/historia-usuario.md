@@ -37,7 +37,7 @@ flowchart TD
 *   **Tareas:** Dividen la implementación en actividades técnicas manejables.
 *   **Casos de Prueba:** Validan el comportamiento esperado, tanto en escenarios positivos como negativos.
 
-El avance operativo de la HU se rige por el **[GitHub Flow LAND4](../procesos/github-flow.md)**. Esta guía define cómo la HU pasa por ramas, Pull Requests, CI, aprobaciones y entrega.
+El avance operativo de la HU se rige por el **[GitHub Flow LAND4](/procesos/github-flow)**. Esta guía define cómo la HU pasa por ramas, Pull Requests, CI, aprobaciones y entrega.
 
 ---
 
@@ -138,7 +138,7 @@ Evita usar la descripción como sustituto de los criterios de aceptación. Si un
 | **Blocked** | Hay un impedimento que debe resolverse antes de continuar. |
 | **Done** | La HU fue integrada a `main`, pasó revisión/CI y cumple sus criterios de aceptación. |
 
-Para el detalle de ramas, PRs, CI, aprobaciones y entrega, consulta el **[GitHub Flow LAND4](../procesos/github-flow.md)**.
+Para el detalle de ramas, PRs, CI, aprobaciones y entrega, consulta el **[GitHub Flow LAND4](/procesos/github-flow)**.
 
 ---
 
