@@ -50,7 +50,7 @@ Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto im
 *   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.md)**.
 
 ### 4. La carpeta `/procesos` (Procesos del Repositorio)
-Esta carpeta solo debe existir cuando el repositorio necesite documentar procesos propios que no estén cubiertos por el portal central. Para el flujo estándar de ramas, Pull Requests, CI y entregas, usa el **[GitHub Flow LAND4](/procesos/github-flow)** del portal.
+Esta carpeta solo debe existir cuando el repositorio necesite documentar procesos propios que no estén cubiertos por el portal central. Para el flujo estándar de ramas, Pull Requests, CI y entregas, usa el **[GitHub Flow LAND4](procesos/github-flow.md)** del portal.
 
 ---
 
