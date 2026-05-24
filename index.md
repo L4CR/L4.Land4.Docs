@@ -25,7 +25,7 @@ Usa este índice como reflejo jerárquico del menú lateral del portal:
     *   [Arquitectura](docs/arquitectura.md): Modelo centralizado y distribuido, componentes, flujo de publicación y decisiones técnicas.
     *   [Despliegue](docs/despliegue.md): Validación local, ambientes y despliegue en GitHub Pages.
     *   [Catálogo de Repositorios](docs/repositorios.md): Inventario central de repositorios LAND4 y enlaces a sus GitHub Pages.
-    *   [Inteligencia Artificial](docs/inteligencia-artificial/index.md): Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
+    *   [Inteligencia Artificial](docs/inteligencia-artificial/): Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
 *   **[Procesos](procesos/index.md):** Procesos transversales de colaboración entre Producto y TI.
     *   [GitHub Flow](procesos/github-flow.md): Flujo de trabajo para ramas, commits, Pull Requests y merges.
 *   **[Requerimientos de Negocio](req/index.md):** Guías para documentar requerimientos funcionales.

@@ -36,7 +36,7 @@ flowchart TD
 *   **Tareas:** Dividen la implementación en actividades técnicas manejables.
 *   **Validación QA y UAT:** Confirma que la HU cumple los criterios de aceptación y la necesidad de negocio.
 
-Los casos de prueba se documentan en la guía técnica **[Casos de Prueba](../docs/casos-prueba.md)**. El avance operativo de la HU se rige por el **[GitHub Flow LAND4](../procesos/github-flow.md)**.
+Los casos de prueba se documentan en la guía técnica **[Casos de Prueba](../docs/casos-prueba.html)**. El avance operativo de la HU se rige por el **[GitHub Flow LAND4](../procesos/github-flow.md)**.
 
 ---
 
@@ -55,7 +55,7 @@ Toda Historia de Usuario debe contener:
 | **Criterios de Aceptación** | Condiciones verificables para aceptar la historia. |
 | **Descripción** | Contexto adicional necesario para implementar sin ambigüedad. |
 | **Tareas** | Trabajo técnico requerido para completar la HU. |
-| **Validación esperada** | Indica si requiere QA, UAT o ambas. El detalle de casos de prueba vive en `/docs/casos-prueba.md`. |
+| **Validación esperada** | Indica si requiere QA, UAT o ambas. El detalle de casos de prueba vive en `/docs/casos-prueba.html`. |
 
 ---
 
@@ -184,10 +184,10 @@ Ejemplo:
 Validación esperada:
 - QA: Requerido
 - UAT / PO: Requerido
-- Casos de prueba: Ver docs/casos-prueba.md
+- Casos de prueba: Ver docs/casos-prueba.html
 ```
 
-Los casos de prueba deben documentarse o referenciarse según el estándar definido en **[Casos de Prueba](../docs/casos-prueba.md)**.
+Los casos de prueba deben documentarse o referenciarse según el estándar definido en **[Casos de Prueba](../docs/casos-prueba.html)**.
 
 ---
 
@@ -242,5 +242,5 @@ Los casos de prueba deben documentarse o referenciarse según el estándar defin
 
 *   **QA:** [N/A / Requerido]
 *   **UAT / PO:** [N/A / Requerido]
-*   **Casos de prueba:** [Referencia a docs/casos-prueba.md, issue, PR o herramienta de gestión]
+*   **Casos de prueba:** [Referencia a docs/casos-prueba.html, issue, PR o herramienta de gestión]
 ```
