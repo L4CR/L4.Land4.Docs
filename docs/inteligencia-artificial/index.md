@@ -3,6 +3,7 @@ layout: default
 title: Inteligencia Artificial
 parent: Documentación Técnica
 nav_order: 4
+has_children: true
 permalink: /docs/inteligencia-artificial/
 ---
 
@@ -34,6 +35,11 @@ Cuando un repositorio necesite capacidades reutilizables para agentes, puede usa
 ```
 
 El archivo `SKILL.md` debe incluir frontmatter YAML con, como mínimo, `name` y `description`, siguiendo la especificación abierta de Agent Skills.
+
+## Contenido
+
+*   **[AGENTS.md](agents.md):** Instrucciones operativas para agentes de código en este repositorio.
+*   **[Skills](skills.md):** Skills propias de este repositorio disponibles para agentes.
 
 ## Referencias oficiales
 

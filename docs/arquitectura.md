@@ -73,6 +73,7 @@ flowchart TD
 | `assets/` | Recursos estáticos como logos e imágenes. |
 | `docs/` | Documentación técnica del propio portal. |
 | `docs/inteligencia-artificial/index.md` | Referencia organizacional para el uso de estándares abiertos de inteligencia artificial, incluyendo `AGENTS.md` y Agent Skills. |
+| `docs/repositorios.md` | Repositorios relacionados del repo actual; en el portal central, inventario de todos los repositorios LAND4. |
 | `.agents/skills/` | Ubicación recomendada para Agent Skills versionados cuando un repositorio necesite capacidades reutilizables. |
 | `req/` | Guías y plantillas para requerimientos de negocio. |
 | `procesos/` | Procesos transversales, como GitHub Flow LAND4. |

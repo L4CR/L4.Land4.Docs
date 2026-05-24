@@ -8,7 +8,7 @@ permalink: /docs
 
 # 🧱 Documentación Técnica
 
-Esta sección es la entrada técnica publicada de este repositorio. Reúne la arquitectura, el despliegue y el catálogo de documentación técnica que el portal expone para los repositorios LAND4.
+Esta sección es la entrada técnica publicada de este repositorio. Reúne la arquitectura, el despliegue, el catálogo de repositorios y la referencia de inteligencia artificial del portal.
 
 Este `/docs` implementa el mismo estándar definido en **[¿Cómo Documentar?](../como-documentar.md)**: mantiene un índice técnico, una guía de arquitectura, una guía de despliegue y documentación navegable publicada con GitHub Pages.
 
@@ -43,6 +43,6 @@ En este directorio encontrarás:
 
 *   **`README.md`:** Entrada del repositorio en GitHub; resume el propósito y enlaza a la documentación relevante.
 *   **`index.md`:** Inicio publicado del portal e índice principal navegable.
-*   **`/docs`:** Documentación técnica viva del portal: arquitectura, despliegue, catálogo y decisiones técnicas.
+*   **`/docs`:** Documentación técnica viva del portal: arquitectura, despliegue, repositorios relacionados e inteligencia artificial.
 *   **`/req`:** Requerimientos de negocio: casos de uso, historias de usuario, criterios de aceptación y reglas.
 *   **`/procesos`:** Forma de trabajo: ramas, PRs, CI, aprobaciones, merge y entrega.

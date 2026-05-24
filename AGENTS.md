@@ -1,3 +1,7 @@
+---
+nav_exclude: true
+---
+
 # AGENTS.md
 
 Instrucciones para agentes de código que trabajen en este repositorio.
@@ -64,23 +68,25 @@ bundle exec jekyll serve
 
 ## Verificación antes de finalizar
 
-Para cambios de documentación, ejecuta al menos:
+Para cambios de Markdown, normalmente basta con recargar el portal local y revisar visualmente la página modificada.
 
-```bash
-docker compose run --rm docs bundle exec jekyll build
-```
-
-Si el cambio agrega navegación, también levanta el sitio con:
+Si el servidor local no está levantado, usa:
 
 ```bash
 docker compose up docs
 ```
 
+Ejecuta build solo cuando el cambio toque configuración, navegación, dependencias, Mermaid complejo o estructura publicada:
+
+```bash
+docker compose run --rm docs bundle exec jekyll build
+```
+
 Revisa que:
 
-- El build termina sin errores.
 - Las páginas nuevas o modificadas aparecen en la navegación esperada.
 - Los enlaces internos resuelven correctamente.
+- Los diagramas Mermaid renderizan sin errores.
 - No se generaron cambios innecesarios en `_site/`, `.bundle/` o `vendor/`.
 
 ## Pull Requests

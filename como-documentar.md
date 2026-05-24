@@ -61,7 +61,7 @@ Como mínimo debe documentar:
 *   Verificación esperada antes de finalizar una tarea.
 *   Criterios para Pull Requests, incluyendo cuándo actualizar documentación relacionada.
 
-La referencia organizacional vive en **[Inteligencia Artificial](docs/inteligencia-artificial/)**.
+La referencia organizacional vive en **[Inteligencia Artificial](docs/inteligencia-artificial/)** y su página **[AGENTS.md](docs/inteligencia-artificial/agents.md)**.
 
 ### 3. El archivo `index.md` (Entrada publicada)
 Es la página principal del repositorio cuando su documentación se publica en GitHub Pages. Debe funcionar como índice navegable y reflejar la jerarquía real del menú:
@@ -90,6 +90,7 @@ Reglas mínimas:
 *   La `description` debe explicar qué hace el skill y en qué tareas debe activarse.
 *   Mantén `SKILL.md` enfocado; mueve documentación extensa a `references/`.
 *   Usa `scripts/` para automatizaciones reutilizables y `assets/` para plantillas o recursos.
+*   Documenta las skills propias del repositorio en `docs/inteligencia-artificial/skills.md` o en una página equivalente dentro de `/docs`, indicando nombre, ruta y propósito.
 
 Consulta **[Inteligencia Artificial](docs/inteligencia-artificial/)** y la documentación oficial enlazada ahí antes de crear o modificar skills.
 
