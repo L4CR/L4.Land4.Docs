@@ -1,35 +1,36 @@
-$blue-000: #dbeafe;
-$blue-100: #bfdbfe;
-$blue-200: #93c5fd;
-$blue-300: #60a5fa;
+$blue-000: #e0f2fe;
+$blue-100: #bae6fd;
+$blue-200: #7dd3fc;
+$blue-300: #1fa7d6;
 
 $green-000: #dcfce7;
 $green-100: #bbf7d0;
 $green-200: #86efac;
 $green-300: #22c55e;
 
-$grey-dk-000: #6b7280;
-$grey-dk-100: #4b5563;
-$grey-dk-200: #374151;
-$grey-dk-250: #1f2937;
-$grey-dk-300: #111827;
+$grey-dk-000: #334155;
+$grey-dk-100: #1f3547;
+$grey-dk-200: #0d1b2a;
+$grey-dk-250: #07111c;
+$grey-dk-300: #05070a;
 
 $grey-lt-000: #ffffff;
-$grey-lt-100: #f9fafb;
-$grey-lt-200: #f3f4f6;
-$grey-lt-300: #e5e7eb;
+$grey-lt-100: #f8fafc;
+$grey-lt-200: #e2e8f0;
+$grey-lt-300: #cbd5e1;
 
-$body-background-color: #ffffff;
-$sidebar-color: #f3f4f6;
-$search-background-color: #ffffff;
-$table-background-color: #ffffff;
-$code-background-color: #f3f4f6;
+$body-background-color: #05070a;
+$sidebar-color: #07111c;
+$search-background-color: #0d1b2a;
+$table-background-color: #0d1b2a;
+$code-background-color: #101827;
 
-$body-heading-color: #1f2937;
-$body-text-color: #1f2937;
-$nav-child-link-color: #4b5563;
-$link-color: #2563eb;
-$btn-primary-color: #2563eb;
-$base-button-color: #f3f4f6;
+$body-heading-color: #f8fafc;
+$body-text-color: #d7dee8;
+$nav-child-link-color: #38bdf8;
+$link-color: #1fa7d6;
+$btn-primary-color: #22c55e;
+$base-button-color: #0f172a;
 
-$border-color: #e5e7eb;
+$border-color: #1f3547;
+$feedback-color: darken($sidebar-color, 3%);
