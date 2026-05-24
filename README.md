@@ -1,45 +1,46 @@
-# LAND4 — Portal de Documentación Centralizado
+# LAND4 - knowledge
 
-Este repositorio aloja el portal central de documentación e ingeniería de **LAND4**. El sitio web está compilado con **Jekyll** y utiliza el tema **Just the Docs**, desplegándose automáticamente a través de **GitHub Pages**.
+Este repositorio aloja el portal central de documentación y conocimiento de **LAND4**. El sitio web está compilado con **Jekyll** y utiliza el tema **Just the Docs**, desplegándose automáticamente a través de **GitHub Pages**.
 
-## 🏗️ Arquitectura Híbrida de Documentación
+Este repositorio implementa las prácticas de documentación: usa `README.md` como entrada del repositorio en GitHub, `index.md` como Inicio del portal publicado, `/docs` para documentación técnica, `/procesos` para flujos de trabajo y `/req` para documentación de negocio.
+La intención es que sirva como referencia replicable para otros repositorios LAND4.
 
-En LAND4 seguimos un modelo híbrido:
-1. **Portal Central (Este repositorio):** Contiene onboarding, políticas globales, procesos transversales, guías de estilo comunes y el [Catálogo de Sistemas](repositorios.md).
-2. **README principal (En cada repositorio):** Es la entrada inicial del proyecto y debe enlazar a la documentación relevante.
-3. **Docs Vivas (En cada repositorio):** La documentación detallada e instalación técnica de cada proyecto vive directamente en el directorio `/docs` de su propio repositorio.
-4. **Requerimientos vivos (En cada repositorio):** Los casos de uso, historias de usuario y criterios funcionales específicos viven en `/req` cuando el proyecto lo requiera.
+## Índice del repositorio
 
-Para más detalles, consulta la guía de **[¿Cómo Documentar?](como-documentar.md)**.
+Este índice refleja la jerarquía del menú principal del portal publicado:
 
----
-
-## 💻 Desarrollo Local (Cómo probar los cambios)
-
-Si quieres compilar y previsualizar este portal localmente antes de enviar un Pull Request, sigue estos pasos:
-
-### Prerrequisitos
-Asegúrate de tener instalado:
-*   Ruby (versión 2.7 o superior)
-*   Bundler
-
-### Instrucciones de ejecución
-
-1. **Instalar dependencias:**
-   ```bash
-   bundle install
-   ```
-
-2. **Iniciar el servidor local de Jekyll:**
-   ```bash
-   bundle exec jekyll serve
-   ```
-
-3. **Ver el sitio en tu navegador:**
-   Abre [http://localhost:4000](http://localhost:4000) en tu navegador. El servidor de desarrollo recompilará automáticamente el sitio cuando guardes cambios en los archivos Markdown.
+*   **[Inicio](index.md):** Punto de entrada del portal publicado e índice principal.
+*   **[¿Cómo Documentar?](como-documentar.md):** Estándar para documentar repositorios LAND4.
+*   **[Documentación Técnica](docs/index.md):** Entrada a la documentación técnica propia del portal.
+    *   [Arquitectura](docs/arquitectura.md): Modelo híbrido, componentes, flujo de publicación y decisiones técnicas.
+    *   [Despliegue](docs/despliegue.md): Validación local, ambientes y despliegue en GitHub Pages.
+    *   [Catálogo de Sistemas](docs/repositorios.md): Repositorios LAND4 registrados y enlaces a sus GitHub Pages.
+*   **[Procesos](procesos/index.md):** Procesos transversales de colaboración entre Producto y TI.
+    *   [GitHub Flow](procesos/github-flow.md): Flujo de trabajo para ramas, commits, Pull Requests y merges.
+*   **[Requerimientos de Negocio](req/index.md):** Guías para documentar requerimientos funcionales.
+    *   [Plantilla de Caso de Uso](req/CASO_USO_TEMPLATE.md): Estructura base para casos de uso.
+    *   [Criterios de Aceptación](req/criterios-aceptacion.md): Guía para definir validaciones de negocio.
+    *   [Historia de Usuario](req/historia-usuario.md): Estructura y estados de una historia de usuario.
+*   **[Onboarding](onboarding/bienvenida.md):** Guía inicial para accesos, herramientas y entorno local.
 
 ---
 
-## 🚀 Despliegue
+## Desarrollo local
+
+La validación local se documenta como parte del ambiente **Local** en la guía de **[Despliegue](docs/despliegue.md)**.
+
+---
+
+## Despliegue
 
 Cualquier cambio fusionado en la rama `main` iniciará automáticamente el workflow de GitHub Actions (`.github/workflows/pages.yml`), compilando y desplegando el nuevo sitio estático en el entorno de GitHub Pages.
+
+La guía operativa de este repositorio vive en **[docs/despliegue.md](docs/despliegue.md)**. Si cambia el workflow, la configuración de Jekyll, los ambientes, los assets requeridos por el build o la forma de validar localmente, esa guía debe actualizarse en el mismo Pull Request.
+
+---
+
+## Colaboración
+
+1. Realiza tus cambios en una nueva rama en este repositorio.
+2. Envía un **Pull Request**.
+3. Al aprobarse y fusionarse en la rama `main`, los cambios se compilarán y desplegarán automáticamente.

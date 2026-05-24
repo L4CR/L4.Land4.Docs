@@ -21,8 +21,7 @@ nombre-del-repositorio/
 ├── README.md                # Entrada principal del proyecto
 ├── docs/                    # Carpeta para Documentación TÉCNICA
 │   ├── arquitectura.md      # Diseño del sistema, diagramas, decisiones técnicas
-│   ├── setup.md             # Guía paso a paso para levantar el entorno local
-│   └── despliegue.md        # Pasos y requerimientos para desplegar en ambientes
+│   └── despliegue.md        # Pasos y requerimientos para validar y desplegar en ambientes
 ├── req/                     # Carpeta para Requerimientos de NEGOCIO (Casos de Uso)
 │   └── CU-01-registro.md    # Especificaciones funcionales y flujos de negocio
 ├── procesos/                # Solo si el repositorio define procesos propios
@@ -33,16 +32,31 @@ nombre-del-repositorio/
 Es el índice principal del repositorio. Debe ser conciso y proporcionar una visión general del sistema. Evita poner guías extensas aquí; en su lugar, utiliza enlaces a `/docs`, `/req` y procesos relevantes. Un buen `README.md` contiene:
 *   Una breve descripción de qué hace el proyecto.
 *   Tecnologías principales (ej. Node.js, React, Python).
-*   Enlace rápido a la guía de desarrollo local: `[Guía de Setup Local](docs/setup.md)`.
 *   Enlace rápido a la arquitectura: `[Arquitectura y Diseño](docs/arquitectura.md)`.
-*   Enlace al catálogo central: `[Catálogo de Sistemas](https://github.com/L4CR/L4.docs-organizacion/blob/main/repositorios.md)`.
+*   Enlace rápido a la guía de despliegue y validación local: `[Despliegue](docs/despliegue.md)`.
+*   Enlace a la documentación publicada del propio repositorio en GitHub Pages.
+*   Enlace al catálogo central: `[Catálogo de Sistemas](https://github.com/L4CR/L4.docs-organizacion/blob/main/docs/repositorios.md)`.
 *   Enlaces a casos de uso o historias relevantes cuando existan en `/req`.
 
 ### 2. La carpeta `/docs` (Detalle Técnico)
 Aquí vive el grueso del conocimiento de implementación. Divide el contenido en archivos temáticos:
-*   `setup.md`: Requisitos previos (Docker, variables de entorno, comandos de base de datos) y comandos para iniciar el proyecto.
 *   `arquitectura.md`: Diagramas de arquitectura (usando **Mermaid**), decisiones técnicas importantes (ADRs) y dependencias con otros servicios.
-*   `despliegue.md`: Configuración de CI/CD, variables de producción y cómo validar que el despliegue fue exitoso.
+*   `despliegue.md`: Ambientes, incluyendo local, configuración de CI/CD, variables requeridas, pasos de publicación, rollback y cómo validar que el despliegue fue exitoso.
+
+#### Qué debe contener `docs/despliegue.md`
+
+Cada repositorio que tenga despliegue propio debe documentar su operación real, no una guía genérica. Como mínimo debe incluir:
+
+*   **Ambientes:** local, CI, staging, producción u otros ambientes aplicables, con propósito y forma de acceso.
+*   **Requerimientos:** herramientas, versiones, permisos, secretos y variables de entorno necesarias, sin exponer valores sensibles.
+*   **Validación local:** comandos para compilar, probar o levantar el sistema antes del Pull Request como parte del ambiente local.
+*   **Pipeline CI/CD:** archivo o servicio que ejecuta el despliegue, rama que lo dispara y condiciones de publicación.
+*   **Pasos de despliegue:** qué ocurre desde el merge hasta que el cambio queda publicado.
+*   **Verificación posterior:** checks mínimos para confirmar que el despliegue fue exitoso.
+*   **Rollback o recuperación:** cómo volver a un estado anterior o dónde escalar si falla.
+*   **Relación implementación-documentación:** cualquier cambio en infraestructura, pipeline, ambientes, variables o assets requeridos debe actualizar `docs/despliegue.md` en el mismo Pull Request.
+
+Además, si el repositorio se registra en el catálogo central, debe publicar su documentación en GitHub Pages para que el catálogo apunte a la documentación navegable, no a archivos Markdown crudos en GitHub.
 
 ### 3. La carpeta `/req` (Requerimientos de Negocio)
 Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
