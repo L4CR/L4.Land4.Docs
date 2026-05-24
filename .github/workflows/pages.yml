@@ -28,6 +28,14 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v4
 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generar documentación de Skills
+        run: npx -y tsx scripts/generate-skills-docs.ts
+
       - name: Configurar Jekyll y compilar
         uses: actions/jekyll-build-pages@v1
         with:
