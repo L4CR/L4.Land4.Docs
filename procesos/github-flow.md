@@ -7,7 +7,7 @@ nav_order: 1
 
 # 🔄 GitHub Flow LAND4
 
-Este proceso define cómo una **Historia de Usuario (HU)** avanza desde una necesidad validada por negocio hasta una entrega integrada en `main`. Es el punto de unión operativo entre Producto y TI: Producto define el valor esperado y los criterios de aceptación; TI implementa, prueba, integra y documenta el cambio.
+Este documento vive en `/procesos` porque define una forma de trabajo transversal. Explica cómo una **Historia de Usuario (HU)** avanza desde una necesidad validada por negocio hasta una entrega integrada en `main`. Es el punto de unión operativo entre Producto y TI: Producto define el valor esperado y los criterios de aceptación; TI implementa, prueba, integra y documenta el cambio.
 
 ---
 
