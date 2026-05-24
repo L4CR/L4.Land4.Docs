@@ -30,7 +30,6 @@ mermaid:
 
 # Archivos operativos del repositorio que no deben publicarse como páginas del portal
 exclude:
-  - AGENTS.md
   - .bundle/
   - .jekyll-cache/
   - _site/
