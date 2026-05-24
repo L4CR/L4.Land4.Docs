@@ -38,8 +38,8 @@ El archivo `SKILL.md` debe incluir frontmatter YAML con, como mínimo, `name` y 
 
 ## Contenido
 
-*   **[AGENTS.md](agents.md):** Instrucciones operativas para agentes de código en este repositorio.
-*   **[Skills](skills.md):** Skills propias de este repositorio disponibles para agentes.
+*   **[AGENTS.md](agents/):** Instrucciones operativas para agentes de código en este repositorio.
+*   **[Skills](skills.html):** Skills propias de este repositorio disponibles para agentes.
 
 ## Referencias oficiales
 
