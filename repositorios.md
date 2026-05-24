@@ -31,7 +31,7 @@ La documentación técnica detallada (arquitectura, setup local, guías de desar
 
 Si has creado un nuevo repositorio o quieres registrar uno existente en este catálogo:
 
-1. Asegúrate de que tu repositorio cumpla con el estándar de documentación (con un `README.md` claro y una carpeta `/docs`). Puedes guiarte con nuestra **[Guía: ¿Cómo Documentar?](../como-documentar.md)**.
+1. Asegúrate de que tu repositorio cumpla con el estándar de documentación (con un `README.md` claro y una carpeta `/docs`). Puedes guiarte con nuestra **[Guía: ¿Cómo Documentar?](como-documentar.md)**.
 2. Edita este archivo (`repositorios.md`) agregando una fila a la tabla anterior con:
    * **Nombre del Sistema:** Nombre del proyecto.
    * **Tipo:** Backend, Frontend, Microservicio, Infraestructura, etc.
