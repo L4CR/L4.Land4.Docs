@@ -18,32 +18,40 @@ En LAND4 utilizamos **GitHub Flow**:
 1. Todo cambio parte desde `main`.
 2. El trabajo se realiza en una rama corta.
 3. La integración ocurre mediante Pull Request.
-4. El Pull Request debe pasar CI y revisión.
+4. El Pull Request debe pasar CI, revisión técnica, validación QA y UAT cuando aplique.
 5. El cierre se realiza con `Squash merge`.
 6. `main` representa el estado integrado y entregable.
 
 ---
 
-## 🔗 Relación entre HU y entrega
+## 🔗 Relación entre necesidad, HU y entrega
+
+Todo flujo inicia con una necesidad de negocio identificada por Producto. Esa necesidad debe mapearse a un **Caso de Uso** existente o provocar la creación/actualización de uno nuevo antes de llegar a desarrollo.
 
 ```mermaid
 flowchart TD
-    CU[Caso de Uso o necesidad validada] --> Backlog[HU: Backlog]
+    Need[Necesidad de negocio] --> PO[Product Owner]
+    PO --> CU{¿Existe Caso de Uso?}
+    CU -->|Sí| ExistingCU[Caso de Uso existente]
+    CU -->|No| NewCU[Crear o actualizar Caso de Uso]
+    ExistingCU --> Backlog[HU: Backlog]
+    NewCU --> Backlog
     Backlog --> Ready[HU: Ready]
-    Ready --> Branch[Rama desde main]
+    Ready --> Branch[Rama temporal desde main]
     Branch --> Progress[HU: In Progress]
-    Progress --> PR[Pull Request hacia main]
+    Progress --> DevTests[Pruebas de desarrollador]
+    DevTests --> PR[Pull Request hacia main]
     Progress --> Blocked[HU: Blocked]
     Blocked --> Progress
     PR --> CI[CI verde]
     CI --> Review[Revisión técnica]
-    Review --> PO[Validación PO si aplica]
-    PO --> Merge[Squash merge a main]
-    Review --> Merge
+    Review --> QA[Validación QA]
+    QA --> UAT[UAT / Aceptación PO]
+    UAT --> Merge[Squash merge a main]
     Merge --> Done[HU: Done]
 ```
 
-La HU define el alcance y los criterios de aceptación. El Pull Request demuestra que el cambio fue implementado, revisado e integrado conforme a esos criterios.
+La HU define el alcance y los criterios de aceptación. El Pull Request demuestra que el cambio fue implementado, revisado, validado e integrado conforme a esos criterios.
 
 ---
 
@@ -51,13 +59,13 @@ La HU define el alcance y los criterios de aceptación. El Pull Request demuestr
 
 | Estado | Significado | Responsabilidad principal |
 | :--- | :--- | :--- |
-| **Backlog** | La necesidad existe, pero aún no está lista para desarrollo. | Producto |
+| **Backlog** | La necesidad existe, pero aún no está lista para desarrollo. Debe estar vinculada a un caso de uso existente o a la creación/actualización de uno nuevo. | Producto |
 | **Ready** | La HU tiene alcance, criterios de aceptación y prioridad suficiente para iniciar. | Producto + TI |
 | **In Progress** | La implementación está en desarrollo en una rama de trabajo. | Desarrollo |
 | **Blocked** | Existe un impedimento que impide avanzar o validar la HU. | Responsable del bloqueo |
-| **Done** | El cambio está integrado en `main`, con CI verde, revisión aprobada y documentación actualizada si aplica. | Producto + TI |
+| **Done** | El cambio está integrado en `main`, con CI verde, revisión técnica, validación QA, UAT cuando aplique y documentación actualizada si corresponde. | Producto + TI |
 
-Una HU no debe pasar a `Ready` si sus criterios de aceptación no son verificables. Una HU no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main`.
+Una HU no debe pasar a `Ready` si sus criterios de aceptación no son verificables. Una HU no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main` o si quedan validaciones QA/UAT pendientes cuando apliquen.
 
 ---
 
@@ -86,6 +94,8 @@ docs/actualizar-guia-onboarding
 chore/ajustar-ci
 ```
 
+La rama de trabajo es temporal. Puede desplegarse o liberarse a ambientes de validación cuando el pipeline del repositorio lo soporte, pero no reemplaza la integración final hacia `main`.
+
 ---
 
 ## 💻 Desarrollo y pruebas de desarrollador
@@ -98,6 +108,40 @@ Durante `In Progress`, la persona desarrolladora debe:
 *   Actualizar `README.md`, `/docs` o `/req` cuando el cambio modifique comportamiento, configuración, API, despliegue, reglas de negocio o flujos de usuario.
 
 Las pruebas de desarrollador se registran en el Pull Request como checklist. No se requiere adjuntar evidencias, capturas o logs salvo que el equipo lo solicite explícitamente para un caso puntual.
+
+---
+
+## 🧪 Validaciones QA y UAT
+
+Además de las pruebas de desarrollador, el flujo puede requerir validaciones de QA y UAT según el tipo de cambio.
+
+| Validación | Propósito | Responsable principal | Evidencia esperada |
+| :--- | :--- | :--- | :--- |
+| **Pruebas de desarrollador** | Confirmar que la implementación cumple técnicamente con el alcance antes de solicitar revisión. | Desarrollo | Checklist del PR, pruebas locales o automatizadas. |
+| **QA** | Verificar comportamiento funcional, regresión, calidad y consistencia contra criterios de aceptación. | QA / TI | Resultado de pruebas, comentarios en PR o evidencia definida por el equipo. |
+| **UAT** | Confirmar que la solución satisface la necesidad de negocio y los criterios de aceptación desde la perspectiva del usuario o PO. | Product Owner / Negocio | Aprobación explícita, comentario en PR, issue o herramienta de gestión. |
+
+El PO participa al inicio del flujo al definir o validar la necesidad de negocio y vuelve a participar en UAT cuando el cambio afecta valor funcional, experiencia de usuario, reglas de negocio o criterios de aceptación.
+
+---
+
+## 🌎 Ambientes y liberación temporal
+
+Cuando el repositorio tenga ambientes configurados, la rama temporal puede liberarse progresivamente para validación antes del merge final.
+
+Flujo recomendado:
+
+```text
+feature/* → ambiente temporal o preview → QA → UAT → main
+```
+
+Reglas:
+
+*   La rama temporal puede alimentar ambientes de preview, QA, staging o equivalentes según el pipeline del repositorio.
+*   QA valida sobre el ambiente correspondiente, no únicamente sobre revisión de código.
+*   UAT debe realizarse en un ambiente accesible para Producto o negocio cuando el cambio lo requiera.
+*   La liberación temporal no convierte la rama en fuente estable; `main` sigue siendo la referencia integrada y entregable.
+*   Si el cambio requiere despliegue manual, el PR debe indicar qué ambiente fue usado para QA/UAT y qué queda pendiente para producción.
 
 ---
 
@@ -118,9 +162,12 @@ Al abrir un PR, utiliza la plantilla que corresponda al repositorio o al cambio 
 Antes de solicitar revisión:
 
 *   La descripción del PR debe indicar la HU relacionada o marcar `N/A`.
+*   La HU debe estar vinculada a un caso de uso existente o a la creación/actualización de uno nuevo cuando el cambio nazca de una necesidad de negocio.
 *   El tipo de cambio debe estar marcado.
 *   Los criterios de aceptación aplicables deben estar chequeados o marcados como `N/A`.
 *   Las pruebas de desarrollador aplicables deben estar chequeadas.
+*   La validación QA debe estar marcada como `N/A`, `Pendiente` o `Completada`.
+*   La validación UAT/PO debe estar marcada como `N/A`, `Pendiente` o `Completada`.
 *   `README.md`, `/docs` o `/req` deben estar actualizados o marcados como `N/A`.
 *   El CI requerido debe estar en verde.
 
@@ -131,9 +178,10 @@ Antes de solicitar revisión:
 La aprobación mínima para fusionar un PR es:
 
 *   **1 revisor técnico** para validar calidad, mantenibilidad, pruebas, impacto y consistencia con el estándar del repositorio.
-*   **Product Owner opcional** cuando el cambio afecte comportamiento funcional, experiencia de usuario, criterios de aceptación, alcance, reglas de negocio o interpretación del valor esperado.
+*   **QA** cuando el cambio afecte comportamiento funcional, regresión, flujos críticos, integraciones, datos o experiencia de usuario.
+*   **Product Owner / UAT** cuando el cambio afecte comportamiento funcional, experiencia de usuario, criterios de aceptación, alcance, reglas de negocio o interpretación del valor esperado.
 
-La validación del PO puede marcarse como `N/A`, `Requerido` o `Completado` en el template del PR.
+La validación QA y la validación UAT/PO pueden marcarse como `N/A`, `Pendiente` o `Completada` en el template del PR.
 
 ---
 
@@ -144,9 +192,10 @@ El cierre estándar del PR es **Squash merge** hacia `main`. Esto deja un histor
 Para LAND4:
 
 *   `main` representa el estado integrado y entregable.
-*   Una HU llega a `Done` cuando el PR asociado fue aprobado, pasó CI y fue fusionado a `main`.
+*   Una HU llega a `Done` cuando el PR asociado fue aprobado, pasó CI, tuvo revisión técnica, completó QA/UAT cuando aplique y fue fusionado a `main`.
 *   Si el repositorio tiene despliegue automático, el merge puede iniciar el flujo de entrega correspondiente.
 *   Si el repositorio requiere despliegue manual, el merge deja el cambio listo para ese proceso.
+*   Las liberaciones temporales desde ramas de trabajo solo sirven para validación en ambientes; no sustituyen el merge final a `main`.
 
 ---
 
