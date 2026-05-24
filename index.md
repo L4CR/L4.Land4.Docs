@@ -51,7 +51,7 @@ graph TD
 Navega a través de los menús laterales o utiliza los enlaces directos a continuación:
 
 *   **[🧱 Documentación Técnica](docs/index.md):** Estándares y accesos a la documentación técnica viva de los sistemas LAND4.
-*   **[🗺️ Catálogo de Sistemas](docs/repositorios.md):** Accede a la documentación técnica y funcional específica de cada uno de los microservicios, APIs y aplicaciones de LAND4.
+*   **[🗺️ Catálogo de Sistemas](repositorios.md):** Accede a la documentación técnica y funcional específica de cada uno de los microservicios, APIs y aplicaciones de LAND4.
 *   **[🎯 Requerimientos de Negocio](req/index.md):** Casos de uso globales y plantillas para la definición de flujos funcionales.
 *   **[🔄 Procesos Transversales](procesos/index.md):** Flujos de trabajo compartidos entre Producto y TI, incluyendo el GitHub Flow de LAND4.
 *   **[🚀 Guía de Onboarding](onboarding/bienvenida.md):** Si eres nuevo en el equipo de tecnología, sigue esta guía paso a paso para configurar tus accesos y tu entorno local.

@@ -35,7 +35,7 @@ Es el índice principal del repositorio. Debe ser conciso y proporcionar una vis
 *   Tecnologías principales (ej. Node.js, React, Python).
 *   Enlace rápido a la guía de desarrollo local: `[Guía de Setup Local](docs/setup.md)`.
 *   Enlace rápido a la arquitectura: `[Arquitectura y Diseño](docs/arquitectura.md)`.
-*   Enlace al catálogo central: `[Catálogo de Sistemas](https://github.com/L4CR/L4.docs-organizacion/blob/main/docs/repositorios.md)`.
+*   Enlace al catálogo central: `[Catálogo de Sistemas](https://github.com/L4CR/L4.docs-organizacion/blob/main/repositorios.md)`.
 *   Enlaces a casos de uso o historias relevantes cuando existan en `/req`.
 
 ### 2. La carpeta `/docs` (Detalle Técnico)

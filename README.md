@@ -5,7 +5,7 @@ Este repositorio aloja el portal central de documentación e ingeniería de **LA
 ## 🏗️ Arquitectura Híbrida de Documentación
 
 En LAND4 seguimos un modelo híbrido:
-1. **Portal Central (Este repositorio):** Contiene onboarding, políticas globales, procesos transversales, guías de estilo comunes y el [Catálogo de Sistemas](docs/repositorios.md).
+1. **Portal Central (Este repositorio):** Contiene onboarding, políticas globales, procesos transversales, guías de estilo comunes y el [Catálogo de Sistemas](repositorios.md).
 2. **README principal (En cada repositorio):** Es la entrada inicial del proyecto y debe enlazar a la documentación relevante.
 3. **Docs Vivas (En cada repositorio):** La documentación detallada e instalación técnica de cada proyecto vive directamente en el directorio `/docs` de su propio repositorio.
 4. **Requerimientos vivos (En cada repositorio):** Los casos de uso, historias de usuario y criterios funcionales específicos viven en `/req` cuando el proyecto lo requiera.
