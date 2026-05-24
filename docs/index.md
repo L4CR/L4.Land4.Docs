@@ -18,7 +18,7 @@ En cada repositorio de producto, la documentación técnica viva debe mantenerse
 
 En este directorio encontrarás:
 
-*   **[Catálogo de Sistemas](repositorios.md):** Inventario de repositorios y enlaces a su documentación viva.
+*   **[Catálogo de Sistemas](../repositorios.md):** Inventario de repositorios y enlaces a su documentación viva.
 
 ---
 
