@@ -25,4 +25,4 @@ En este directorio encontrarás:
 *   **`README.md`:** Entrada principal del repositorio; resume el propósito, tecnologías y enlaces clave.
 *   **`/req`:** Casos de uso, historias de usuario, criterios de aceptación, reglas y flujos de negocio.
 *   **`/procesos`:** Forma de trabajo transversal para construir, revisar, integrar y entregar cambios.
-*   **`/docs`:** Documentación técnica viva dentro de cada repositorio de producto, como arquitectura, setup, despliegue y decisiones técnicas.
+*   **`/docs`:** Documentación técnica viva dentro de cada repositorio de producto, como arquitectura, despliegue, validación local y decisiones técnicas.

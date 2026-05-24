@@ -6,55 +6,32 @@ description: Portal centralizado de documentación y conocimiento de LAND4.
 permalink: /
 ---
 
-# 🚀 Portal de Documentación Centralizado — LAND4
+# 🧠  LAND4 - knowledge
 
-¡Bienvenido al centro de conocimiento de **LAND4**! Este portal es la fuente única de verdad para el onboarding, estándares de desarrollo, procesos globales y arquitectura de nuestros sistemas.
+¡Bienvenido al centro de conocimiento de **LAND4**! Este portal es el punto de entrada para encontrar onboarding, estándares de desarrollo, procesos globales, requerimientos y documentación técnica.
 
----
-
-## 🏗️ Arquitectura Híbrida de Documentación
-
-Para garantizar que la documentación técnica no se quede obsoleta y evolucione a la par del código fuente, en **LAND4** adoptamos un modelo de documentación **híbrido y versionado**:
-
-```mermaid
-graph TD
-    A[Portal Centralizado <br> L4.docs-organizacion] --> P(Procesos Transversales /procesos)
-    A --> C(Guias de Onboarding)
-    A --> T(Documentacion Tecnica /docs)
-    A --> K(Requerimientos Globales /req)
-
-    T --> D(Catalogo de Sistemas)
-    D -->|Enlaces a Repos| E[Repo: API Gateway]
-    D -->|Enlaces a Repos| F[Repo: App Movil]
-
-    E -->|Detalle Tecnico| H[docs/arquitectura.md]
-    E -->|Casos de Uso| L[req/CU-01-registro.md]
-
-    F -->|Detalle Tecnico| I[docs/setup.md]
-
-    style A fill:#4F46E5,stroke:#312E81,stroke-width:2px,color:#fff
-    style D fill:#10B981,stroke:#065F46,stroke-width:2px,color:#fff
-    style K fill:#F59E0B,stroke:#B45309,stroke-width:2px,color:#fff
-```
-
-1. **El Portal Central (Este Repositorio):** Aloja políticas de ingeniería, procesos globales, onboarding, catálogo de sistemas y requerimientos de negocio transversales.
-2. **README principal (`README.md`):** Es la entrada inicial de cada repositorio: resume el propósito, tecnologías y enlaces a documentación relevante.
-3. **Requerimientos de Negocio (`/req`):** Define qué necesita el negocio mediante casos de uso, historias de usuario, reglas y criterios de aceptación.
-4. **Procesos Transversales (`/procesos`):** Define cómo colaboran Producto y TI para desarrollar, revisar, integrar y entregar cambios.
-5. **Documentación Técnica Viva (Cada Repositorio en `/docs`):** Los detalles específicos de instalación, arquitectura de software, endpoints de API y guías de despliegue residen en la carpeta `/docs` de su propio repositorio.
-6. **Casos de Uso de Negocio Viva (Cada Repositorio en `/req`):** Los requerimientos de negocio, flujos y validaciones funcionales específicas residen en la carpeta `/req` de cada repositorio.
+Este repositorio implementa las prácticas de documentación: usa `README.md` como entrada del repositorio en GitHub, `index.md` como Inicio del portal publicado, `/docs` para documentación técnica, `/procesos` para flujos de trabajo y `/req` para documentación de negocio.
+La intención es que sirva como referencia replicable para otros repositorios LAND4.
 
 ---
 
 ## 🔍 Índice del Portal
 
-Usa este índice para entrar a las secciones principales del portal:
+Usa este índice como reflejo jerárquico del menú lateral del portal:
 
-*   **[📝 ¿Cómo Documentar?](como-documentar.md):** Estándar para estructurar `README.md`, `/docs`, `/req` y procesos relacionados en cada repositorio.
-*   **[🧱 Documentación Técnica](docs/index.md):** Estándares y accesos a la documentación técnica viva de los sistemas LAND4. Dentro de esta sección encontrarás el **[Catálogo de Sistemas](repositorios.md)**.
-*   **[🔄 Procesos Transversales](procesos/index.md):** Flujos de trabajo compartidos entre Producto y TI, incluyendo el GitHub Flow de LAND4.
-*   **[🎯 Requerimientos de Negocio](req/index.md):** Casos de uso, historias de usuario, criterios de aceptación y reglas de negocio.
-*   **[🚀 Onboarding](onboarding/bienvenida.md):** Guía inicial para configurar accesos, herramientas y entorno local.
+*   **[Inicio](index.md):** Punto de entrada del portal publicado e índice principal.
+*   **[¿Cómo Documentar?](como-documentar.md):** Estándar para documentar repositorios LAND4.
+*   **[Documentación Técnica](docs/index.md):** Entrada a la documentación técnica propia del portal.
+    *   [Arquitectura](docs/arquitectura.md): Modelo híbrido, componentes, flujo de publicación y decisiones técnicas.
+    *   [Despliegue](docs/despliegue.md): Validación local, ambientes y despliegue en GitHub Pages.
+    *   [Catálogo de Sistemas](docs/repositorios.md): Repositorios LAND4 registrados y enlaces a sus GitHub Pages.
+*   **[Procesos](procesos/index.md):** Procesos transversales de colaboración entre Producto y TI.
+    *   [GitHub Flow](procesos/github-flow.md): Flujo de trabajo para ramas, commits, Pull Requests y merges.
+*   **[Requerimientos de Negocio](req/index.md):** Guías para documentar requerimientos funcionales.
+    *   [Plantilla de Caso de Uso](req/CASO_USO_TEMPLATE.md): Estructura base para casos de uso.
+    *   [Criterios de Aceptación](req/criterios-aceptacion.md): Guía para definir validaciones de negocio.
+    *   [Historia de Usuario](req/historia-usuario.md): Estructura y estados de una historia de usuario.
+*   **[Onboarding](onboarding/bienvenida.md):** Guía inicial para accesos, herramientas y entorno local.
 
 ---
 

@@ -1,5 +1,7 @@
 title: LAND4 Knowledge
 description: Espacio centralizado para procesos, guías y arquitectura de LAND4.
+logo: "assets/images/L4.png"
+color_scheme: land4
 
 # Tema remoto para GitHub Pages
 remote_theme: just-the-docs/just-the-docs
