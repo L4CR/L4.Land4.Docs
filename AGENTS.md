@@ -1,5 +1,8 @@
 ---
-nav_exclude: true
+layout: default
+title: AGENTS.md
+parent: Inteligencia Artificial
+nav_order: 5
 ---
 
 # AGENTS.md
