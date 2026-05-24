@@ -20,7 +20,8 @@ En este directorio encontrarás:
 
 *   **[Arquitectura](arquitectura.md):** Diseño técnico del portal, componentes, flujo de publicación y decisiones técnicas.
 *   **[Despliegue](despliegue.md):** Ambientes, pasos y requerimientos para validar localmente y desplegar la documentación en GitHub Pages.
-*   **[Catálogo de Sistemas](repositorios.md):** Inventario de repositorios y enlaces a su documentación publicada en GitHub Pages.
+*   **[Catálogo de Repositorios](repositorios.md):** Inventario de repositorios relacionados. En este portal central funciona como inventario de todos los repositorios LAND4.
+*   **[Inteligencia Artificial](inteligencia-artificial/):** Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
 
 ---
 
@@ -29,10 +30,11 @@ En este directorio encontrarás:
 | Requisito | Implementación en este repositorio |
 | :--- | :--- |
 | `docs/index.md` como índice técnico | Esta página centraliza la navegación técnica del repositorio. |
-| `docs/arquitectura.md` | Documenta el modelo híbrido, componentes, flujo de publicación, decisiones técnicas y límites del portal. |
+| `docs/arquitectura.md` | Documenta el modelo centralizado y distribuido, componentes, flujo de publicación, decisiones técnicas y límites del portal. |
 | `docs/despliegue.md` | Documenta ambientes, requerimientos, validación local, CI/CD, despliegue, verificación posterior y rollback. |
+| `docs/inteligencia-artificial/index.md` | Documenta la implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills. |
 | Documentación publicada | El portal se publica con GitHub Pages desde los cambios fusionados a `main`. |
-| Catálogo navegable | `docs/repositorios.md` registra repositorios y enlaza a sus GitHub Pages de documentación. |
+| Catálogo navegable | En repositorios de producto documenta dependencias o repositorios relacionados; en este portal central funciona como inventario de todos los repositorios LAND4. |
 | APIs o endpoints | No aplica para este repositorio porque el portal es un sitio estático de documentación. |
 
 ---

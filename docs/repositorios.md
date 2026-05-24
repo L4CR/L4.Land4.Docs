@@ -1,42 +1,64 @@
 ---
 layout: default
-title: Catálogo de Sistemas
+title: Catálogo de Repositorios
 parent: Documentación Técnica
 nav_order: 3
 permalink: /docs/repositorios
 ---
 
-# 🗺️ Catálogo de Sistemas y Repositorios
+# Catálogo de Repositorios
 
-Este catálogo centraliza los accesos directos a la **documentación publicada** de cada uno de los repositorios y sistemas que conforman el ecosistema de **LAND4**.
+Este archivo registra los repositorios relacionados con el repositorio actual y sus accesos directos a la **documentación publicada**.
 
-La documentación técnica detallada vive dentro de cada repositorio individual para asegurar que evolucione junto con el código. Cada repositorio debe publicar esa documentación en su propia GitHub Page, y este catálogo debe enlazar a esa página publicada.
+En un repositorio de producto, API, frontend, servicio o librería, este catálogo debe registrar los repositorios de los que depende o con los que se integra.
 
----
+En este portal central, el alcance es distinto: `L4.docs-organizacion` registra todos los repositorios LAND4 porque funciona como punto central de consulta de la organización.
 
-## 📂 Inventario de Repositorios
-
-| Sistema / Proyecto | Tipo | Descripción | Documentación publicada | Equipo Responsable |
-| :--- | :--- | :--- | :--- | :--- |
-| **Repositorio Core** | API / Backend | API principal y servicios de negocio central. | [Ver documentación ↗](https://l4cr.github.io/core-repo-placeholder/) | Team Backend |
-| **Frontend Web** | Web App | Portal web principal de cara al usuario. | [Ver documentación ↗](https://l4cr.github.io/frontend-placeholder/) | Team Frontend |
-| **App Móvil** | Mobile App | Aplicación móvil para iOS y Android. | [Ver documentación ↗](https://l4cr.github.io/mobile-placeholder/) | Team Mobile |
-| **Servicios de Integración** | Microservicio | Conector con entidades externas y pasarelas. | [Ver documentación ↗](https://l4cr.github.io/integration-placeholder/) | Team Integraciones |
-
-> *Nota: Reemplaza estos enlaces de ejemplo por las URLs reales de GitHub Pages de los repositorios de LAND4 a medida que se vayan incorporando.*
+La documentación técnica detallada vive dentro de cada repositorio individual para asegurar que evolucione junto con el código. Este catálogo debe enlazar a la documentación publicada de cada repositorio relacionado, no a archivos Markdown crudos.
 
 ---
 
-## 📥 ¿Cómo agregar tu proyecto a esta lista?
+## Inventario de repositorios
 
-Si has creado un nuevo repositorio o quieres registrar uno existente en este catálogo:
+| Sistema / Proyecto | Repositorio | Tipo | Descripción | Documentación publicada | Responsable | Estado |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **LAND4 Knowledge** | [L4.docs-organizacion](https://github.com/L4CR/L4.docs-organizacion) | Portal de documentación | Portal central de documentación, procesos y estándares LAND4. | [Ver documentación](https://l4cr.github.io/L4.docs-organizacion/) | LAND4 | Activo |
 
-1. Asegúrate de que tu repositorio cumpla con el estándar de documentación (con un `README.md` claro y una carpeta `/docs`) y publique esa documentación en su propia GitHub Page. Puedes guiarte con nuestra **[Guía: ¿Cómo Documentar?](como-documentar.md)**.
-2. Edita este archivo (`docs/repositorios.md`) agregando una fila a la tabla anterior con:
-   * **Nombre del Sistema:** Nombre del proyecto.
-   * **Tipo:** Backend, Frontend, Microservicio, Infraestructura, etc.
-   * **Descripción:** Un resumen breve de una sola frase sobre el propósito del sistema.
-   * **Documentación publicada:** URL de la GitHub Page del repositorio registrado.
-   * **Equipo Responsable:** Quién o quiénes mantienen el sistema.
-3. Envía tu Pull Request para actualizar la tabla.
-4. Agrega un enlace al catálogo en el `README.md` del repositorio o en su documentación principal para que el equipo pueda volver fácilmente a este inventario central.
+---
+
+## Campos obligatorios
+
+Cada fila del catálogo debe completar:
+
+*   **Sistema / Proyecto:** nombre funcional o técnico del sistema.
+*   **Repositorio:** enlace al repositorio GitHub.
+*   **Tipo:** API, backend, frontend, mobile, infraestructura, documentación, librería, worker, integración u otro tipo claro.
+*   **Descripción:** resumen breve de la responsabilidad del sistema.
+*   **Documentación publicada:** enlace a la GitHub Page del repositorio. No debe apuntar a Markdown crudo.
+*   **Responsable:** equipo, área o persona responsable del mantenimiento.
+*   **Estado:** `Activo`, `En desarrollo`, `Archivado`, `Deprecado` o `Pendiente de documentación`.
+
+---
+
+## Reglas de mantenimiento
+
+*   En repositorios de producto, API, frontend, servicio o librería, registra aquí los repositorios de los que depende o con los que se integra.
+*   En el portal central `L4.docs-organizacion`, registra aquí todos los repositorios LAND4.
+*   El registro debe agregarse en el mismo Pull Request que habilita o actualiza la documentación publicada del repositorio relacionado.
+*   La documentación publicada debe cumplir el estándar definido en **[¿Cómo Documentar?](../como-documentar.md)**.
+*   Si un repositorio cambia de nombre, responsable, estado o URL publicada, este catálogo debe actualizarse en el mismo Pull Request o en un Pull Request de mantenimiento.
+*   Este catálogo no reemplaza la arquitectura propia del sistema. Si la relación con otro repositorio requiere detalle técnico, documenta esa dependencia en `docs/arquitectura.md` del repositorio correspondiente.
+
+---
+
+## Cómo agregar un repositorio relacionado
+
+Si necesitas registrar un repositorio relacionado:
+
+1. Asegúrate de que el repositorio tenga `README.md`, `index.md`, `/docs` y la documentación mínima aplicable.
+2. Publica la documentación del repositorio con GitHub Pages.
+3. Agrega una fila al inventario de este archivo.
+4. Verifica que el enlace de documentación publicada cargue correctamente.
+5. En repositorios que no sean el portal central, registra solo repositorios relacionados con ese sistema.
+6. En el portal central, registra cualquier repositorio LAND4 que deba aparecer en el inventario organizacional.
+7. Envía el Pull Request de actualización del catálogo.

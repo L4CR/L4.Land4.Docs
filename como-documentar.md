@@ -19,12 +19,18 @@ Cada repositorio de código en la organización debe mantener la siguiente estru
 ```text
 nombre-del-repositorio/
 ├── README.md                # Entrada del repositorio en GitHub
+├── AGENTS.md                # Instrucciones para agentes de código
 ├── index.md                 # Entrada publicada del repositorio e índice principal
 ├── docker-compose.yml       # Ambiente local versionado, si el repo usa contenedores
+├── .agents/                 # Skills reutilizables para agentes, si aplican
+│   └── skills/
+│       └── nombre-del-skill/
+│           └── SKILL.md
 ├── docs/                    # Carpeta para Documentación TÉCNICA
 │   ├── index.md             # Índice de la documentación técnica publicada
 │   ├── arquitectura.md      # Diseño del sistema, diagramas, decisiones técnicas
-│   └── despliegue.md        # Pasos y requerimientos para validar y desplegar en ambientes
+│   ├── despliegue.md        # Pasos y requerimientos para validar y desplegar en ambientes
+│   └── repositorios.md      # Repositorios relacionados, dependencias o integraciones
 ├── req/                     # Carpeta para Requerimientos de NEGOCIO (Casos de Uso)
 │   └── CU-01-registro.md    # Especificaciones funcionales y flujos de negocio
 ├── procesos/                # Solo si el repositorio define procesos propios
@@ -38,21 +44,79 @@ Es la entrada del repositorio cuando se navega desde GitHub. Debe ser conciso y 
 *   Enlace rápido a la arquitectura cuando aplique: `[Arquitectura y Diseño](docs/arquitectura.md)`.
 *   Enlace rápido a la guía de despliegue y validación local cuando aplique: `[Despliegue](docs/despliegue.md)`.
 *   Enlace a la documentación publicada del propio repositorio en GitHub Pages.
-*   Enlace al catálogo central publicado: `[Catálogo de Sistemas](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios)`.
+*   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios)`.
 *   Enlaces a casos de uso o historias relevantes cuando existan en `/req`.
 
-### 2. El archivo `index.md` (Entrada publicada)
+### 2. El archivo `AGENTS.md` (Instrucciones para agentes)
+
+Es la entrada operativa para agentes de código. Debe contener el contexto que un agente necesita para trabajar en el repositorio sin sobrecargar el `README.md`.
+
+Como mínimo debe documentar:
+
+*   Resumen del proyecto y responsabilidades principales.
+*   Estructura relevante del repositorio.
+*   Comandos reales para instalar, compilar, probar, levantar servicios o validar documentación.
+*   Convenciones de código, documentación, navegación o arquitectura.
+*   Consideraciones de seguridad: secretos, datos sensibles y visibilidad pública.
+*   Verificación esperada antes de finalizar una tarea.
+*   Criterios para Pull Requests, incluyendo cuándo actualizar documentación relacionada.
+
+La referencia organizacional vive en **[Inteligencia Artificial](docs/inteligencia-artificial/)**.
+
+### 3. El archivo `index.md` (Entrada publicada)
 Es la página principal del repositorio cuando su documentación se publica en GitHub Pages. Debe funcionar como índice navegable y reflejar la jerarquía real del menú:
 *   Enlace a `README.md` solo si aporta contexto para colaboradores en GitHub.
 *   Enlace a `docs/index.md` como entrada de la documentación técnica.
 *   Enlaces a `/req`, `/procesos` u otras secciones cuando apliquen.
 *   Enlaces a páginas hijas solo si ayudan a navegar sin duplicar contenido.
 
-### 3. La carpeta `/docs` (Documentación técnica publicada)
+### 4. La carpeta `.agents/skills` (Agent Skills)
+
+Esta carpeta es opcional. Se usa cuando el repositorio necesita skills reutilizables para enseñar a agentes un flujo, herramienta, dominio o procedimiento específico de LAND4.
+
+Cada skill debe vivir en su propia carpeta y contener un `SKILL.md` con frontmatter YAML:
+
+```markdown
+---
+name: nombre-del-skill
+description: Describe qué hace el skill y cuándo debe usarse.
+---
+```
+
+Reglas mínimas:
+
+*   El `name` debe coincidir con el nombre de la carpeta.
+*   Usa solo minúsculas, números y guiones en el nombre.
+*   La `description` debe explicar qué hace el skill y en qué tareas debe activarse.
+*   Mantén `SKILL.md` enfocado; mueve documentación extensa a `references/`.
+*   Usa `scripts/` para automatizaciones reutilizables y `assets/` para plantillas o recursos.
+
+Consulta **[Inteligencia Artificial](docs/inteligencia-artificial/)** y la documentación oficial enlazada ahí antes de crear o modificar skills.
+
+### 5. La carpeta `/docs` (Documentación técnica publicada)
 Aquí vive el grueso del conocimiento de implementación y la entrada navegable de la documentación técnica del repositorio. Divide el contenido en archivos temáticos:
 *   `index.md`: Índice de la documentación técnica publicada del repositorio. Debe enlazar a arquitectura, despliegue, catálogo interno o cualquier otra página técnica que aplique.
 *   `arquitectura.md`: Diagramas de arquitectura (usando **Mermaid**), decisiones técnicas importantes (ADRs) y dependencias con otros servicios.
 *   `despliegue.md`: Ambientes, incluyendo local, configuración de CI/CD, variables requeridas, pasos de publicación, rollback y cómo validar que el despliegue fue exitoso.
+*   `repositorios.md`: Repositorios relacionados con el sistema: dependencias, integraciones, consumidores, proveedores o repositorios que el equipo necesita consultar para operar el sistema.
+
+#### Qué debe contener `docs/repositorios.md`
+
+Cada repositorio debe registrar en `docs/repositorios.md` los repositorios con los que tiene relación directa. La relación puede ser una dependencia técnica, integración, repositorio consumidor, repositorio proveedor, librería compartida, infraestructura relacionada o documentación necesaria para operar el sistema.
+
+El portal central `L4.docs-organizacion` es la excepción: como punto central de consulta, su `docs/repositorios.md` registra todos los repositorios LAND4.
+
+Como mínimo, cada fila debe incluir:
+
+*   **Sistema / Proyecto:** nombre funcional o técnico del sistema relacionado.
+*   **Repositorio:** enlace al repositorio GitHub.
+*   **Tipo:** API, backend, frontend, mobile, infraestructura, documentación, librería, worker, integración u otro tipo claro.
+*   **Descripción:** resumen breve de la responsabilidad del repositorio.
+*   **Documentación publicada:** enlace a la GitHub Page del repositorio relacionado. No debe apuntar a Markdown crudo.
+*   **Responsable:** equipo, área o persona responsable.
+*   **Estado:** `Activo`, `En desarrollo`, `Archivado`, `Deprecado` o `Pendiente de documentación`.
+
+`docs/repositorios.md` no reemplaza `docs/arquitectura.md`. Si la relación con otro repositorio requiere explicar contratos, flujos, eventos, dependencias de despliegue o riesgos, documenta ese detalle en arquitectura y usa `repositorios.md` como índice navegable.
 
 #### Qué debe contener `docs/despliegue.md`
 
@@ -67,14 +131,14 @@ Cada repositorio que tenga despliegue propio debe documentar su operación real,
 *   **Rollback o recuperación:** cómo volver a un estado anterior o dónde escalar si falla.
 *   **Relación implementación-documentación:** cualquier cambio en infraestructura, pipeline, ambientes, variables, contenedores o assets requeridos debe actualizar `docs/despliegue.md` en el mismo Pull Request.
 
-Además, si el repositorio se registra en el catálogo central, debe publicar su documentación en GitHub Pages para que el catálogo apunte a la documentación navegable, no a archivos Markdown crudos en GitHub.
+Además, si un repositorio se registra en el inventario central o en el `docs/repositorios.md` de otro sistema, debe publicar su documentación en GitHub Pages para que los catálogos apunten a documentación navegable, no a archivos Markdown crudos en GitHub.
 
-### 4. La carpeta `/req` (Requerimientos de Negocio)
+### 6. La carpeta `/req` (Requerimientos de Negocio)
 Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
 *   Contiene casos de uso redactados en lenguaje no técnico, facilitando la comprensión y validación entre ingenieros y tomadores de decisiones/Product Owners.
 *   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.md)**.
 
-### 5. La carpeta `/procesos` (Procesos del Repositorio)
+### 7. La carpeta `/procesos` (Procesos del Repositorio)
 Esta carpeta solo debe existir cuando el repositorio necesite documentar procesos propios que no estén cubiertos por el portal central. Para el flujo estándar de ramas, Pull Requests, CI y entregas, usa el **[GitHub Flow LAND4](procesos/github-flow.md)** del portal.
 
 ---

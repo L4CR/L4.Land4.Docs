@@ -6,7 +6,7 @@ nav_exclude: true
 
 # 📖 Guía Definitiva: Portal de Documentación Centralizado e Híbrido
 
-Este documento establece el estándar técnico para la creación, mantenimiento y automatización del sistema de documentación de la organización. El ecosistema se basa en una arquitectura híbrida: un portal centralizado para políticas globales y documentación viva dentro de cada repositorio de código.
+Este documento establece el estándar técnico para la creación, mantenimiento y automatización del sistema de documentación de la organización. El ecosistema se basa en un modelo centralizado y distribuido: un portal centralizado para políticas globales y documentación viva dentro de cada repositorio de código.
 
 ---
 
