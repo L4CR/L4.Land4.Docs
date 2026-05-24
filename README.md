@@ -1,3 +1,10 @@
+---
+layout: default
+title: README
+nav_order: 2
+permalink: /readme/
+---
+
 # LAND4 - Portal
 
 Este repositorio aloja el portal central de documentación y conocimiento de la organización. El sitio web está compilado con **Jekyll** y utiliza el tema **Just the Docs**, desplegándose automáticamente a través de **GitHub Pages**.
