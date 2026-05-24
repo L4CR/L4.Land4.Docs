@@ -137,7 +137,7 @@ Después de un despliegue exitoso, valida:
 *   Las páginas técnicas principales cargan correctamente:
     *   [Arquitectura](https://l4cr.github.io/L4.docs-organizacion/docs/arquitectura)
     *   [Despliegue](https://l4cr.github.io/L4.docs-organizacion/docs/despliegue)
-    *   [Catálogo de Sistemas](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios)
+    *   [Catálogo de Repositorios](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios)
 
 ---
 

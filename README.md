@@ -12,9 +12,10 @@ Este índice refleja la jerarquía del menú principal del portal publicado:
 *   **[Inicio](index.md):** Punto de entrada del portal publicado e índice principal.
 *   **[¿Cómo Documentar?](como-documentar.md):** Estándar para documentar repositorios LAND4.
 *   **[Documentación Técnica](docs/index.md):** Entrada a la documentación técnica propia del portal.
-    *   [Arquitectura](docs/arquitectura.md): Modelo híbrido, componentes, flujo de publicación y decisiones técnicas.
+    *   [Arquitectura](docs/arquitectura.md): Modelo centralizado y distribuido, componentes, flujo de publicación y decisiones técnicas.
     *   [Despliegue](docs/despliegue.md): Validación local, ambientes y despliegue en GitHub Pages.
-    *   [Catálogo de Sistemas](docs/repositorios.md): Repositorios LAND4 registrados y enlaces a sus GitHub Pages.
+    *   [Catálogo de Repositorios](docs/repositorios.md): Inventario central de repositorios LAND4 y enlaces a sus GitHub Pages.
+    *   [Inteligencia Artificial](docs/inteligencia-artificial/index.md): Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
 *   **[Procesos](procesos/index.md):** Procesos transversales de colaboración entre Producto y TI.
     *   [GitHub Flow](procesos/github-flow.md): Flujo de trabajo para ramas, commits, Pull Requests y merges.
 *   **[Requerimientos de Negocio](req/index.md):** Guías para documentar requerimientos funcionales.

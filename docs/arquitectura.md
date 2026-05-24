@@ -13,25 +13,25 @@ El objetivo técnico es mantener documentación versionada, revisable por Pull R
 
 ---
 
-## Arquitectura híbrida de documentación
+## Arquitectura centralizada y distribuida
 
-Para garantizar que la documentación técnica no se quede obsoleta y evolucione a la par del código fuente, en **LAND4** adoptamos un modelo de documentación **híbrido y versionado**:
+Para garantizar que la documentación técnica no se quede obsoleta y evolucione a la par del código fuente, en **LAND4** adoptamos un modelo de documentación **centralizado y distribuido**:
+
+*   **Centralizado:** el portal LAND4 concentra estándares, procesos, onboarding, catálogo, referencias organizacionales y lineamientos transversales.
+*   **Distribuido:** cada repositorio mantiene la documentación que depende directamente de su código, arquitectura, despliegue, variables, casos de uso y operación.
+
+Esta separación permite que el portal mantenga una visión común de la organización, mientras cada repositorio conserva la documentación que debe cambiar junto con su implementación.
 
 ```mermaid
 graph TD
-    A[Portal Centralizado <br> L4.docs-organizacion] --> P(Procesos Transversales /procesos)
-    A --> C(Guias de Onboarding)
-    A --> T(Documentacion Tecnica /docs)
-    A --> K(Requerimientos Globales /req)
+    A["Portal Central"] --> P["/procesos"]
+    A --> C["/onboarding"]
+    A --> T["/docs"]
+    A --> K["/req"]
+    A --> M["AGENTS.md"]
+    A --> N[".agents/skills/my-skill/SKILL.md"]
 
-    T --> D(Catalogo de Sistemas)
-    D -->|GitHub Pages| E[Repo: API Gateway]
-    D -->|GitHub Pages| F[Repo: App Movil]
-
-    E -->|Detalle Tecnico| H[docs/arquitectura.md]
-    E -->|Casos de Uso| L[req/CU-01-registro.md]
-
-    F -->|Despliegue y validacion local| I[docs/despliegue.md]
+    T --> D["Catalogo de Repositorios<br/>relacion con otros repositorios"]
 
     style A fill:#2563EB,stroke:#1F2937,stroke-width:2px,color:#fff
     style D fill:#22C55E,stroke:#1F2937,stroke-width:2px,color:#fff
@@ -41,9 +41,10 @@ graph TD
 1. **Portal central:** aloja políticas de ingeniería, procesos globales, onboarding, catálogo de sistemas y requerimientos de negocio transversales.
 2. **README de cada repositorio:** sirve como entrada inicial del proyecto y enlaza a su documentación relevante.
 3. **Documentación técnica en `/docs`:** vive en cada repositorio y se publica en su propia GitHub Page.
-4. **Catálogo de Sistemas:** registra cada repositorio y enlaza a su documentación publicada, no a archivos Markdown crudos.
+4. **Catálogo de Repositorios:** en cada repositorio documenta sus repositorios relacionados o dependencias. En el portal central registra todos los repositorios LAND4 y enlaza a su documentación publicada, no a archivos Markdown crudos.
 5. **Requerimientos en `/req`:** documentan casos de uso, historias, criterios de aceptación y reglas cuando aplican.
 6. **Procesos en `/procesos`:** describen cómo colaboran Producto y TI para desarrollar, revisar, integrar y entregar cambios.
+7. **AGENTS.md y Agent Skills:** el portal central también es un repositorio LAND4, por eso puede tener instrucciones para agentes y skills reutilizables igual que cualquier otro repositorio.
 
 ---
 
@@ -65,11 +66,15 @@ flowchart TD
 | Componente | Responsabilidad |
 | :--- | :--- |
 | `README.md` | Entrada técnica para colaboradores del repositorio. |
+| `AGENTS.md` | Instrucciones operativas para agentes de código que trabajen en el repositorio. |
 | `index.md` | Página principal del portal publicado. |
 | `_config.yml` | Configuración de Jekyll, tema, navegación, logo y búsqueda. |
 | `_sass/` | Personalización visual del tema con tokens LAND4. |
 | `assets/` | Recursos estáticos como logos e imágenes. |
 | `docs/` | Documentación técnica del propio portal. |
+| `docs/inteligencia-artificial/index.md` | Referencia organizacional para el uso de estándares abiertos de inteligencia artificial, incluyendo `AGENTS.md` y Agent Skills. |
+| `docs/repositorios.md` | Repositorios relacionados del repo actual; en el portal central, inventario de todos los repositorios LAND4. |
+| `.agents/skills/` | Ubicación recomendada para Agent Skills versionados cuando un repositorio necesite capacidades reutilizables. |
 | `req/` | Guías y plantillas para requerimientos de negocio. |
 | `procesos/` | Procesos transversales, como GitHub Flow LAND4. |
 | `.github/workflows/pages.yml` | Pipeline de compilación y despliegue a GitHub Pages. |
@@ -105,6 +110,7 @@ sequenceDiagram
 *   **Jekyll + Just the Docs:** Permite publicar documentación Markdown con navegación, búsqueda y jerarquía de páginas sin construir una aplicación custom.
 *   **GitHub Pages:** Reduce la operación del portal; el hosting y despliegue viven dentro de GitHub.
 *   **Docs-as-Code:** La documentación se revisa, versiona y despliega con el mismo flujo que el código.
+*   **Estándares abiertos para IA:** La documentación de inteligencia artificial referencia estándares externos como `AGENTS.md` y Agent Skills para mantener compatibilidad con herramientas del ecosistema.
 *   **Docker para validación local:** Evita depender de la versión de Ruby instalada en cada máquina.
 *   **Assets versionados:** El logo y estilos de LAND4 viven en el repositorio para que el build sea reproducible.
 
