@@ -4,7 +4,7 @@ title: ¿Cómo Documentar?
 nav_order: 3
 ---
 
-# 📝 Guía Práctica: ¿Cómo Documentar en LAND4?
+# 📝 Guía Práctica: ¿Cómo Documentar?
 
 Para garantizar que nuestra documentación técnica se mantenga actualizada y siga el ciclo de vida del código, en **LAND4** aplicamos el concepto de **Docs-as-Code** (Documentación como Código).
 
@@ -18,8 +18,11 @@ Cada repositorio de código en la organización debe mantener la siguiente estru
 
 ```text
 nombre-del-repositorio/
-├── README.md                # Entrada principal del proyecto
+├── README.md                # Entrada del repositorio en GitHub
+├── index.md                 # Entrada publicada del repositorio e índice principal
+├── docker-compose.yml       # Ambiente local versionado, si el repo usa contenedores
 ├── docs/                    # Carpeta para Documentación TÉCNICA
+│   ├── index.md             # Índice de la documentación técnica publicada
 │   ├── arquitectura.md      # Diseño del sistema, diagramas, decisiones técnicas
 │   └── despliegue.md        # Pasos y requerimientos para validar y desplegar en ambientes
 ├── req/                     # Carpeta para Requerimientos de NEGOCIO (Casos de Uso)
@@ -28,18 +31,26 @@ nombre-del-repositorio/
 └── ... (código fuente)
 ```
 
-### 1. El archivo `README.md` (La Entrada)
-Es el índice principal del repositorio. Debe ser conciso y proporcionar una visión general del sistema. Evita poner guías extensas aquí; en su lugar, utiliza enlaces a `/docs`, `/req` y procesos relevantes. Un buen `README.md` contiene:
+### 1. El archivo `README.md` (Entrada del repositorio)
+Es la entrada del repositorio cuando se navega desde GitHub. Debe ser conciso y proporcionar una visión general del sistema sin intentar reemplazar la documentación publicada. Evita poner guías extensas aquí; en su lugar, utiliza enlaces a `/docs`, `/req`, procesos relevantes y a la GitHub Page del propio repositorio cuando exista. Un buen `README.md` contiene:
 *   Una breve descripción de qué hace el proyecto.
-*   Tecnologías principales (ej. Node.js, React, Python).
-*   Enlace rápido a la arquitectura: `[Arquitectura y Diseño](docs/arquitectura.md)`.
-*   Enlace rápido a la guía de despliegue y validación local: `[Despliegue](docs/despliegue.md)`.
+*   Enlace a la documentación técnica: `[Documentación Técnica](docs/index.md)`.
+*   Enlace rápido a la arquitectura cuando aplique: `[Arquitectura y Diseño](docs/arquitectura.md)`.
+*   Enlace rápido a la guía de despliegue y validación local cuando aplique: `[Despliegue](docs/despliegue.md)`.
 *   Enlace a la documentación publicada del propio repositorio en GitHub Pages.
-*   Enlace al catálogo central: `[Catálogo de Sistemas](https://github.com/L4CR/L4.docs-organizacion/blob/main/docs/repositorios.md)`.
+*   Enlace al catálogo central publicado: `[Catálogo de Sistemas](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios)`.
 *   Enlaces a casos de uso o historias relevantes cuando existan en `/req`.
 
-### 2. La carpeta `/docs` (Detalle Técnico)
-Aquí vive el grueso del conocimiento de implementación. Divide el contenido en archivos temáticos:
+### 2. El archivo `index.md` (Entrada publicada)
+Es la página principal del repositorio cuando su documentación se publica en GitHub Pages. Debe funcionar como índice navegable y reflejar la jerarquía real del menú:
+*   Enlace a `README.md` solo si aporta contexto para colaboradores en GitHub.
+*   Enlace a `docs/index.md` como entrada de la documentación técnica.
+*   Enlaces a `/req`, `/procesos` u otras secciones cuando apliquen.
+*   Enlaces a páginas hijas solo si ayudan a navegar sin duplicar contenido.
+
+### 3. La carpeta `/docs` (Documentación técnica publicada)
+Aquí vive el grueso del conocimiento de implementación y la entrada navegable de la documentación técnica del repositorio. Divide el contenido en archivos temáticos:
+*   `index.md`: Índice de la documentación técnica publicada del repositorio. Debe enlazar a arquitectura, despliegue, catálogo interno o cualquier otra página técnica que aplique.
 *   `arquitectura.md`: Diagramas de arquitectura (usando **Mermaid**), decisiones técnicas importantes (ADRs) y dependencias con otros servicios.
 *   `despliegue.md`: Ambientes, incluyendo local, configuración de CI/CD, variables requeridas, pasos de publicación, rollback y cómo validar que el despliegue fue exitoso.
 
@@ -54,16 +65,16 @@ Cada repositorio que tenga despliegue propio debe documentar su operación real,
 *   **Pasos de despliegue:** qué ocurre desde el merge hasta que el cambio queda publicado.
 *   **Verificación posterior:** checks mínimos para confirmar que el despliegue fue exitoso.
 *   **Rollback o recuperación:** cómo volver a un estado anterior o dónde escalar si falla.
-*   **Relación implementación-documentación:** cualquier cambio en infraestructura, pipeline, ambientes, variables o assets requeridos debe actualizar `docs/despliegue.md` en el mismo Pull Request.
+*   **Relación implementación-documentación:** cualquier cambio en infraestructura, pipeline, ambientes, variables, contenedores o assets requeridos debe actualizar `docs/despliegue.md` en el mismo Pull Request.
 
 Además, si el repositorio se registra en el catálogo central, debe publicar su documentación en GitHub Pages para que el catálogo apunte a la documentación navegable, no a archivos Markdown crudos en GitHub.
 
-### 3. La carpeta `/req` (Requerimientos de Negocio)
+### 4. La carpeta `/req` (Requerimientos de Negocio)
 Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
 *   Contiene casos de uso redactados en lenguaje no técnico, facilitando la comprensión y validación entre ingenieros y tomadores de decisiones/Product Owners.
 *   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.md)**.
 
-### 4. La carpeta `/procesos` (Procesos del Repositorio)
+### 5. La carpeta `/procesos` (Procesos del Repositorio)
 Esta carpeta solo debe existir cuando el repositorio necesite documentar procesos propios que no estén cubiertos por el portal central. Para el flujo estándar de ramas, Pull Requests, CI y entregas, usa el **[GitHub Flow LAND4](procesos/github-flow.md)** del portal.
 
 ---

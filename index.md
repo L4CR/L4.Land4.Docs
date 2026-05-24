@@ -6,12 +6,12 @@ description: Portal centralizado de documentación y conocimiento de LAND4.
 permalink: /
 ---
 
-# 🧠  LAND4 - knowledge
+# 🧠  LAND4 - Portal
 
-¡Bienvenido al centro de conocimiento de **LAND4**! Este portal es el punto de entrada para encontrar onboarding, estándares de desarrollo, procesos globales, requerimientos y documentación técnica.
+¡Bienvenido al centro de conocimiento! Este portal es el punto de entrada para encontrar onboarding, estándares de desarrollo, procesos globales, requerimientos y documentación técnica.
 
-Este repositorio implementa las prácticas de documentación: usa `README.md` como entrada del repositorio en GitHub, `index.md` como Inicio del portal publicado, `/docs` para documentación técnica, `/procesos` para flujos de trabajo y `/req` para documentación de negocio.
-La intención es que sirva como referencia replicable para otros repositorios LAND4.
+Este repositorio implementa las prácticas de documentación interna de **LAND4**: usa `README.md` como entrada del repositorio en GitHub, `index.md` como Inicio del portal publicado, `/docs` para documentación técnica, `/procesos` para flujos de trabajo y `/req` para documentación de negocio.
+La intención es que sirva como referencia replicable para otros repositorios de la organización.
 
 ---
 
@@ -31,7 +31,7 @@ Usa este índice como reflejo jerárquico del menú lateral del portal:
     *   [Plantilla de Caso de Uso](req/CASO_USO_TEMPLATE.md): Estructura base para casos de uso.
     *   [Criterios de Aceptación](req/criterios-aceptacion.md): Guía para definir validaciones de negocio.
     *   [Historia de Usuario](req/historia-usuario.md): Estructura y estados de una historia de usuario.
-*   **[Onboarding](onboarding/bienvenida.md):** Guía inicial para accesos, herramientas y entorno local.
+*   **[Onboarding](onboarding/index.md):** Guía inicial para accesos, herramientas y entorno local.
 
 ---
 
