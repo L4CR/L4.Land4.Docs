@@ -30,25 +30,25 @@ Todo flujo inicia con una necesidad de negocio identificada por Producto. Esa ne
 
 ```mermaid
 flowchart TD
-    Need[Necesidad de negocio] --> PO[Product Owner]
-    PO --> CU{¿Existe Caso de Uso?}
-    CU -->|Sí| ExistingCU[Caso de Uso existente]
-    CU -->|No| NewCU[Crear o actualizar Caso de Uso]
-    ExistingCU --> Backlog[HU: Backlog]
-    NewCU --> Backlog
-    Backlog --> Ready[HU: Ready]
-    Ready --> Branch[Rama temporal desde main]
-    Branch --> Progress[HU: In Progress]
-    Progress --> DevTests[Pruebas de desarrollador]
-    DevTests --> PR[Pull Request hacia main]
-    Progress --> Blocked[HU: Blocked]
-    Blocked --> Progress
-    PR --> CI[CI verde]
-    CI --> Review[Revisión técnica]
-    Review --> QA[Validación QA]
-    QA --> UAT[UAT / Aceptación PO]
-    UAT --> Merge[Squash merge a main]
-    Merge --> Done[HU: Done]
+    Need["Necesidad de negocio"] --> ProductOwner["Product Owner"]
+    ProductOwner --> UseCaseDecision{"Existe Caso de Uso"}
+    UseCaseDecision -->|"Si"| ExistingUseCase["Caso de Uso existente"]
+    UseCaseDecision -->|"No"| NewUseCase["Crear o actualizar Caso de Uso"]
+    ExistingUseCase --> Backlog["HU Backlog"]
+    NewUseCase --> Backlog
+    Backlog --> Ready["HU Ready"]
+    Ready --> Branch["Rama temporal desde main"]
+    Branch --> InProgress["HU In Progress"]
+    InProgress --> DevTests["Pruebas de desarrollador"]
+    DevTests --> PullRequest["Pull Request hacia main"]
+    InProgress --> Blocked["HU Blocked"]
+    Blocked --> InProgress
+    PullRequest --> CI["CI verde"]
+    CI --> TechReview["Revision tecnica"]
+    TechReview --> QA["Validacion QA"]
+    QA --> UAT["UAT Aceptacion PO"]
+    UAT --> Merge["Squash merge a main"]
+    Merge --> Done["HU Done"]
 ```
 
 La HU define el alcance y los criterios de aceptación. El Pull Request demuestra que el cambio fue implementado, revisado, validado e integrado conforme a esos criterios.
