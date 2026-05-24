@@ -3,6 +3,7 @@ layout: default
 title: AGENTS.md
 parent: Inteligencia Artificial
 nav_order: 5
+permalink: /docs/inteligencia-artificial/agents/
 ---
 
 # AGENTS.md
