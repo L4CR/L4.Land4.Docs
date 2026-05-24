@@ -46,16 +46,15 @@ graph TD
 
 ---
 
-## 🔍 Secciones del Portal
+## 🔍 Índice del Portal
 
-Navega a través de los menús laterales o utiliza los enlaces directos a continuación:
+Usa este índice para entrar a las secciones principales del portal:
 
-*   **[🧱 Documentación Técnica](docs/index.md):** Estándares y accesos a la documentación técnica viva de los sistemas LAND4.
-*   **[🗺️ Catálogo de Sistemas](repositorios.md):** Accede a la documentación técnica y funcional específica de cada uno de los microservicios, APIs y aplicaciones de LAND4.
-*   **[🎯 Requerimientos de Negocio](req/index.md):** Casos de uso globales y plantillas para la definición de flujos funcionales.
+*   **[📝 ¿Cómo Documentar?](como-documentar.md):** Estándar para estructurar `README.md`, `/docs`, `/req` y procesos relacionados en cada repositorio.
+*   **[🧱 Documentación Técnica](docs/index.md):** Estándares y accesos a la documentación técnica viva de los sistemas LAND4. Dentro de esta sección encontrarás el **[Catálogo de Sistemas](repositorios.md)**.
 *   **[🔄 Procesos Transversales](procesos/index.md):** Flujos de trabajo compartidos entre Producto y TI, incluyendo el GitHub Flow de LAND4.
-*   **[🚀 Guía de Onboarding](onboarding/bienvenida.md):** Si eres nuevo en el equipo de tecnología, sigue esta guía paso a paso para configurar tus accesos y tu entorno local.
-*   **[📝 Guía: ¿Cómo Documentar?](como-documentar.md):** Aprende el estándar para estructurar y mantener la documentación técnica (`/docs`) y de negocio (`/req`) en tu repositorio.
+*   **[🎯 Requerimientos de Negocio](req/index.md):** Casos de uso, historias de usuario, criterios de aceptación y reglas de negocio.
+*   **[🚀 Onboarding](onboarding/bienvenida.md):** Guía inicial para configurar accesos, herramientas y entorno local.
 
 ---
 
