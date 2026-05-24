@@ -1,6 +1,6 @@
-# LAND4 - knowledge
+# LAND4 - Portal
 
-Este repositorio aloja el portal central de documentación y conocimiento de **LAND4**. El sitio web está compilado con **Jekyll** y utiliza el tema **Just the Docs**, desplegándose automáticamente a través de **GitHub Pages**.
+Este repositorio aloja el portal central de documentación y conocimiento de la organización. El sitio web está compilado con **Jekyll** y utiliza el tema **Just the Docs**, desplegándose automáticamente a través de **GitHub Pages**.
 
 Este repositorio implementa las prácticas de documentación: usa `README.md` como entrada del repositorio en GitHub, `index.md` como Inicio del portal publicado, `/docs` para documentación técnica, `/procesos` para flujos de trabajo y `/req` para documentación de negocio.
 La intención es que sirva como referencia replicable para otros repositorios LAND4.
@@ -21,13 +21,21 @@ Este índice refleja la jerarquía del menú principal del portal publicado:
     *   [Plantilla de Caso de Uso](req/CASO_USO_TEMPLATE.md): Estructura base para casos de uso.
     *   [Criterios de Aceptación](req/criterios-aceptacion.md): Guía para definir validaciones de negocio.
     *   [Historia de Usuario](req/historia-usuario.md): Estructura y estados de una historia de usuario.
-*   **[Onboarding](onboarding/bienvenida.md):** Guía inicial para accesos, herramientas y entorno local.
+*   **[Onboarding](onboarding/index.md):** Guía inicial para accesos, herramientas y entorno local.
 
 ---
 
 ## Desarrollo local
 
-La validación local se documenta como parte del ambiente **Local** en la guía de **[Despliegue](docs/despliegue.md)**.
+La validación local se ejecuta con el servicio `docs` definido en `docker-compose.yml`:
+
+```bash
+docker compose run --rm docs bundle install
+docker compose run --rm docs bundle exec jekyll build
+docker compose up docs
+```
+
+El detalle operativo se documenta como parte del ambiente **Local** en la guía de **[Despliegue](docs/despliegue.md)**.
 
 ---
 
