@@ -33,6 +33,7 @@ Para validar cambios localmente se usa `docker-compose.yml`, porque deja version
 | :--- | :--- | :--- |
 | Docker Desktop con Docker Compose | Ambiente local | Permite ejecutar Ruby 3.3 y Jekyll sin instalar Ruby en la máquina. |
 | Git | Ambiente local | Necesario para trabajar por ramas y Pull Requests. |
+| Node.js (con npx y tsx) | Local y CI | Requerido para ejecutar el script `scripts/generate-skills-docs.ts` que compila la documentación de las skills. |
 | Acceso a internet | Ambiente local y CI | Requerido para descargar la imagen `ruby:3.3`, gems y acciones de GitHub. |
 | `Gemfile` y `Gemfile.lock` | Local y CI | Mantienen dependencias reproducibles para Jekyll y el tema. |
 | GitHub Pages habilitado | Producción | Debe publicar desde GitHub Actions. |
@@ -63,19 +64,25 @@ El contenedor local está definido en `docker-compose.yml` con el servicio `docs
    docker compose run --rm docs bundle install
    ```
 
-2. Compila el sitio:
+2. Ejecuta el generador de documentación para las skills (requiere tener Node.js instalado):
+
+   ```bash
+   npx tsx scripts/generate-skills-docs.ts
+   ```
+
+3. Compila el sitio:
 
    ```bash
    docker compose run --rm docs bundle exec jekyll build
    ```
 
-3. Levanta el servidor local:
+4. Levanta el servidor local:
 
    ```bash
    docker compose up docs
    ```
 
-4. Abre el portal en:
+5. Abre el portal en:
 
    [http://localhost:4000](http://localhost:4000)
 
@@ -83,6 +90,7 @@ El contenedor local está definido en `docker-compose.yml` con el servicio `docs
 
 Antes de abrir un Pull Request, valida:
 
+*   El script `npx tsx scripts/generate-skills-docs.ts` se ejecuta correctamente y genera/actualiza la documentación de las skills en `docs/inteligencia-artificial/skills.md`.
 *   El comando `docker compose run --rm docs bundle exec jekyll build` termina sin errores.
 *   La página principal carga localmente.
 *   La navegación muestra las páginas nuevas o modificadas.
@@ -115,10 +123,11 @@ El despliegue productivo se ejecuta automáticamente con GitHub Actions.
 1. Un Pull Request aprobado se fusiona en `main`.
 2. GitHub ejecuta `.github/workflows/pages.yml`.
 3. `actions/checkout@v4` descarga el contenido del repositorio.
-4. `actions/jekyll-build-pages@v1` compila el sitio desde `./` hacia `./_site`.
-5. `actions/upload-pages-artifact@v3` empaqueta el sitio generado.
-6. `actions/deploy-pages@v4` publica el artefacto en GitHub Pages.
-7. GitHub actualiza la URL productiva del portal.
+4. Se configura Node.js y se ejecuta `npx -y tsx scripts/generate-skills-docs.ts` para compilar la documentación de las skills.
+5. `actions/jekyll-build-pages@v1` compila el sitio desde `./` hacia `./_site`.
+6. `actions/upload-pages-artifact@v3` empaqueta el sitio generado.
+7. `actions/deploy-pages@v4` publica el artefacto en GitHub Pages.
+8. GitHub actualiza la URL productiva del portal.
 
 Si el build falla, revisa la pestaña **Actions** del repositorio y corrige el error en una nueva rama antes de intentar desplegar de nuevo.
 

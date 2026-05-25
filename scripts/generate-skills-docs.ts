@@ -137,6 +137,16 @@ Esta página se genera automáticamente durante el despliegue de GitHub Pages a 
 | Skill | Descripción |
 | :--- | :--- |
 ${rows}
+
+## Generación Local de la Documentación
+
+Si agregas o modificas una skill en \`.agents/skills/*/SKILL.md\` y deseas actualizar esta lista de skills localmente, puedes ejecutar el siguiente comando desde la raíz del repositorio:
+
+\`\`\`bash
+npx tsx scripts/generate-skills-docs.ts
+\`\`\`
+
+Este comando leerá el front matter de todas las skills y actualizará esta página de forma automática.
 `;
 }
 
