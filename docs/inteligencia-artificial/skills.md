@@ -2,21 +2,23 @@
 layout: default
 title: Skills
 parent: Inteligencia Artificial
-nav_order: 2
+nav_order: 10
 ---
 
 # Skills
 
-Esta página lista las skills propias de este repositorio. No incluye skills globales instaladas en una herramienta local.
+Esta página se genera automáticamente durante el despliegue de GitHub Pages a partir del front matter de los archivos `.agents/skills/*/SKILL.md`.
 
-Para ver las skills creadas en un repositorio desde la terminal:
+| Skill | Descripción |
+| :--- | :--- |
+| **land4-documentation** | Usar al crear, revisar o actualizar documentación de repositorios LAND4, incluyendo README.md, index.md, AGENTS.md, docs/, req/, procesos/, docs/repositorios.md, navegación Jekyll, enlaces GitHub Pages y Agent Skills. |
+
+## Generación Local de la Documentación
+
+Si agregas o modificas una skill en `.agents/skills/*/SKILL.md` y deseas actualizar esta lista de skills localmente, puedes ejecutar el siguiente comando desde la raíz del repositorio:
 
 ```bash
-find .agents/skills -maxdepth 2 -name SKILL.md -print
+npx tsx scripts/generate-skills-docs.ts
 ```
 
-## Skills disponibles
-
-| Skill | Archivo | Propósito |
-| :--- | :--- | :--- |
-| `land4-documentation` | `.agents/skills/land4-documentation/SKILL.md` | Documentar, revisar y actualizar repositorios LAND4 siguiendo el estándar del portal. |
+Este comando leerá el front matter de todas las skills y actualizará esta página de forma automática.

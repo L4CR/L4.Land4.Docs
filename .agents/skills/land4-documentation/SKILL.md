@@ -7,6 +7,23 @@ description: Usar al crear, revisar o actualizar documentación de repositorios 
 
 Usa este skill para documentar repositorios LAND4 de forma consistente con el portal central de documentación.
 
+## Instalación Global Recomendada
+
+Para facilitar la documentación de tus repositorios locales siguiendo los lineamientos de LAND4 y permitir su prueba local, se recomienda instalar esta skill de manera global en tu máquina.
+
+### Pasos para la instalación global:
+
+1. Crea el directorio de configuración global de skills para tu agente de IA (por ejemplo, en Gemini/Antigravity):
+   ```bash
+   mkdir -p ~/.gemini/config/skills/land4-documentation
+   ```
+2. Copia el contenido de la carpeta `.agents/skills/land4-documentation` de este repositorio a tu directorio global:
+   ```bash
+   cp -r .agents/skills/land4-documentation/* ~/.gemini/config/skills/land4-documentation/
+   ```
+
+Esto habilitará la skill `land4-documentation` globalmente, permitiendo que tu agente la utilice de forma transparente en cualquier otro repositorio.
+
 ## Modelo Base
 
 La documentación LAND4 es centralizada y distribuida:

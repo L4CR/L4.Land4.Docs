@@ -41,6 +41,13 @@ El archivo `SKILL.md` debe incluir frontmatter YAML con, como mínimo, `name` y 
 *   **[AGENTS.md](agents/):** Instrucciones operativas para agentes de código en este repositorio.
 *   **[Skills](skills.html):** Skills propias de este repositorio disponibles para agentes.
 
+## Instalación de Skills Globales
+
+Para documentar de forma consistente todos los repositorios de la organización y poder realizar pruebas locales siguiendo las directrices oficiales, se recomienda instalar la skill `land4-documentation` de forma global en tu máquina de desarrollo.
+
+Puedes consultar los pasos detallados de instalación en la documentación de la skill:
+*   [Instalación de land4-documentation](file:///Users/lan4mena/Documents/Land4DevLvl+/L4-docs-organizacion/.agents/skills/land4-documentation/SKILL.md#instalacion-global-recomendada)
+
 ## Referencias oficiales
 
 Consulta la documentación oficial antes de crear o modificar estos archivos:
