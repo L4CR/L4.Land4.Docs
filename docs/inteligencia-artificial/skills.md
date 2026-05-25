@@ -11,6 +11,7 @@ Esta página se genera automáticamente durante el despliegue de GitHub Pages a 
 
 | Skill | Descripción |
 | :--- | :--- |
+| **crear-sitio-astro** | Skill para la creación automatizada de sitios web utilizando Astro, siguiendo las mejores prácticas de arquitectura y rendimiento. |
 | **land4-documentation** | Usar al crear, revisar o actualizar documentación de repositorios LAND4, incluyendo README.md, index.md, AGENTS.md, docs/, req/, procesos/, docs/repositorios.md, navegación Jekyll, enlaces GitHub Pages y Agent Skills. |
 
 ## Generación Local de la Documentación
