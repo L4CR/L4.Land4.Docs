@@ -34,7 +34,7 @@ Para validar cambios localmente se usa `docs-repo/docker-compose.yml`, porque de
 | :--- | :--- | :--- |
 | Docker Desktop con Docker Compose | Ambiente local | Permite ejecutar Ruby 3.3 y Jekyll sin instalar Ruby en la máquina. |
 | Git | Ambiente local | Necesario para trabajar por ramas y Pull Requests. |
-| Node.js 22 o compatible con TypeScript strip types | Local y CI | Requerido para ejecutar el script `docs-repo/scripts/generate-skills-docs.ts` que compila la documentación de las skills. |
+| Node.js 22 o compatible con TypeScript strip types | Local y CI | Requerido para ejecutar los scripts generadores de documentación derivada. |
 | Acceso a internet | Ambiente local y CI | Requerido para descargar la imagen `ruby:3.3`, gems y acciones de GitHub. |
 | `docs-repo/Gemfile` y `docs-repo/Gemfile.lock` | Local y CI | Mantienen dependencias reproducibles para Jekyll y el tema. |
 | GitHub Pages habilitado | Producción | Debe publicar desde GitHub Actions. |
@@ -69,6 +69,7 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
 
    ```bash
    node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+   node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
    ```
 
 3. Compila el sitio:
@@ -92,6 +93,7 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
 Antes de abrir un Pull Request, valida:
 
 *   El script `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts` se ejecuta correctamente y genera/actualiza la documentación de las skills en `docs-repo/docs/inteligencia-artificial/skills.md`.
+*   El script `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts` se ejecuta correctamente y genera/actualiza la documentación de PR templates en `docs-repo/docs/pr-templates/`.
 *   El comando `docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml` termina sin errores.
 *   La página principal carga localmente.
 *   La navegación muestra las páginas nuevas o modificadas.
@@ -124,7 +126,9 @@ El despliegue productivo se ejecuta automáticamente con GitHub Actions.
 1. Un Pull Request aprobado se fusiona en `main`.
 2. GitHub ejecuta `.github/workflows/docs.yml`.
 3. `actions/checkout@v4` descarga el contenido del repositorio.
-4. Se configura Node.js 22 y se ejecuta el mismo generador de skills usado localmente: `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts`.
+4. Se configura Node.js 22 y se ejecutan los mismos generadores usados localmente:
+   * `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts`
+   * `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts`
 5. `actions/configure-pages@v5` prepara el entorno de GitHub Pages.
 6. `ruby/setup-ruby@v1` configura Ruby 3.3 con caché de Bundler.
 7. `bundle exec jekyll build --config docs-repo/_config.yml --destination ./_site` compila el sitio desde la raíz con configuración de `docs-repo/` hacia `./_site`.
@@ -194,5 +198,7 @@ Estos directorios son artefactos locales y no deben subirse a Git:
 *   `docs-repo/.bundle/`
 *   `docs-repo/.jekyll-cache/`
 *   `docs-repo/.sass-cache/`
+*   `docs-repo/docs/inteligencia-artificial/skills.md`
+*   `docs-repo/docs/pr-templates/`
 
 Están excluidos en `.gitignore`.

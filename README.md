@@ -39,6 +39,7 @@ La validación local se ejecuta con el servicio `docs` definido en `docs-repo/do
 
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle install
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml
 docker compose -f docs-repo/docker-compose.yml up docs

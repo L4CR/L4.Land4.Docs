@@ -10,6 +10,7 @@ on:
       - "procesos/**"
       - "docs-repo/**"
       - ".agents/skills/**"
+      - ".github/PULL_REQUEST_TEMPLATE/**"
       - ".github/workflows/docs.yml"
   workflow_dispatch:
 
@@ -39,6 +40,9 @@ jobs:
 
       - name: Generar documentación de Skills
         run: node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+
+      - name: Generar documentación de PR Templates
+        run: node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
 
       - name: Configurar Pages
         uses: actions/configure-pages@v5

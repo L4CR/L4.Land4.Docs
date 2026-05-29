@@ -31,6 +31,7 @@ Usa el servicio `docs` definido en `docs-repo/docker-compose.yml`. Primero gener
 
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle install
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml
 docker compose -f docs-repo/docker-compose.yml up docs
@@ -85,7 +86,7 @@ Revisa que:
 - Las páginas nuevas o modificadas aparecen en la navegación esperada.
 - Los enlaces internos resuelven correctamente.
 - Los diagramas Mermaid renderizan sin errores.
-- No se generaron cambios innecesarios ni versionados en `_site/`, `.bundle/`, `.sass-cache/`, `vendor/`, `docs-repo/vendor/` o `docs-repo/docs/inteligencia-artificial/skills.md`.
+- No se generaron cambios innecesarios ni versionados en `_site/`, `.bundle/`, `.sass-cache/`, `vendor/`, `docs-repo/vendor/`, `docs-repo/docs/inteligencia-artificial/skills.md` o `docs-repo/docs/pr-templates/`.
 
 ## Pull Requests
 

@@ -22,6 +22,7 @@ En este directorio encontrarás:
 *   **[Despliegue](/docs/despliegue.html):** Ambientes, pasos y requerimientos para validar localmente y desplegar la documentación en GitHub Pages.
 *   **[Catálogo de Repositorios](/docs/repositorios/):** Inventario de repositorios relacionados. En este portal central funciona como inventario de todos los repositorios LAND4.
 *   **[Inteligencia Artificial](/docs/inteligencia-artificial/):** Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
+*   **[Plantillas de Pull Request](/docs/pr-templates/):** Vista publicada de las plantillas operativas de `.github/PULL_REQUEST_TEMPLATE/`.
 
 ---
 

@@ -26,6 +26,7 @@ Usa este índice como reflejo jerárquico del menú lateral del portal:
     *   [Despliegue](/docs/despliegue.html): Validación local, ambientes y despliegue en GitHub Pages.
     *   [Catálogo de Repositorios](/docs/repositorios/): Inventario central de repositorios LAND4 y enlaces a sus GitHub Pages.
     *   [Inteligencia Artificial](/docs/inteligencia-artificial/): Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
+    *   [Plantillas de Pull Request](/docs/pr-templates/): Vista publicada de las plantillas operativas para PRs.
 *   **[Procesos](/procesos):** Procesos transversales de colaboración entre Producto y TI.
     *   [GitHub Flow](/procesos/github-flow.html): Flujo de trabajo para ramas, commits, Pull Requests y merges.
 *   **[Requerimientos de Negocio](/req):** Guías para documentar requerimientos funcionales.
