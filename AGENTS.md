@@ -21,8 +21,8 @@ La documentación sigue el modelo Docs-as-Code:
 - `docs-repo/como-documentar.md`: estándar LAND4 para documentación de repositorios.
 - `docs-repo/docs/`: documentación técnica del portal.
 - `docs-repo/_config.yml`, `docs-repo/Gemfile`, `docs-repo/docker-compose.yml`, `docs-repo/_sass/`, `docs-repo/assets/` y `docs-repo/scripts/`: soporte de publicación, estilo y validación Jekyll.
-- `procesos/`: procesos transversales.
-- `req/`: requerimientos, historias y casos de uso.
+- `docs-repo/procesos/`: procesos transversales.
+- `docs-repo/req/`: requerimientos, historias y casos de uso.
 - `docs-repo/onboarding/`: guía inicial para colaboradores.
 
 ## Comandos de desarrollo

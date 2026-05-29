@@ -1,6 +1,6 @@
 ---
 name: land4-documentation
-description: Usar al crear, revisar o actualizar documentación Docs-as-Code de repositorios LAND4 con Jekyll/Just the Docs, README.md, AGENTS.md, docs-repo/index.md, docs-repo/docs/, docs-repo/Gemfile, docs-repo/scripts/, req/, procesos/, docs-repo/docs/repositorios.md, navegación publicada, GitHub Pages, validación local Docker/Jekyll, tema visual LAND4 y Agent Skills.
+description: Usar al crear, revisar o actualizar documentación Docs-as-Code de repositorios LAND4 con Jekyll/Just the Docs, README.md, AGENTS.md, docs-repo/index.md, docs-repo/docs/, docs-repo/req/, docs-repo/procesos/, docs-repo/Gemfile, docs-repo/scripts/, docs-repo/docs/repositorios.md, navegación publicada, GitHub Pages, validación local Docker/Jekyll, tema visual LAND4 y Agent Skills.
 ---
 
 # Documentación LAND4
@@ -33,12 +33,13 @@ repository/
 │   ├── _config.yml
 │   ├── docker-compose.yml
 │   ├── scripts/
-│   │   └── generate-skills-docs.ts # si se publica catálogo de Agent Skills
+│   │   ├── generate-skills-docs.ts      # si se publica catálogo de Agent Skills
+│   │   └── generate-pr-template-docs.ts # si se publican plantillas de PR
 │   ├── _sass/
 │   │   ├── color_schemes/land4.scss
 │   │   └── custom/custom.scss
 │   ├── assets/images/L4.png
-│   └── docs/
+│   ├── docs/
 │       ├── index.md
 │       ├── api.md
 │       ├── arquitectura.md
@@ -48,16 +49,18 @@ repository/
 │       └── inteligencia-artificial/
 │           ├── index.md
 │           └── skills.md       # generado si hay catálogo de skills
-├── .github/workflows/docs.yml # si se publica con GitHub Pages
-├── req/
-├── procesos/
+│   ├── req/
+│   └── procesos/
+├── .github/
+│   ├── workflows/docs.yml          # si se publica con GitHub Pages
+│   └── PULL_REQUEST_TEMPLATE/*.md  # si se publican plantillas de PR
 └── .agents/
     └── skills/<skill-name>/SKILL.md
 ```
 
-No inventes `req/`, `procesos/`, `.agents/skills/`, `.github/` ni `docs-repo/scripts/` para llenar estructura.
+No inventes `docs-repo/req/`, `docs-repo/procesos/`, `.agents/skills/`, `.github/` ni `docs-repo/scripts/` para llenar estructura.
 
-Mantén todo lo posible relacionado con documentación publicada, contenido técnico, publicación, validación y estilo dentro de `docs-repo/`. Excepciones permitidas en raíz: `README.md`, `AGENTS.md`, `.github/workflows/docs.yml` y `.agents/skills/**/SKILL.md`.
+Mantén todo lo posible relacionado con documentación publicada, contenido técnico, publicación, validación y estilo dentro de `docs-repo/`. Excepciones permitidas en raíz: `README.md`, `AGENTS.md`, `.github/workflows/docs.yml`, `.github/PULL_REQUEST_TEMPLATE/**` y `.agents/skills/**/SKILL.md`.
 
 Si el repositorio ya tiene documentación histórica en `docs/`, muévela a `docs-repo/docs/` cuando se adopte este estándar y elimina los archivos raíz anteriores para evitar dos fuentes de verdad. Agrega `docs/` al `exclude` de Jekyll si queda alguna carpeta local no publicada o si el build corre desde la raíz.
 
@@ -169,8 +172,8 @@ Actualiza índices cuando agregues, renombres o muevas páginas publicadas.
 - `docs-repo/docs/pnpm-migration-security.md`: política local de pnpm cuando el repo tenga decisiones propias de scripts aprobados/bloqueados.
 - `docs-repo/docs/inteligencia-artificial/index.md`: índice de instrucciones para agentes y skills locales.
 - `docs-repo/docs/inteligencia-artificial/skills.md`: catálogo generado de `.agents/skills/**/SKILL.md`; no se edita manualmente si existe script generador.
-- `req/`: requerimientos de negocio, casos de uso, historias, criterios y reglas cuando apliquen.
-- `procesos/`: solo procesos propios no cubiertos por el portal central.
+- `docs-repo/req/`: requerimientos de negocio, casos de uso, historias, criterios y reglas cuando apliquen.
+- `docs-repo/procesos/`: solo procesos propios no cubiertos por el portal central.
 
 ## Catálogo de Repositorios
 
@@ -255,7 +258,14 @@ Agrega a `.gitignore`:
 /vendor/
 /.bundle/
 /.jekyll-cache/
+/.sass-cache/
 /_site/
+docs-repo/vendor/
+docs-repo/.bundle/
+docs-repo/.jekyll-cache/
+docs-repo/.sass-cache/
+docs-repo/docs/inteligencia-artificial/skills.md
+docs-repo/docs/pr-templates/
 ```
 
 Si el repo también tiene ESLint, ignora esos artefactos en la configuración de lint.
@@ -264,10 +274,13 @@ Si el repo también tiene ESLint, ignora esos artefactos en la configuración de
 
 Si el repositorio publica catálogo de Agent Skills, usa el mismo script generador tanto en local como en el workflow. Ese script debe leer `.agents/skills/**/SKILL.md` y escribir la página publicada `docs-repo/docs/inteligencia-artificial/skills.md`.
 
-Comando canónico del generador para repos con `docs-repo/`:
+Si el repositorio publica una vista navegable de plantillas de Pull Request, usa también el mismo script generador tanto en local como en el workflow. Ese script debe leer `.github/PULL_REQUEST_TEMPLATE/**/*.md` y escribir páginas derivadas en `docs-repo/docs/pr-templates/`.
+
+Comandos canónicos de generadores para repos con `docs-repo/`:
 
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
 ```
 
 Si el repo publica documentación, agrega scripts en `package.json` solo cuando el proyecto ya usa Node/pnpm o cuando faciliten validación repetible:
@@ -276,8 +289,10 @@ Si el repo publica documentación, agrega scripts en `package.json` solo cuando 
 {
   "scripts": {
     "docs:skills": "node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts",
-    "docs:build": "pnpm run docs:skills && docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml",
-    "docs:serve": "pnpm run docs:skills && docker compose -f docs-repo/docker-compose.yml up docs",
+    "docs:pr-templates": "node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts",
+    "docs:generate": "pnpm run docs:skills && pnpm run docs:pr-templates",
+    "docs:build": "pnpm run docs:generate && docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml",
+    "docs:serve": "pnpm run docs:generate && docker compose -f docs-repo/docker-compose.yml up docs",
     "docs:down": "docker compose -f docs-repo/docker-compose.yml down"
   }
 }
@@ -286,8 +301,10 @@ Si el repo publica documentación, agrega scripts en `package.json` solo cuando 
 Si usas GitHub Pages, versiona `.github/workflows/docs.yml` con estos mínimos:
 
 - Triggers solo en la rama publicable principal del repo (`main`) y ejecución manual con `workflow_dispatch` cuando aplique. No incluyas `staging`, `develop` ni ramas temporales.
-- `paths` limitados a documentación, `AGENTS.md`, `README.md`, `docs-repo/**`, `.agents/skills/**` y el workflow.
-- Node 22 para ejecutar el mismo generador de skills usado en local: `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts`.
+- `paths` limitados a documentación, `AGENTS.md`, `README.md`, `docs-repo/**`, `.agents/skills/**`, `.github/PULL_REQUEST_TEMPLATE/**` y el workflow.
+- Node 22 para ejecutar los mismos generadores usados en local:
+  - `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts`.
+  - `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts`, si se publica documentación derivada de plantillas de PR.
 - Ruby 3.3 con `bundler-cache: true` y `working-directory: docs-repo`.
 - `actions/configure-pages`, `bundle exec jekyll build --config docs-repo/_config.yml`, `actions/upload-pages-artifact` y `actions/deploy-pages`.
 
@@ -318,10 +335,11 @@ Usa el contenido del portal central como fuente canónica:
 
 ## Validación Local
 
-Para documentación local, ejecuta primero el generador de skills si el repositorio publica catálogo:
+Para documentación local, ejecuta primero los generadores que apliquen:
 
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
 ```
 
 Luego valida Jekyll con Docker Compose:
@@ -388,7 +406,7 @@ Antes de terminar:
 - `docs-repo/docs/despliegue.md` concentra comandos de despliegue, CI/CD y validación local.
 - `docs-repo/docs/repositorios.md` usa el formato de catálogo y no reemplaza arquitectura.
 - `docs-repo/index.md` refleja la navegación anidada real.
-- No se versionan `_site/`, `vendor/`, `.bundle/` ni `.jekyll-cache/`.
+- No se versionan `_site/`, `vendor/`, `docs-repo/vendor/`, `.bundle/`, `.jekyll-cache/`, `.sass-cache/`, `docs-repo/docs/inteligencia-artificial/skills.md` ni `docs-repo/docs/pr-templates/`.
 - No hay páginas locales para contenido que pertenece a estándares generales o datos obvios.
 
 ## Agent Skills

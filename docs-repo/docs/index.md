@@ -45,5 +45,5 @@ En este directorio encontrarás:
 *   **`README.md`:** Entrada del repositorio en GitHub; resume el propósito y enlaza a la documentación relevante.
 *   **`docs-repo/index.md`:** Inicio publicado del portal e índice principal navegable.
 *   **`docs-repo/docs/`:** Documentación técnica viva del portal: arquitectura, despliegue, repositorios relacionados e inteligencia artificial.
-*   **`/req`:** Requerimientos de negocio: casos de uso, historias de usuario, criterios de aceptación y reglas.
-*   **`/procesos`:** Forma de trabajo: ramas, PRs, CI, aprobaciones, merge y entrega.
+*   **`docs-repo/req/`:** Requerimientos de negocio: casos de uso, historias de usuario, criterios de aceptación y reglas.
+*   **`docs-repo/procesos/`:** Forma de trabajo: ramas, PRs, CI, aprobaciones, merge y entrega.

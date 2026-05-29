@@ -3,11 +3,12 @@ layout: default
 title: GitHub Flow LAND4
 parent: Procesos
 nav_order: 1
+permalink: /procesos/github-flow.html
 ---
 
 # 🔄 GitHub Flow LAND4
 
-Este documento vive en `/procesos` porque define una forma de trabajo transversal. Explica cómo una **Historia de Usuario (HU)** avanza desde una necesidad validada por negocio hasta una entrega integrada en `main`. Es el punto de unión operativo entre Producto y TI: Producto define el valor esperado y los criterios de aceptación; TI implementa, prueba, integra y documenta el cambio.
+Este documento vive en `docs-repo/procesos/` porque define una forma de trabajo transversal. Explica cómo una **Historia de Usuario (HU)** avanza desde una necesidad validada por negocio hasta una entrega integrada en `main`. Es el punto de unión operativo entre Producto y TI: Producto define el valor esperado y los criterios de aceptación; TI implementa, prueba, integra y documenta el cambio.
 
 ---
 
@@ -105,7 +106,7 @@ Durante `In Progress`, la persona desarrolladora debe:
 *   Implementar el cambio dentro del alcance de la HU.
 *   Revisar los criterios de aceptación aplicables.
 *   Ejecutar las pruebas de desarrollador correspondientes al tipo de repositorio.
-*   Actualizar `README.md`, `/docs` o `/req` cuando el cambio modifique comportamiento, configuración, API, despliegue, reglas de negocio o flujos de usuario.
+*   Actualizar `README.md`, `docs-repo/docs/` o `docs-repo/req/` cuando el cambio modifique comportamiento, configuración, API, despliegue, reglas de negocio o flujos de usuario.
 
 Las pruebas de desarrollador se registran en el Pull Request como checklist. No se requiere adjuntar evidencias, capturas o logs salvo que el equipo lo solicite explícitamente para un caso puntual.
 
@@ -168,7 +169,7 @@ Antes de solicitar revisión:
 *   Las pruebas de desarrollador aplicables deben estar chequeadas.
 *   La validación QA debe estar marcada como `N/A`, `Pendiente` o `Completada`.
 *   La validación UAT/PO debe estar marcada como `N/A`, `Pendiente` o `Completada`.
-*   `README.md`, `/docs` o `/req` deben estar actualizados o marcados como `N/A`.
+*   `README.md`, `docs-repo/docs/` o `docs-repo/req/` deben estar actualizados o marcados como `N/A`.
 *   El CI requerido debe estar en verde.
 
 ---
@@ -201,6 +202,6 @@ Para LAND4:
 
 ## 🧾 Documentación relacionada
 
-*   **[Historias de Usuario](../req/historia-usuario.md):** Cómo redactar y estructurar una HU.
-*   **[Criterios de Aceptación](../req/criterios-aceptacion.md):** Cómo definir condiciones verificables.
+*   **[Historias de Usuario](/req/historia-usuario.html):** Cómo redactar y estructurar una HU.
+*   **[Criterios de Aceptación](/req/criterios-aceptacion.html):** Cómo definir condiciones verificables.
 *   **[¿Cómo Documentar?](/como-documentar.html):** Estándar Docs-as-Code para documentación técnica y de negocio.

@@ -3,6 +3,7 @@ layout: default
 title: Plantilla de Caso de Uso
 parent: Requerimientos de Negocio
 nav_order: 1
+permalink: /req/CASO_USO_TEMPLATE.html
 ---
 
 # 📝 Plantilla de Caso de Uso (Negocio)

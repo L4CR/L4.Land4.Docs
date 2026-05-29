@@ -33,7 +33,7 @@ nombre-del-repositorio/
 │   │   ├── color_schemes/land4.scss
 │   │   └── custom/custom.scss
 │   ├── assets/images/L4.png
-│   └── docs/                # Documentación técnica publicada
+│   ├── docs/                # Documentación técnica publicada
 │       ├── index.md
 │       ├── arquitectura.md
 │       ├── despliegue.md
@@ -41,13 +41,13 @@ nombre-del-repositorio/
 │       └── inteligencia-artificial/
 │           ├── index.md
 │           └── skills.md    # Generado durante el build si hay skills
+│   ├── req/                 # Requerimientos de NEGOCIO, si aplican
+│   │   └── CU-01-registro.md
+│   └── procesos/            # Procesos propios, si aplican
 ├── .agents/                 # Skills reutilizables para agentes, si aplican
 │   └── skills/
 │       └── nombre-del-skill/
 │           └── SKILL.md
-├── req/                     # Carpeta para Requerimientos de NEGOCIO (Casos de Uso)
-│   └── CU-01-registro.md    # Especificaciones funcionales y flujos de negocio
-├── procesos/                # Solo si el repositorio define procesos propios
 └── ... (código fuente)
 ```
 
@@ -80,7 +80,7 @@ Un buen `README.md` contiene:
 *   Enlace rápido a la guía de despliegue y validación local cuando aplique: `[Despliegue](/docs/despliegue.html)`.
 *   Enlace a la documentación publicada del propio repositorio en GitHub Pages.
 *   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios/)`.
-*   Enlaces a casos de uso o historias relevantes cuando existan en `/req`.
+*   Enlaces a casos de uso o historias relevantes cuando existan en `docs-repo/req/`.
 
 ### 2. El archivo `AGENTS.md` (Instrucciones para agentes)
 
@@ -123,7 +123,7 @@ Es la página principal del repositorio cuando su documentación se publica en G
 
 *   Enlace a `README.md` solo si aporta contexto para colaboradores en GitHub.
 *   Enlace a `/docs/` como entrada publicada de la documentación técnica.
-*   Enlaces a `/req`, `/procesos` u otras secciones cuando apliquen.
+*   Enlaces a `/req/`, `/procesos/` u otras secciones publicadas cuando apliquen.
 *   Enlaces a páginas hijas solo si ayudan a navegar sin duplicar contenido.
 
 ### 4. La carpeta `.agents/skills` (Agent Skills)
@@ -221,16 +221,16 @@ Cada repositorio que tenga despliegue propio debe documentar su operación real,
 
 Además, si un repositorio se registra en el inventario central o en el `docs-repo/docs/repositorios.md` de otro sistema, debe publicar su documentación en GitHub Pages para que los catálogos apunten a documentación navegable, no a archivos Markdown crudos en GitHub.
 
-### 6. La carpeta `/req` (Requerimientos de Negocio)
+### 6. La carpeta `docs-repo/req/` (Requerimientos de Negocio)
 
 Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
 
 *   Contiene casos de uso redactados en lenguaje no técnico, facilitando la comprensión y validación entre ingenieros y tomadores de decisiones/Product Owners.
-*   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.md)**.
+*   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](/req/CASO_USO_TEMPLATE.html)**.
 
-### 7. La carpeta `/procesos` (Procesos del Repositorio)
+### 7. La carpeta `docs-repo/procesos/` (Procesos del Repositorio)
 
-Esta carpeta solo debe existir cuando el repositorio necesite documentar procesos propios que no estén cubiertos por el portal central. Para el flujo estándar de ramas, Pull Requests, CI y entregas, usa el **[GitHub Flow LAND4](procesos/github-flow.md)** del portal.
+Esta carpeta solo debe existir cuando el repositorio necesite documentar procesos propios que no estén cubiertos por el portal central. Para el flujo estándar de ramas, Pull Requests, CI y entregas, usa el **[GitHub Flow LAND4](/procesos/github-flow.html)** del portal.
 
 ---
 
@@ -256,6 +256,6 @@ Esta carpeta solo debe existir cuando el repositorio necesite documentar proceso
 Cuando agregues una nueva funcionalidad, cambies una variable de entorno o modifiques la base de datos:
 
 1. Crea tu rama de Git para desarrollar la funcionalidad.
-2. Realiza los cambios en el código **y edita los archivos correspondientes en `README.md`, `AGENTS.md`, `docs-repo/docs/`, `.agents/skills/` o `req/` en esa misma rama**.
+2. Realiza los cambios en el código **y edita los archivos correspondientes en `README.md`, `AGENTS.md`, `docs-repo/docs/`, `docs-repo/req/`, `docs-repo/procesos/` o `.agents/skills/` en esa misma rama**.
 3. Envía tu Pull Request. El revisor evaluará tanto la calidad del código como que la documentación refleje el nuevo cambio.
 4. Una vez fusionado en `main`, tu documentación estará actualizada.

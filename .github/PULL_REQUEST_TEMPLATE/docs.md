@@ -19,7 +19,7 @@
 - [ ] Navegación actualizada, si aplica.
 - [ ] Contenido consistente con los estándares del portal.
 - [ ] Referencias relacionadas actualizadas.
-- [ ] Separación entre `README.md`, `AGENTS.md`, `docs-repo/docs/`, `/req` y `/procesos` respetada.
+- [ ] Separación entre `README.md`, `AGENTS.md`, `docs-repo/docs/`, `docs-repo/req/` y `docs-repo/procesos/` respetada.
 - [ ] `docs-repo/docs/repositorios.md` actualizado si cambian repositorios relacionados o dependencias.
 - [ ] `.agents/skills` actualizado si cambian instrucciones reutilizables para agentes.
 - [ ] N/A

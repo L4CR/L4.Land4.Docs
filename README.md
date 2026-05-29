@@ -9,7 +9,7 @@ permalink: /readme/
 
 Este repositorio aloja el portal central de documentación y conocimiento de la organización. El sitio web está compilado con **Jekyll** y utiliza el tema **Just the Docs**, desplegándose automáticamente a través de **GitHub Pages**.
 
-Este repositorio implementa las prácticas de documentación: usa `README.md` como entrada del repositorio en GitHub, `docs-repo/index.md` como Inicio del portal publicado, `docs-repo/docs/` para documentación técnica, `/procesos` para flujos de trabajo y `/req` para documentación de negocio.
+Este repositorio implementa las prácticas de documentación: usa `README.md` como entrada del repositorio en GitHub, `docs-repo/index.md` como Inicio del portal publicado, `docs-repo/docs/` para documentación técnica, `docs-repo/procesos/` para flujos de trabajo y `docs-repo/req/` para documentación de negocio.
 La intención es que sirva como referencia replicable para otros repositorios LAND4.
 
 ## Índice del repositorio
@@ -23,9 +23,9 @@ Este índice refleja la jerarquía del menú principal del portal publicado:
     *   [Despliegue](/docs/despliegue.html): Validación local, ambientes y despliegue en GitHub Pages.
     *   [Catálogo de Repositorios](/docs/repositorios/): Inventario central de repositorios LAND4 y enlaces a sus GitHub Pages.
     *   [Inteligencia Artificial](/docs/inteligencia-artificial/): Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
-*   **[Procesos](/procesos):** Procesos transversales de colaboración entre Producto y TI.
+*   **[Procesos](/procesos/):** Procesos transversales de colaboración entre Producto y TI.
     *   [GitHub Flow](/procesos/github-flow.html): Flujo de trabajo para ramas, commits, Pull Requests y merges.
-*   **[Requerimientos de Negocio](/req):** Guías para documentar requerimientos funcionales.
+*   **[Requerimientos de Negocio](/req/):** Guías para documentar requerimientos funcionales.
     *   [Plantilla de Caso de Uso](/req/CASO_USO_TEMPLATE.html): Estructura base para casos de uso.
     *   [Criterios de Aceptación](/req/criterios-aceptacion.html): Guía para definir validaciones de negocio.
     *   [Historia de Usuario](/req/historia-usuario.html): Estructura y estados de una historia de usuario.
