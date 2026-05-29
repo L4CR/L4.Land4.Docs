@@ -45,8 +45,7 @@ El archivo `SKILL.md` debe incluir frontmatter YAML con, como mínimo, `name` y 
 
 Para documentar de forma consistente todos los repositorios de la organización y poder realizar pruebas locales siguiendo las directrices oficiales, se recomienda instalar la skill `land4-documentation` de forma global en tu máquina de desarrollo.
 
-Puedes consultar los pasos detallados de instalación en la documentación de la skill:
-*   [Instalación de land4-documentation](file:///Users/lan4mena/Documents/Land4DevLvl+/L4-docs-organizacion/.agents/skills/land4-documentation/SKILL.md#instalacion-global-recomendada)
+La fuente versionada de las skills vive en `.agents/skills/` y el resumen publicado se genera automáticamente en **[Skills](skills.html)** durante el despliegue.
 
 ## Referencias oficiales
 

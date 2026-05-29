@@ -3,7 +3,7 @@ layout: default
 title: Catálogo de Repositorios
 parent: Documentación Técnica
 nav_order: 3
-permalink: /docs/repositorios
+permalink: /docs/repositorios/
 ---
 
 # Catálogo de Repositorios
@@ -45,9 +45,9 @@ Cada fila del catálogo debe completar:
 *   En repositorios de producto, API, frontend, servicio o librería, registra aquí los repositorios de los que depende o con los que se integra.
 *   En el portal central `L4.docs-organizacion`, registra aquí todos los repositorios LAND4.
 *   El registro debe agregarse en el mismo Pull Request que habilita o actualiza la documentación publicada del repositorio relacionado.
-*   La documentación publicada debe cumplir el estándar definido en **[¿Cómo Documentar?](../como-documentar.md)**.
+*   La documentación publicada debe cumplir el estándar definido en **[¿Cómo Documentar?](/como-documentar.html)**.
 *   Si un repositorio cambia de nombre, responsable, estado o URL publicada, este catálogo debe actualizarse en el mismo Pull Request o en un Pull Request de mantenimiento.
-*   Este catálogo no reemplaza la arquitectura propia del sistema. Si la relación con otro repositorio requiere detalle técnico, documenta esa dependencia en `docs/arquitectura.md` del repositorio correspondiente.
+*   Este catálogo no reemplaza la arquitectura propia del sistema. Si la relación con otro repositorio requiere detalle técnico, documenta esa dependencia en `docs-repo/docs/arquitectura.md` del repositorio correspondiente.
 
 ---
 
@@ -55,7 +55,7 @@ Cada fila del catálogo debe completar:
 
 Si necesitas registrar un repositorio relacionado:
 
-1. Asegúrate de que el repositorio tenga `README.md`, `index.md`, `/docs` y la documentación mínima aplicable.
+1. Asegúrate de que el repositorio tenga `README.md`, `AGENTS.md`, `docs-repo/index.md`, `docs-repo/docs/` y la documentación mínima aplicable.
 2. Publica la documentación del repositorio con GitHub Pages.
 3. Agrega una fila al inventario de este archivo.
 4. Verifica que el enlace de documentación publicada cargue correctamente.

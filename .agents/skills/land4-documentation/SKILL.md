@@ -1,103 +1,404 @@
 ---
 name: land4-documentation
-description: Usar al crear, revisar o actualizar documentación de repositorios LAND4, incluyendo README.md, index.md, AGENTS.md, docs/, req/, procesos/, docs/repositorios.md, navegación Jekyll, enlaces GitHub Pages y Agent Skills.
+description: Usar al crear, revisar o actualizar documentación Docs-as-Code de repositorios LAND4 con Jekyll/Just the Docs, README.md, AGENTS.md, docs-repo/index.md, docs-repo/docs/, docs-repo/Gemfile, docs-repo/scripts/, req/, procesos/, docs-repo/docs/repositorios.md, navegación publicada, GitHub Pages, validación local Docker/Jekyll, tema visual LAND4 y Agent Skills.
 ---
 
 # Documentación LAND4
 
-Usa este skill para documentar repositorios LAND4 de forma consistente con el portal central de documentación.
+Usa este skill para documentar repositorios LAND4 de forma consistente con el portal central:
 
-## Instalación Global Recomendada
+https://l4cr.github.io/L4.docs-organizacion/como-documentar.html
 
-Para facilitar la documentación de tus repositorios locales siguiendo los lineamientos de LAND4 y permitir su prueba local, se recomienda instalar esta skill de manera global en tu máquina.
+La documentación LAND4 es Docs-as-Code: vive junto al código, se versiona en Git y se revisa en Pull Requests igual que el código.
 
-### Pasos para la instalación global:
+## Principios
 
-1. Crea el directorio de configuración global de skills para tu agente de IA (por ejemplo, en Gemini/Antigravity):
-   ```bash
-   mkdir -p ~/.gemini/config/skills/land4-documentation
-   ```
-2. Copia el contenido de la carpeta `.agents/skills/land4-documentation` de este repositorio a tu directorio global:
-   ```bash
-   cp -r .agents/skills/land4-documentation/* ~/.gemini/config/skills/land4-documentation/
-   ```
+- El portal central mantiene estándares transversales, procesos, onboarding, IA e inventario completo LAND4.
+- Cada repositorio mantiene solo la documentación que cambia con su código: arquitectura, despliegue, repositorios relacionados, requerimientos y procesos locales.
+- No dupliques contenido canónico del portal central; enlázalo.
+- No documentes como página local detalles que pertenecen a estándares generales, componentes comunes o datos evidentes del repo. Ejemplo: si el repo solo tiene `src/data/`, menciona que el contenido vive ahí; no crees una página para explicar cada JSON salvo que haya reglas de negocio reales.
 
-Esto habilitará la skill `land4-documentation` globalmente, permitiendo que tu agente la utilice de forma transparente en cualquier otro repositorio.
+## Estructura Estándar
 
-## Modelo Base
-
-La documentación LAND4 es centralizada y distribuida:
-
-- El portal central define estándares transversales, procesos, onboarding, referencias de IA e inventario completo de repositorios LAND4.
-- Cada repositorio mantiene la documentación que cambia con su código: arquitectura, despliegue, repositorios relacionados, requerimientos y procesos locales.
-
-Evita duplicar contenido canónico. Enlaza a la página canónica cuando la información ya exista.
-
-## Estructura Recomendada
-
-Para un repositorio LAND4, prefiere esta estructura:
+Prefiere esta estructura, creando carpetas opcionales solo cuando apliquen:
 
 ```text
 repository/
 ├── README.md
 ├── AGENTS.md
-├── index.md
-├── docs/
-│   ├── index.md
-│   ├── arquitectura.md
-│   ├── despliegue.md
-│   └── repositorios.md
+├── docs-repo/               # soporte de publicación/estilo/validación Jekyll
+│   ├── index.md             # inicio publicado del sitio de documentación
+│   ├── Gemfile              # si se publicará/probará documentación Jekyll local
+│   ├── Gemfile.lock
+│   ├── _config.yml
+│   ├── docker-compose.yml
+│   ├── scripts/
+│   │   └── generate-skills-docs.ts # si se publica catálogo de Agent Skills
+│   ├── _sass/
+│   │   ├── color_schemes/land4.scss
+│   │   └── custom/custom.scss
+│   ├── assets/images/L4.png
+│   └── docs/
+│       ├── index.md
+│       ├── api.md
+│       ├── arquitectura.md
+│       ├── despliegue.md
+│       ├── repositorios.md
+│       ├── pnpm-migration-security.md
+│       └── inteligencia-artificial/
+│           ├── index.md
+│           └── skills.md       # generado si hay catálogo de skills
+├── .github/workflows/docs.yml # si se publica con GitHub Pages
 ├── req/
 ├── procesos/
 └── .agents/
-    └── skills/
-        └── skill-name/
-            └── SKILL.md
+    └── skills/<skill-name>/SKILL.md
 ```
 
-Crea carpetas opcionales solo cuando apliquen. No inventes requerimientos, procesos o skills solo para llenar la estructura.
+No inventes `req/`, `procesos/`, `.agents/skills/`, `.github/` ni `docs-repo/scripts/` para llenar estructura.
+
+Mantén todo lo posible relacionado con documentación publicada, contenido técnico, publicación, validación y estilo dentro de `docs-repo/`. Excepciones permitidas en raíz: `README.md`, `AGENTS.md`, `.github/workflows/docs.yml` y `.agents/skills/**/SKILL.md`.
+
+Si el repositorio ya tiene documentación histórica en `docs/`, muévela a `docs-repo/docs/` cuando se adopte este estándar y elimina los archivos raíz anteriores para evitar dos fuentes de verdad. Agrega `docs/` al `exclude` de Jekyll si queda alguna carpeta local no publicada o si el build corre desde la raíz.
+
+## Frontmatter Publicable
+
+Los archivos raíz pueden publicarse sin moverlos. Agrega frontmatter Jekyll cuando el repo use GitHub Pages/Just the Docs.
+
+`README.md`:
+
+```markdown
+---
+layout: default
+title: README
+nav_order: 2
+permalink: /readme/
+---
+```
+
+`AGENTS.md`:
+
+```markdown
+---
+layout: default
+title: AGENTS.md
+parent: Inteligencia Artificial
+nav_order: 5
+permalink: /docs/inteligencia-artificial/agents/
+---
+```
+
+`docs-repo/index.md`:
+
+```markdown
+---
+layout: default
+title: Inicio
+nav_order: 1
+---
+```
+
+`docs-repo/docs/index.md`:
+
+```markdown
+---
+layout: default
+title: Documentación Técnica
+nav_order: 4
+has_children: true
+permalink: /docs/
+---
+```
+
+Páginas técnicas hijas bajo `docs-repo/docs/`:
+
+```markdown
+---
+layout: default
+title: Arquitectura
+parent: Documentación Técnica
+nav_order: 1
+---
+```
+
+`docs-repo/docs/inteligencia-artificial/index.md`:
+
+```markdown
+---
+layout: default
+title: Inteligencia Artificial
+parent: Documentación Técnica
+has_children: true
+nav_order: 4
+permalink: /docs/inteligencia-artificial/
+---
+```
+
+## Navegación
+
+El índice principal debe reflejar la jerarquía real del menú Just the Docs. No dejes una lista plana si el menú está anidado.
+
+Ejemplo:
+
+```markdown
+## Navegación
+
+- [README](README.md)
+- [Documentación Técnica](/docs/)
+  - [API](/docs/api/)
+  - [Arquitectura](/docs/arquitectura/)
+  - [Despliegue](/docs/despliegue/)
+  - [Catálogo de Repositorios](/docs/repositorios/)
+  - [Inteligencia Artificial](/docs/inteligencia-artificial/)
+    - [AGENTS.md](AGENTS.md)
+    - [Skills](/docs/inteligencia-artificial/skills.html)
+```
+
+Actualiza índices cuando agregues, renombres o muevas páginas publicadas.
 
 ## Responsabilidades por Archivo
 
-- `README.md`: entrada del repositorio en GitHub. Debe ser breve y enlazar a la documentación publicada y documentos clave.
-- `index.md`: página inicial publicada de la documentación del repositorio.
-- `AGENTS.md`: instrucciones operativas para agentes de código que trabajen en el repositorio.
-- `docs/index.md`: índice técnico y entrada de navegación.
-- `docs/arquitectura.md`: arquitectura, componentes, decisiones, diagramas, límites y dependencias que requieren explicación.
-- `docs/despliegue.md`: ambientes, validación local, CI/CD, despliegue, verificación, rollback y relación implementación-documentación.
-- `docs/repositorios.md`: repositorios relacionados, dependencias, proveedores, consumidores, integraciones o infraestructura relacionada. Solo en el portal central representa el inventario completo LAND4.
-- `req/`: requerimientos de negocio, casos de uso, historias de usuario, criterios de aceptación y reglas.
-- `procesos/`: procesos propios del repositorio. Enlaza al proceso central cuando el estándar sea suficiente.
-- `.agents/skills/<skill-name>/SKILL.md`: Agent Skill reutilizable. La carpeta y el campo `name` deben coincidir.
+- `README.md`: entrada breve del repo en GitHub; enlaza documentación técnica, arquitectura, despliegue, GitHub Pages del repo si existe y catálogo central.
+- `docs-repo/index.md`: inicio publicado del sitio de documentación; navegación anidada igual al menú.
+- `AGENTS.md`: instrucciones operativas para agentes; source of truth publicado en `/docs/inteligencia-artificial/agents/`.
+- `docs-repo/docs/index.md`: índice técnico publicado.
+- `docs-repo/docs/api.md`: superficie pública de API, Swagger, módulos, autenticación, convenciones de errores y ejemplos mínimos.
+- `docs-repo/docs/arquitectura.md`: arquitectura, componentes relevantes, decisiones, diagramas Mermaid, límites y dependencias con explicación.
+- `docs-repo/docs/despliegue.md`: ambientes, requerimientos, validación local, CI/CD, despliegue, verificación, rollback y relación implementación-documentación.
+- `docs-repo/docs/repositorios.md`: repositorios relacionados con este sistema. Solo el portal central lista todos los repos LAND4.
+- `docs-repo/docs/pnpm-migration-security.md`: política local de pnpm cuando el repo tenga decisiones propias de scripts aprobados/bloqueados.
+- `docs-repo/docs/inteligencia-artificial/index.md`: índice de instrucciones para agentes y skills locales.
+- `docs-repo/docs/inteligencia-artificial/skills.md`: catálogo generado de `.agents/skills/**/SKILL.md`; no se edita manualmente si existe script generador.
+- `req/`: requerimientos de negocio, casos de uso, historias, criterios y reglas cuando apliquen.
+- `procesos/`: solo procesos propios no cubiertos por el portal central.
 
-## Flujo de Trabajo
+## Catálogo de Repositorios
 
-1. Inspecciona los archivos existentes antes de editar. Respeta la navegación y nombres ya usados en el repositorio.
-2. Identifica la fuente canónica de cada información. Mueve o enlaza en lugar de duplicar.
-3. Actualiza los índices cuando agregues, renombres o muevas páginas publicadas.
-4. Usa enlaces relativos para Markdown interno, excepto enlaces publicados del portal que intencionalmente apunten a GitHub Pages.
-5. En diagramas Mermaid, usa etiquetas entre comillas cuando los nodos tengan rutas, puntos o puntuación que pueda romper Mermaid 10.1.0.
-6. Para cambios solo de Markdown, la verificación normal es recargar la página local e inspeccionar el render.
-7. Ejecuta build de Jekyll solo cuando cambie configuración, navegación, dependencias, páginas con Mermaid complejo o comportamiento de publicación.
+`docs-repo/docs/repositorios.md` debe usar el formato mínimo del portal central:
 
-## Revisión de Enlaces y Duplicación
+```markdown
+| Sistema / Proyecto | Repositorio | Tipo | Descripción | Documentación publicada | Responsable | Estado |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+```
 
-Antes de finalizar, revisa:
+Estados válidos: `Activo`, `En desarrollo`, `Archivado`, `Deprecado`, `Pendiente de documentación`.
+
+La columna "Documentación publicada" debe apuntar a GitHub Pages o indicar que está pendiente. No apuntes a Markdown crudo como documentación publicada.
+
+## Jekyll/Just the Docs Local
+
+Si el repo publica documentación en GitHub Pages, agrega la configuración mínima para probar localmente como el portal central.
+
+La validación local de Jekyll debe ejecutarse con Docker Compose. No dependas de Ruby, Bundler o gems instaladas en la máquina del colaborador para validar documentación localmente.
+
+`docs-repo/Gemfile`:
+
+```ruby
+source "https://rubygems.org"
+
+gem "github-pages", group: :jekyll_plugins
+```
+
+`docs-repo/docker-compose.yml`:
+
+```yaml
+services:
+  docs:
+    image: ruby:3.3
+    working_dir: /site
+    environment:
+      BUNDLE_GEMFILE: /site/docs-repo/Gemfile
+      BUNDLE_PATH: vendor/bundle
+    volumes:
+      - ..:/site
+    ports:
+      - "${DOCS_PORT:-4003}:4000"
+    command: bundle exec jekyll serve --config docs-repo/_config.yml --host 0.0.0.0
+```
+
+`docs-repo/_config.yml` debe incluir, ajustando `title`, `description`, `baseurl` y `aux_links`:
+
+```yaml
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+color_scheme: land4
+logo: "docs-repo/assets/images/L4.png"
+search_enabled: true
+mermaid:
+  version: "10.1.0"
+sass:
+  sass_dir: docs-repo/_sass
+exclude:
+  - .bundle/
+  - .jekyll-cache/
+  - .astro/
+  - _site/
+  - dist/
+  - node_modules/
+  - vendor/
+  - src/
+  - prisma/
+  - test/
+  - coverage/
+  - public/
+  - .agents/
+  - .github/
+  - .vscode/
+  - docs-repo/docker-compose.yml
+  - docs/
+```
+
+Agrega a `.gitignore`:
+
+```gitignore
+/vendor/
+/.bundle/
+/.jekyll-cache/
+/_site/
+```
+
+Si el repo también tiene ESLint, ignora esos artefactos en la configuración de lint.
+
+## Scripts y GitHub Pages
+
+Si el repositorio publica catálogo de Agent Skills, usa el mismo script generador tanto en local como en el workflow. Ese script debe leer `.agents/skills/**/SKILL.md` y escribir la página publicada `docs-repo/docs/inteligencia-artificial/skills.md`.
+
+Comando canónico del generador para repos con `docs-repo/`:
+
+```bash
+node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+```
+
+Si el repo publica documentación, agrega scripts en `package.json` solo cuando el proyecto ya usa Node/pnpm o cuando faciliten validación repetible:
+
+```json
+{
+  "scripts": {
+    "docs:skills": "node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts",
+    "docs:build": "pnpm run docs:skills && docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml",
+    "docs:serve": "pnpm run docs:skills && docker compose -f docs-repo/docker-compose.yml up docs",
+    "docs:down": "docker compose -f docs-repo/docker-compose.yml down"
+  }
+}
+```
+
+Si usas GitHub Pages, versiona `.github/workflows/docs.yml` con estos mínimos:
+
+- Triggers solo en la rama publicable principal del repo (`main`) y ejecución manual con `workflow_dispatch` cuando aplique. No incluyas `staging`, `develop` ni ramas temporales.
+- `paths` limitados a documentación, `AGENTS.md`, `README.md`, `docs-repo/**`, `.agents/skills/**` y el workflow.
+- Node 22 para ejecutar el mismo generador de skills usado en local: `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts`.
+- Ruby 3.3 con `bundler-cache: true` y `working-directory: docs-repo`.
+- `actions/configure-pages`, `bundle exec jekyll build --config docs-repo/_config.yml`, `actions/upload-pages-artifact` y `actions/deploy-pages`.
+
+Esta configuración de Ruby aplica solo al build de Jekyll en el runner de GitHub Actions. Para validación local de Jekyll, usa siempre los comandos Docker de la sección de Validación Local. El generador de skills es el mismo comando Node en ambos entornos.
+
+No agregues ramas temporales al workflow de documentación.
+
+## Tema Visual LAND4
+
+Para igualar el portal central, agrega:
+
+- `_sass/color_schemes/land4.scss`
+- `_sass/custom/custom.scss`
+- `assets/images/L4.png`
+- `color_scheme: land4` en `docs-repo/_config.yml`
+
+Estos archivos deben vivir bajo `docs-repo/` en repos normales:
+
+- `docs-repo/_sass/color_schemes/land4.scss`
+- `docs-repo/_sass/custom/custom.scss`
+- `docs-repo/assets/images/L4.png`
+
+Usa el contenido del portal central como fuente canónica:
+
+- `https://raw.githubusercontent.com/L4CR/L4.docs-organizacion/main/_sass/color_schemes/land4.scss`
+- `https://raw.githubusercontent.com/L4CR/L4.docs-organizacion/main/_sass/custom/custom.scss`
+- `https://raw.githubusercontent.com/L4CR/L4.docs-organizacion/main/assets/images/L4.png`
+
+## Validación Local
+
+Para documentación local, ejecuta primero el generador de skills si el repositorio publica catálogo:
+
+```bash
+node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+```
+
+Luego valida Jekyll con Docker Compose:
+
+```bash
+docker compose -f docs-repo/docker-compose.yml run --rm docs bundle install
+docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml
+docker compose -f docs-repo/docker-compose.yml up docs
+```
+
+Por convención LAND4, usa `4003` como puerto local por defecto para evitar conflicto con el portal central en `4000`. Si `4003` está ocupado:
+
+```bash
+DOCS_PORT=4004 docker compose -f docs-repo/docker-compose.yml up docs
+```
+
+Revisa localmente:
+
+- Página principal carga.
+- Menú y `docs-repo/index.md` tienen la misma jerarquía.
+- Páginas nuevas aparecen en navegación.
+- Enlaces agregados funcionan.
+- Mermaid renderiza si cambiaste diagramas.
+- Páginas removidas ya no aparecen ni tienen enlaces internos.
+
+Para repos con aplicación, ejecuta además sus validaciones propias (`npm run lint`, `npm run build`, tests, etc.).
+
+## Personalización de Colores (Tema Oscuro)
+
+Para evitar la fatiga visual y mejorar la accesibilidad (especialmente para usuarios que prefieren esquemas oscuros), los repositorios de documentación LAND4 deben ofrecer soporte para tema oscuro o utilizar variables oscuras en su esquema personalizado.
+
+Para configurar el tema visual oscuro:
+
+1. **Configuración en `_config.yml`:**
+   Si se desea utilizar el tema oscuro nativo de Just the Docs, se puede establecer:
+   ```yaml
+   color_scheme: dark
+   ```
+
+2. **Esquema Personalizado Oscuro (`land4.scss`):**
+   Si se utiliza `color_scheme: land4` (recomendado para consistencia de marca), las variables del archivo `docs-repo/_sass/color_schemes/land4.scss` deben definirse con valores oscuros que aseguren un alto contraste (por ejemplo, fondos en tonos oscuros como `#0f172a` y texto claro como `#cbd5e1`).
+
+   Ejemplo de variables para el tema oscuro LAND4:
+   ```scss
+   $body-background-color: #0f172a; // slate-900
+   $sidebar-color: #1e293b; // slate-800
+   $search-background-color: #1e293b;
+   $table-background-color: #1e293b;
+   $code-background-color: #111827; // slate-950
+   $body-heading-color: #f8fafc; // slate-50
+   $body-text-color: #cbd5e1; // slate-300
+   $link-color: #c084fc; // purple-400
+   $nav-child-link-color: #94a3b8; // slate-400
+   $border-color: #334155; // slate-700
+   $btn-primary-color: #a855f7; // purple-500
+   ```
+
+## Revisión Final
+
+Antes de terminar:
 
 - Ningún enlace interno apunta a archivos removidos o renombrados.
-- Las etiquetas de navegación coinciden con los títulos, especialmente `Catálogo de Repositorios`.
-- Las páginas ocultas o históricas no duplican estándares activos; deben apuntar a páginas canónicas.
-- `docs/repositorios.md` describe repositorios relacionados en repos normales y todos los repos LAND4 solo en el portal central.
-- Los comandos de despliegue y detalles de CI viven en `docs/despliegue.md`, no dispersos en varias páginas.
-- El lenguaje de negocio y criterios de aceptación viven en `req/`; el flujo de entrega vive en `procesos/`.
+- `README.md` es breve; los detalles técnicos viven en `docs-repo/docs/`.
+- `docs-repo/docs/despliegue.md` concentra comandos de despliegue, CI/CD y validación local.
+- `docs-repo/docs/repositorios.md` usa el formato de catálogo y no reemplaza arquitectura.
+- `docs-repo/index.md` refleja la navegación anidada real.
+- No se versionan `_site/`, `vendor/`, `.bundle/` ni `.jekyll-cache/`.
+- No hay páginas locales para contenido que pertenece a estándares generales o datos obvios.
 
-## Reglas para Agent Skills
+## Agent Skills
 
-Al crear un skill:
+Al crear un skill local:
 
 - Usa `.agents/skills/<skill-name>/SKILL.md`.
-- Incluye frontmatter YAML con `name` y `description`.
-- Usa minúsculas, números y guiones para la carpeta y el campo `name`.
-- Mantén `SKILL.md` conciso y procedural.
-- Coloca material largo en `references/`, scripts reutilizables en `scripts/` y plantillas o assets en `assets/`.
-- No agregues archivos auxiliares como README, changelog o guías de instalación salvo que el usuario lo pida explícitamente.
+- `name` debe coincidir con la carpeta.
+- Usa minúsculas, números y guiones.
+- Incluye `description` clara sobre cuándo debe activarse.
+- No dupliques skills manualmente en `docs-repo/docs/`; si se publica un índice de skills, debe generarse durante el pipeline.
+- Si el repo publica el catálogo, usa `docs-repo/scripts/generate-skills-docs.ts` para leer `.agents/skills/**/SKILL.md`, tolerar repos sin skills y escribir `docs-repo/docs/inteligencia-artificial/skills.md`.
+- La página generada debe incluir frontmatter de Just the Docs, `parent: Inteligencia Artificial` y permalink estable, por ejemplo `/docs/inteligencia-artificial/skills.html`.

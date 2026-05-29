@@ -3,6 +3,7 @@ layout: default
 title: Arquitectura
 parent: Documentación Técnica
 nav_order: 1
+permalink: /docs/arquitectura.html
 ---
 
 # 🧱 Arquitectura del Portal
@@ -53,8 +54,8 @@ graph TD
 ```mermaid
 flowchart TD
     A[Markdown en el repositorio] --> B[Jekyll]
-    C[_config.yml] --> B
-    D[_sass y assets] --> B
+    C["docs-repo/_config.yml"] --> B
+    D["docs-repo/_sass y docs-repo/assets"] --> B
     B --> E[_site]
     E --> F[GitHub Pages]
 
@@ -67,17 +68,17 @@ flowchart TD
 | :--- | :--- |
 | `README.md` | Entrada técnica para colaboradores del repositorio. |
 | `AGENTS.md` | Instrucciones operativas para agentes de código que trabajen en el repositorio. |
-| `index.md` | Página principal del portal publicado. |
-| `_config.yml` | Configuración de Jekyll, tema, navegación, logo y búsqueda. |
-| `_sass/` | Personalización visual del tema con tokens LAND4. |
-| `assets/` | Recursos estáticos como logos e imágenes. |
-| `docs/` | Documentación técnica del propio portal. |
-| `docs/inteligencia-artificial/index.md` | Referencia organizacional para el uso de estándares abiertos de inteligencia artificial, incluyendo `AGENTS.md` y Agent Skills. |
-| `docs/repositorios.md` | Repositorios relacionados del repo actual; en el portal central, inventario de todos los repositorios LAND4. |
+| `docs-repo/index.md` | Página principal del portal publicado. |
+| `docs-repo/_config.yml` | Configuración de Jekyll, tema, navegación, logo y búsqueda. |
+| `docs-repo/_sass/` | Personalización visual del tema con tokens LAND4. |
+| `docs-repo/assets/` | Recursos estáticos como logos e imágenes. |
+| `docs-repo/docs/` | Documentación técnica del propio portal. |
+| `docs-repo/docs/inteligencia-artificial/index.md` | Referencia organizacional para el uso de estándares abiertos de inteligencia artificial, incluyendo `AGENTS.md` y Agent Skills. |
+| `docs-repo/docs/repositorios.md` | Repositorios relacionados del repo actual; en el portal central, inventario de todos los repositorios LAND4. |
 | `.agents/skills/` | Ubicación recomendada para Agent Skills versionados cuando un repositorio necesite capacidades reutilizables. |
 | `req/` | Guías y plantillas para requerimientos de negocio. |
 | `procesos/` | Procesos transversales, como GitHub Flow LAND4. |
-| `.github/workflows/pages.yml` | Pipeline de compilación y despliegue a GitHub Pages. |
+| `.github/workflows/docs.yml` | Pipeline de compilación y despliegue a GitHub Pages. |
 
 ---
 
@@ -98,8 +99,8 @@ sequenceDiagram
 
     Dev->>PR: Propone cambios de documentación
     PR->>Main: Merge aprobado
-    Main->>Actions: Dispara workflow pages.yml
-    Actions->>Actions: Compila Jekyll
+    Main->>Actions: Dispara workflow docs.yml
+    Actions->>Actions: Genera catálogo de skills y compila Jekyll
     Actions->>Pages: Publica artefacto estático
 ```
 
@@ -118,6 +119,6 @@ sequenceDiagram
 
 ## Límites del sistema
 
-Este portal no reemplaza la documentación específica de cada producto. Cada repositorio LAND4 debe mantener su propia documentación técnica en `/docs` cuando el detalle dependa del código, despliegue o arquitectura de ese sistema.
+Este portal no reemplaza la documentación específica de cada producto. Cada repositorio LAND4 debe mantener su propia documentación técnica en `docs-repo/docs/` cuando el detalle dependa del código, despliegue o arquitectura de ese sistema.
 
 El portal central define estándares, procesos y puntos de entrada compartidos.

@@ -3,6 +3,7 @@ layout: default
 title: Casos de Prueba
 parent: Documentación Técnica
 nav_order: 5
+permalink: /docs/casos-prueba.html
 ---
 
 # 🧪 Guía: ¿Cómo redactar un Caso de Prueba?
@@ -155,4 +156,4 @@ El sistema guarda los datos básicos y permite avanzar al siguiente paso del reg
 *   Durante UAT, el PO valida que la solución cumple la necesidad de negocio.
 *   El Pull Request debe indicar qué pruebas aplican, cuáles fueron ejecutadas y qué queda como `N/A`.
 
-Para el flujo completo de ramas, PRs, QA, UAT y ambientes, consulta **[GitHub Flow LAND4](../procesos/github-flow.md)**.
+Para el flujo completo de ramas, PRs, QA, UAT y ambientes, consulta **[GitHub Flow LAND4](/procesos/github-flow.html)**.

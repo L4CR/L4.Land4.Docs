@@ -203,4 +203,4 @@ Para LAND4:
 
 *   **[Historias de Usuario](../req/historia-usuario.md):** Cómo redactar y estructurar una HU.
 *   **[Criterios de Aceptación](../req/criterios-aceptacion.md):** Cómo definir condiciones verificables.
-*   **[¿Cómo Documentar?](../como-documentar.md):** Estándar Docs-as-Code para documentación técnica y de negocio.
+*   **[¿Cómo Documentar?](/como-documentar.html):** Estándar Docs-as-Code para documentación técnica y de negocio.

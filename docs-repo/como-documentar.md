@@ -2,6 +2,7 @@
 layout: default
 title: ¿Cómo Documentar?
 nav_order: 3
+permalink: /como-documentar.html
 ---
 
 # 📝 Guía Práctica: ¿Cómo Documentar?
@@ -14,23 +15,36 @@ Esto significa que la documentación vive junto al código, se versiona en Git y
 
 ## 🏗️ Estructura Estándar en cada Repositorio
 
-Cada repositorio de código en la organización debe mantener la siguiente estructura mínima en su rama principal (`main` o `master`):
+Cada repositorio de código en la organización debe mantener la siguiente estructura mínima en su rama principal (`main`):
 
 ```text
 nombre-del-repositorio/
 ├── README.md                # Entrada del repositorio en GitHub y página publicada en /readme/
 ├── AGENTS.md                # Instrucciones para agentes y página publicada en /docs/inteligencia-artificial/agents/
-├── index.md                 # Entrada publicada del repositorio e índice principal
-├── docker-compose.yml       # Ambiente local versionado, si el repo usa contenedores
+├── docs-repo/               # Publicación, estilo y validación Jekyll
+│   ├── index.md             # Entrada publicada del repositorio e índice principal
+│   ├── Gemfile
+│   ├── Gemfile.lock
+│   ├── _config.yml
+│   ├── docker-compose.yml   # Ambiente local versionado para documentación
+│   ├── scripts/
+│   │   └── generate-skills-docs.ts
+│   ├── _sass/
+│   │   ├── color_schemes/land4.scss
+│   │   └── custom/custom.scss
+│   ├── assets/images/L4.png
+│   └── docs/                # Documentación técnica publicada
+│       ├── index.md
+│       ├── arquitectura.md
+│       ├── despliegue.md
+│       ├── repositorios.md
+│       └── inteligencia-artificial/
+│           ├── index.md
+│           └── skills.md    # Generado durante el build si hay skills
 ├── .agents/                 # Skills reutilizables para agentes, si aplican
 │   └── skills/
 │       └── nombre-del-skill/
 │           └── SKILL.md
-├── docs/                    # Carpeta para Documentación TÉCNICA
-│   ├── index.md             # Índice de la documentación técnica publicada
-│   ├── arquitectura.md      # Diseño del sistema, diagramas, decisiones técnicas
-│   ├── despliegue.md        # Pasos y requerimientos para validar y desplegar en ambientes
-│   └── repositorios.md      # Repositorios relacionados, dependencias o integraciones
 ├── req/                     # Carpeta para Requerimientos de NEGOCIO (Casos de Uso)
 │   └── CU-01-registro.md    # Especificaciones funcionales y flujos de negocio
 ├── procesos/                # Solo si el repositorio define procesos propios
@@ -61,11 +75,11 @@ Con esta convención:
 Un buen `README.md` contiene:
 
 *   Una breve descripción de qué hace el proyecto.
-*   Enlace a la documentación técnica: `[Documentación Técnica](docs/index.md)`.
-*   Enlace rápido a la arquitectura cuando aplique: `[Arquitectura y Diseño](docs/arquitectura.md)`.
-*   Enlace rápido a la guía de despliegue y validación local cuando aplique: `[Despliegue](docs/despliegue.md)`.
+*   Enlace a la documentación técnica publicada: `[Documentación Técnica](/docs/)`.
+*   Enlace rápido a la arquitectura cuando aplique: `[Arquitectura y Diseño](/docs/arquitectura.html)`.
+*   Enlace rápido a la guía de despliegue y validación local cuando aplique: `[Despliegue](/docs/despliegue.html)`.
 *   Enlace a la documentación publicada del propio repositorio en GitHub Pages.
-*   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios)`.
+*   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios/)`.
 *   Enlaces a casos de uso o historias relevantes cuando existan en `/req`.
 
 ### 2. El archivo `AGENTS.md` (Instrucciones para agentes)
@@ -101,14 +115,14 @@ Como mínimo debe documentar:
 *   Verificación esperada antes de finalizar una tarea.
 *   Criterios para Pull Requests, incluyendo cuándo actualizar documentación relacionada.
 
-La referencia organizacional vive en **[Inteligencia Artificial](docs/inteligencia-artificial/)** y su página **[AGENTS.md](docs/inteligencia-artificial/agents/)**.
+La referencia organizacional vive en **[Inteligencia Artificial](/docs/inteligencia-artificial/)** y su página **[AGENTS.md](/docs/inteligencia-artificial/agents/)**.
 
-### 3. El archivo `index.md` (Entrada publicada)
+### 3. El archivo `docs-repo/index.md` (Entrada publicada)
 
 Es la página principal del repositorio cuando su documentación se publica en GitHub Pages. Debe funcionar como índice navegable y reflejar la jerarquía real del menú:
 
 *   Enlace a `README.md` solo si aporta contexto para colaboradores en GitHub.
-*   Enlace a `docs/index.md` como entrada de la documentación técnica.
+*   Enlace a `/docs/` como entrada publicada de la documentación técnica.
 *   Enlaces a `/req`, `/procesos` u otras secciones cuando apliquen.
 *   Enlaces a páginas hijas solo si ayudan a navegar sin duplicar contenido.
 
@@ -133,18 +147,18 @@ Reglas mínimas:
 *   Mantén `SKILL.md` enfocado; mueve documentación extensa a `references/`.
 *   Usa `scripts/` para automatizaciones reutilizables y `assets/` para plantillas o recursos.
 
-Las skills no se duplican manualmente dentro de `/docs`. El pipeline de GitHub Pages detecta los archivos `.agents/skills/**/SKILL.md` y genera durante el despliegue la página publicada de Skills dentro de la sección de Inteligencia Artificial.
+Las skills no se duplican manualmente dentro de `docs-repo/docs/`. El pipeline de GitHub Pages detecta los archivos `.agents/skills/**/SKILL.md` y genera durante el despliegue la página publicada de Skills dentro de la sección de Inteligencia Artificial.
 
 Con esta convención:
 
 *   `.agents/skills/**/SKILL.md` es el source of truth.
-*   `docs/inteligencia-artificial/skills.md` se genera como artefacto temporal del build.
-*   El archivo generado no debe versionarse manualmente.
+*   `docs-repo/docs/inteligencia-artificial/skills.md` se genera como artefacto temporal del build.
+*   El archivo generado no debe versionarse.
 *   Si una skill no declara `name` o `description`, el deploy debe fallar para proteger el estándar.
 
-Consulta **[Inteligencia Artificial](docs/inteligencia-artificial/)** y la documentación oficial enlazada ahí antes de crear o modificar skills.
+Consulta **[Inteligencia Artificial](/docs/inteligencia-artificial/)** y la documentación oficial enlazada ahí antes de crear o modificar skills.
 
-### 5. La carpeta `/docs` (Documentación técnica publicada)
+### 5. La carpeta `docs-repo/docs/` (Documentación técnica publicada)
 
 Aquí vive el grueso del conocimiento de implementación y la entrada navegable de la documentación técnica del repositorio. Divide el contenido en archivos temáticos:
 
@@ -170,15 +184,15 @@ Cuando una página sea derivada de metadata o contratos del repositorio, debe ge
 
 | Fuente | Página generada | Motivo |
 | :--- | :--- | :--- |
-| `.agents/skills/**/SKILL.md` | `docs/inteligencia-artificial/skills.md` | Listar skills disponibles con `name` y `description` |
+| `.agents/skills/**/SKILL.md` | `docs-repo/docs/inteligencia-artificial/skills.md` | Listar skills disponibles con `name` y `description` |
 
 Esta regla evita inconsistencias entre la configuración real del repositorio y la documentación publicada.
 
-#### Qué debe contener `docs/repositorios.md`
+#### Qué debe contener `docs-repo/docs/repositorios.md`
 
-Cada repositorio debe registrar en `docs/repositorios.md` los repositorios con los que tiene relación directa. La relación puede ser una dependencia técnica, integración, repositorio consumidor, repositorio proveedor, librería compartida, infraestructura relacionada o documentación necesaria para operar el sistema.
+Cada repositorio debe registrar en `docs-repo/docs/repositorios.md` los repositorios con los que tiene relación directa. La relación puede ser una dependencia técnica, integración, repositorio consumidor, repositorio proveedor, librería compartida, infraestructura relacionada o documentación necesaria para operar el sistema.
 
-El portal central `L4.docs-organizacion` es la excepción: como punto central de consulta, su `docs/repositorios.md` registra todos los repositorios LAND4.
+El portal central `L4.docs-organizacion`, como punto central de consulta, registra todos los repositorios LAND4 en `docs-repo/docs/repositorios.md`.
 
 Como mínimo, cada fila debe incluir:
 
@@ -190,9 +204,9 @@ Como mínimo, cada fila debe incluir:
 *   **Responsable:** equipo, área o persona responsable.
 *   **Estado:** `Activo`, `En desarrollo`, `Archivado`, `Deprecado` o `Pendiente de documentación`.
 
-`docs/repositorios.md` no reemplaza `docs/arquitectura.md`. Si la relación con otro repositorio requiere explicar contratos, flujos, eventos, dependencias de despliegue o riesgos, documenta ese detalle en arquitectura y usa `repositorios.md` como índice navegable.
+`docs-repo/docs/repositorios.md` no reemplaza `docs-repo/docs/arquitectura.md`. Si la relación con otro repositorio requiere explicar contratos, flujos, eventos, dependencias de despliegue o riesgos, documenta ese detalle en arquitectura y usa `repositorios.md` como índice navegable.
 
-#### Qué debe contener `docs/despliegue.md`
+#### Qué debe contener `docs-repo/docs/despliegue.md`
 
 Cada repositorio que tenga despliegue propio debe documentar su operación real, no una guía genérica. Como mínimo debe incluir:
 
@@ -203,9 +217,9 @@ Cada repositorio que tenga despliegue propio debe documentar su operación real,
 *   **Pasos de despliegue:** qué ocurre desde el merge hasta que el cambio queda publicado.
 *   **Verificación posterior:** checks mínimos para confirmar que el despliegue fue exitoso.
 *   **Rollback o recuperación:** cómo volver a un estado anterior o dónde escalar si falla.
-*   **Relación implementación-documentación:** cualquier cambio en infraestructura, pipeline, ambientes, variables, contenedores o assets requeridos debe actualizar `docs/despliegue.md` en el mismo Pull Request.
+*   **Relación implementación-documentación:** cualquier cambio en infraestructura, pipeline, ambientes, variables, contenedores o assets requeridos debe actualizar `docs-repo/docs/despliegue.md` en el mismo Pull Request.
 
-Además, si un repositorio se registra en el inventario central o en el `docs/repositorios.md` de otro sistema, debe publicar su documentación en GitHub Pages para que los catálogos apunten a documentación navegable, no a archivos Markdown crudos en GitHub.
+Además, si un repositorio se registra en el inventario central o en el `docs-repo/docs/repositorios.md` de otro sistema, debe publicar su documentación en GitHub Pages para que los catálogos apunten a documentación navegable, no a archivos Markdown crudos en GitHub.
 
 ### 6. La carpeta `/req` (Requerimientos de Negocio)
 
@@ -242,6 +256,6 @@ Esta carpeta solo debe existir cuando el repositorio necesite documentar proceso
 Cuando agregues una nueva funcionalidad, cambies una variable de entorno o modifiques la base de datos:
 
 1. Crea tu rama de Git para desarrollar la funcionalidad.
-2. Realiza los cambios en el código **y edita los archivos correspondientes en `README.md`, `AGENTS.md`, `docs/`, `.agents/skills/` o `req/` en esa misma rama**.
+2. Realiza los cambios en el código **y edita los archivos correspondientes en `README.md`, `AGENTS.md`, `docs-repo/docs/`, `.agents/skills/` o `req/` en esa misma rama**.
 3. Envía tu Pull Request. El revisor evaluará tanto la calidad del código como que la documentación refleje el nuevo cambio.
 4. Una vez fusionado en `main`, tu documentación estará actualizada.
