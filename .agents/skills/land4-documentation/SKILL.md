@@ -39,7 +39,9 @@ repository/
 │   │   ├── color_schemes/land4.scss
 │   │   └── custom/custom.scss
 │   ├── assets/images/L4.png
-│   ├── docs/
+│   ├── req/
+│   ├── procesos/
+│   └── docs/
 │       ├── index.md
 │       ├── api.md
 │       ├── arquitectura.md
@@ -49,8 +51,6 @@ repository/
 │       └── inteligencia-artificial/
 │           ├── index.md
 │           └── skills.md       # generado si hay catálogo de skills
-│   ├── req/
-│   └── procesos/
 ├── .github/
 │   ├── workflows/docs.yml          # si se publica con GitHub Pages
 │   └── PULL_REQUEST_TEMPLATE/*.md  # si se publican plantillas de PR
