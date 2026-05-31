@@ -3,6 +3,7 @@ layout: default
 title: Onboarding
 nav_order: 7
 has_children: false
+permalink: /onboarding/
 ---
 
 # 🚀 Bienvenida al Equipo de Tecnología — LAND4
@@ -36,8 +37,8 @@ Antes de clonar los repositorios, asegúrate de configurar tu máquina local:
 ## 💻 Configuración de Proyectos
 
 Una vez tengas tus accesos a la organización de GitHub:
-1. Dirígete al **[Catálogo de Repositorios](../docs/repositorios.md)**.
+1. Dirígete al **[Catálogo de Repositorios](../docs/repositorios/)**.
 2. Identifica el repositorio del proyecto en el cual vas a trabajar.
-3. Clona el proyecto y sigue los pasos detallados en su archivo `docs/despliegue.md` o `README.md`.
+3. Clona el proyecto y sigue los pasos detallados en su archivo `docs-repo/docs/despliegue.md` o `README.md`.
 
 *Si encuentras algún problema o paso desactualizado durante la configuración de tu entorno, te animamos a corregirlo y enviar un Pull Request para mejorar el proceso para futuros compañeros.*

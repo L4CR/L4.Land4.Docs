@@ -3,6 +3,7 @@ layout: default
 title: Criterios de Aceptación
 parent: Requerimientos de Negocio
 nav_order: 2
+permalink: /req/criterios-aceptacion.html
 ---
 
 # 📋 Guía: ¿Cómo redactar buenos Criterios de Aceptación?

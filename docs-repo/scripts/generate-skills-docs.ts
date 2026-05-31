@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { basename, dirname, join } from 'node:path';
 
 const SKILLS_ROOT = '.agents/skills';
-const OUTPUT_DIR = 'docs/inteligencia-artificial';
+const OUTPUT_DIR = 'docs-repo/docs/inteligencia-artificial';
 const OUTPUT_FILE = join(OUTPUT_DIR, 'skills.md');
 
 type SkillMetadata = {
@@ -128,6 +128,7 @@ layout: default
 title: Skills
 parent: Inteligencia Artificial
 nav_order: 10
+permalink: /docs/inteligencia-artificial/skills.html
 ---
 
 # Skills
@@ -143,7 +144,7 @@ ${rows}
 Si agregas o modificas una skill en \`.agents/skills/*/SKILL.md\` y deseas actualizar esta lista de skills localmente, puedes ejecutar el siguiente comando desde la raíz del repositorio:
 
 \`\`\`bash
-npx tsx scripts/generate-skills-docs.ts
+node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
 \`\`\`
 
 Este comando leerá el front matter de todas las skills y actualizará esta página de forma automática.
