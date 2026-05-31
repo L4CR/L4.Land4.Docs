@@ -18,7 +18,7 @@ El portal aplica el estándar que documenta para otros repositorios: mantiene `R
 
 | Ambiente | Propósito | Implementación | URL / acceso |
 | :--- | :--- | :--- | :--- |
-| **Local** | Validar cambios antes del Pull Request. | Docker Compose + Ruby 3.3 + Jekyll. | [http://localhost:4003](http://localhost:4003) |
+| **Local** | Validar cambios antes del Pull Request. | Docker Compose + Ruby 3.3 + Jekyll. | [http://localhost:4003/L4.docs-organizacion/](http://localhost:4003/L4.docs-organizacion/) |
 | **CI** | Compilar el sitio y detectar errores antes de publicar. | GitHub Actions con `.github/workflows/docs.yml`. | Pestaña **Actions** del repositorio. |
 | **Producción** | Publicar el portal central para consulta del equipo. | GitHub Pages después de fusionar en `main`. | [https://l4cr.github.io/L4.docs-organizacion/](https://l4cr.github.io/L4.docs-organizacion/) |
 
@@ -55,7 +55,7 @@ El ambiente **Local** permite compilar y previsualizar el portal antes de abrir 
 *   Acceso a internet la primera vez que se descargan la imagen `ruby:3.3` y las gems.
 *   Puerto `4003` disponible si se quiere levantar el servidor local.
 
-El contenedor local está definido en `docs-repo/docker-compose.yml` con el servicio `docs`.
+El contenedor local está definido en `docs-repo/docker-compose.yml` con el servicio `docs`. La vista previa conserva el mismo `baseurl` productivo para validar las rutas reales de GitHub Pages.
 
 ### Pasos
 
@@ -86,7 +86,7 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
 
 5. Abre el portal en:
 
-   [http://localhost:4003](http://localhost:4003)
+   [http://localhost:4003/L4.docs-organizacion/](http://localhost:4003/L4.docs-organizacion/)
 
 ### Validaciones mínimas
 
@@ -116,6 +116,7 @@ El despliegue productivo se ejecuta automáticamente con GitHub Actions.
 | Runner | `ubuntu-latest` |
 | Ambiente GitHub | `github-pages` |
 | Configuración Jekyll | `docs-repo/_config.yml` |
+| URL base productiva | `https://l4cr.github.io/L4.docs-organizacion/` |
 | Destination | `./_site` |
 | Build | `bundle exec jekyll build --config docs-repo/_config.yml --destination ./_site` con Ruby 3.3 y Bundler cache |
 | Publicación | `actions/upload-pages-artifact@v3` y `actions/deploy-pages@v4` |

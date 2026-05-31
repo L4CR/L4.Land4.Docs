@@ -10,7 +10,7 @@ permalink: /docs/
 
 Esta sección es la entrada técnica publicada de este repositorio. Reúne la arquitectura, el despliegue, el catálogo de repositorios y la referencia de inteligencia artificial del portal.
 
-Este `docs-repo/docs/` implementa el estándar definido en **[¿Cómo Documentar?](/como-documentar.html)**: mantiene un índice técnico, una guía de arquitectura, una guía de despliegue y documentación navegable publicada con GitHub Pages.
+Este `docs-repo/docs/` implementa el estándar definido en **[¿Cómo Documentar?](../como-documentar.html)**: mantiene un índice técnico, una guía de arquitectura, una guía de despliegue y documentación navegable publicada con GitHub Pages.
 
 ---
 
@@ -18,11 +18,11 @@ Este `docs-repo/docs/` implementa el estándar definido en **[¿Cómo Documentar
 
 En este directorio encontrarás:
 
-*   **[Arquitectura](/docs/arquitectura.html):** Diseño técnico del portal, componentes, flujo de publicación y decisiones técnicas.
-*   **[Despliegue](/docs/despliegue.html):** Ambientes, pasos y requerimientos para validar localmente y desplegar la documentación en GitHub Pages.
-*   **[Catálogo de Repositorios](/docs/repositorios/):** Inventario de repositorios relacionados. En este portal central funciona como inventario de todos los repositorios LAND4.
-*   **[Inteligencia Artificial](/docs/inteligencia-artificial/):** Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
-*   **[Plantillas de Pull Request](/docs/pr-templates/):** Vista publicada de las plantillas operativas de `.github/PULL_REQUEST_TEMPLATE/`.
+*   **[Arquitectura](arquitectura.html):** Diseño técnico del portal, componentes, flujo de publicación y decisiones técnicas.
+*   **[Despliegue](despliegue.html):** Ambientes, pasos y requerimientos para validar localmente y desplegar la documentación en GitHub Pages.
+*   **[Catálogo de Repositorios](repositorios/):** Inventario de repositorios relacionados. En este portal central funciona como inventario de todos los repositorios LAND4.
+*   **[Inteligencia Artificial](inteligencia-artificial/):** Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
+*   **[Plantillas de Pull Request](pr-templates/):** Vista publicada de las plantillas operativas de `.github/PULL_REQUEST_TEMPLATE/`.
 
 ---
 

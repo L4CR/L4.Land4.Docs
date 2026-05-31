@@ -96,7 +96,7 @@ Ejemplo: Permitir que un nuevo comercio se registre en la plataforma LAND4 para 
 ---
 
 ## 📋 8. Criterios de Aceptación
-*Define los criterios formales para dar por terminado este caso de uso. Puedes usar formato declarativo (Checklist) o descriptivo de escenarios (Dado/Cuando/Entonces). Consulta la **[Guía de Criterios de Aceptación](criterios-aceptacion.md)** para ver buenas prácticas.*
+*Define los criterios formales para dar por terminado este caso de uso. Puedes usar formato declarativo (Checklist) o descriptivo de escenarios (Dado/Cuando/Entonces). Consulta la **[Guía de Criterios de Aceptación](criterios-aceptacion.html)** para ver buenas prácticas.*
 
 ### Escenario 1: [Nombre del escenario descriptivo]
 *   **Dado** [Contexto o estado inicial]

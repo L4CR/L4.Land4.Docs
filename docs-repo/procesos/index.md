@@ -16,7 +16,7 @@ Esta sección documenta los procesos de trabajo que conectan a Producto, Operaci
 
 En este directorio encontrarás:
 
-*   **[GitHub Flow LAND4](github-flow.md):** Flujo estándar para llevar una Historia de Usuario desde `Backlog` hasta `Done` usando ramas, Pull Requests, CI, aprobaciones y documentación.
+*   **[GitHub Flow LAND4](github-flow.html):** Flujo estándar para llevar una Historia de Usuario desde `Backlog` hasta `Done` usando ramas, Pull Requests, CI, aprobaciones y documentación.
 
 ---
 

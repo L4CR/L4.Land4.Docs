@@ -10,17 +10,17 @@ permalink: /req/
 
 En esta sección se consolidan los requerimientos, flujos lógicos, casos de uso e historias de usuario expresados en **lenguaje de negocio**.
 
-A diferencia de `README.md` (entrada principal del repositorio) y de `docs-repo/docs/` (documentación técnica y arquitectura de software), la carpeta `docs-repo/req/` define **qué necesita el negocio** y sirve como puente de comunicación entre Producto, Operaciones y Desarrollo. El proceso operativo para entregar esos cambios se documenta en **[Procesos](/procesos/)**.
+A diferencia de `README.md` (entrada principal del repositorio) y de `docs-repo/docs/` (documentación técnica y arquitectura de software), la carpeta `docs-repo/req/` define **qué necesita el negocio** y sirve como puente de comunicación entre Producto, Operaciones y Desarrollo. El proceso operativo para entregar esos cambios se documenta en **[Procesos](../procesos/)**.
 
 ---
 
 ## 📂 Contenido del Directorio
 
 En este directorio encontrarás:
-*   **[📝 Plantilla de Caso de Uso](CASO_USO_TEMPLATE.md):** El estándar formal que debes copiar y completar para redactar nuevos casos de uso.
-*   **[📋 Guía: Criterios de Aceptación](criterios-aceptacion.md):** Formatos de redacción y buenas prácticas para definir criterios claros y verificables.
-*   **[🧩 Guía: Historia de Usuario](historia-usuario.md):** Estructura y buenas prácticas para crear historias de usuario derivadas de casos de uso.
-*   **[🔄 GitHub Flow LAND4](/procesos/github-flow.html):** Proceso transversal para llevar una HU desde `Backlog` hasta `Done`.
+*   **[📝 Plantilla de Caso de Uso](CASO_USO_TEMPLATE.html):** El estándar formal que debes copiar y completar para redactar nuevos casos de uso.
+*   **[📋 Guía: Criterios de Aceptación](criterios-aceptacion.html):** Formatos de redacción y buenas prácticas para definir criterios claros y verificables.
+*   **[🧩 Guía: Historia de Usuario](historia-usuario.html):** Estructura y buenas prácticas para crear historias de usuario derivadas de casos de uso.
+*   **[🔄 GitHub Flow LAND4](../procesos/github-flow.html):** Proceso transversal para llevar una HU desde `Backlog` hasta `Done`.
 *   *Otros casos de uso de negocio globales cuando sea pertinente.*
 
 ---

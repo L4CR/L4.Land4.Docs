@@ -22,7 +22,8 @@ aux_links:
   "GitHub Repository": "https://github.com/L4CR/L4.docs-organizacion"
 
 # Configuración de URL base para despliegue
-url: ""
+url: "https://l4cr.github.io"
+baseurl: "/L4.docs-organizacion"
 
 # Configuración de diagramas Mermaid
 mermaid:

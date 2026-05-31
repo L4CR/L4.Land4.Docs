@@ -37,7 +37,7 @@ Antes de clonar los repositorios, asegúrate de configurar tu máquina local:
 ## 💻 Configuración de Proyectos
 
 Una vez tengas tus accesos a la organización de GitHub:
-1. Dirígete al **[Catálogo de Repositorios](/docs/repositorios/)**.
+1. Dirígete al **[Catálogo de Repositorios](../docs/repositorios/)**.
 2. Identifica el repositorio del proyecto en el cual vas a trabajar.
 3. Clona el proyecto y sigue los pasos detallados en su archivo `docs-repo/docs/despliegue.md` o `README.md`.
 

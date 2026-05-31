@@ -147,17 +147,19 @@ Ejemplo:
 ## Navegación
 
 - [README](README.md)
-- [Documentación Técnica](/docs/)
-  - [API](/docs/api/)
-  - [Arquitectura](/docs/arquitectura/)
-  - [Despliegue](/docs/despliegue/)
-  - [Catálogo de Repositorios](/docs/repositorios/)
-  - [Inteligencia Artificial](/docs/inteligencia-artificial/)
+- [Documentación Técnica](docs/)
+  - [API](docs/api/)
+  - [Arquitectura](docs/arquitectura/)
+  - [Despliegue](docs/despliegue/)
+  - [Catálogo de Repositorios](docs/repositorios/)
+  - [Inteligencia Artificial](docs/inteligencia-artificial/)
     - [AGENTS.md](AGENTS.md)
-    - [Skills](/docs/inteligencia-artificial/skills.html)
+    - [Skills](docs/inteligencia-artificial/skills.html)
 ```
 
 Actualiza índices cuando agregues, renombres o muevas páginas publicadas.
+
+En GitHub Pages de proyecto, evita enlaces internos que empiecen con `/` sin incluir el `baseurl`: el navegador los resuelve contra el dominio y pierde el prefijo del repositorio. Usa enlaces relativos entre páginas publicadas. En el `README.md` publicado, usa rutas con el prefijo `/<repositorio>/` para que funcionen igual en local y producción.
 
 ## Responsabilidades por Archivo
 
@@ -225,6 +227,8 @@ services:
 remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-remote-theme
+url: "https://<organizacion>.github.io"
+baseurl: "/<repositorio>"
 color_scheme: land4
 logo: "docs-repo/assets/images/L4.png"
 search_enabled: true
@@ -251,6 +255,8 @@ exclude:
   - docs-repo/docker-compose.yml
   - docs/
 ```
+
+En GitHub Pages de proyecto, configura `baseurl` con el nombre del repositorio para que Just the Docs genere correctamente el menú lateral, breadcrumbs y assets. Mantén el mismo `baseurl` en el servidor Docker local para validar las rutas reales en `http://localhost:4003/<repositorio>/`.
 
 Agrega a `.gitignore`:
 
@@ -365,6 +371,14 @@ Revisa localmente:
 - Mermaid renderiza si cambiaste diagramas.
 - Páginas removidas ya no aparecen ni tienen enlaces internos.
 
+Cuando cambien navegación, `baseurl`, permalinks, índices, generadores o estructura publicada, recorre el sitio servido localmente y valida todos los enlaces:
+
+- Resuelve cada enlace interno desde la página donde aparece, igual que el navegador.
+- Confirma que ninguna ruta interna escape del `baseurl` configurado.
+- Verifica que cada destino interno responda correctamente y que cada anchor `#...` exista en su página.
+- Revisa que los enlaces a páginas publicadas usen sus rutas navegables (`.html` o permalink), no referencias a archivos fuente `.md`.
+- Comprueba que los enlaces externos agregados respondan correctamente.
+
 Para repos con aplicación, ejecuta además sus validaciones propias (`npm run lint`, `npm run build`, tests, etc.).
 
 ## Personalización de Colores (Tema Oscuro)
@@ -401,7 +415,8 @@ Para configurar el tema visual oscuro:
 
 Antes de terminar:
 
-- Ningún enlace interno apunta a archivos removidos o renombrados.
+- Ningún enlace interno apunta a archivos removidos, renombrados o fuentes `.md` no publicadas.
+- La revisión local de enlaces internos, anchors y enlaces externos agregados termina sin errores cuando cambió la navegación publicada.
 - `README.md` es breve; los detalles técnicos viven en `docs-repo/docs/`.
 - `docs-repo/docs/despliegue.md` concentra comandos de despliegue, CI/CD y validación local.
 - `docs-repo/docs/repositorios.md` usa el formato de catálogo y no reemplaza arquitectura.

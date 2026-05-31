@@ -56,7 +56,7 @@ ${trimmed}
 
 function renderIndex(templates: TemplateMetadata[]): string {
   const rows = templates
-    .map((template) => `*   **[${template.title}](${template.permalink}):** \`${template.sourcePath}\`.`)
+    .map((template) => `*   **[${template.title}](${template.id}.html):** \`${template.sourcePath}\`.`)
     .join('\n');
 
   return `---

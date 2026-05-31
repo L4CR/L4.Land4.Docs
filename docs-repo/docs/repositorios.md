@@ -45,7 +45,7 @@ Cada fila del catálogo debe completar:
 *   En repositorios de producto, API, frontend, servicio o librería, registra aquí los repositorios de los que depende o con los que se integra.
 *   En el portal central `L4.docs-organizacion`, registra aquí todos los repositorios LAND4.
 *   El registro debe agregarse en el mismo Pull Request que habilita o actualiza la documentación publicada del repositorio relacionado.
-*   La documentación publicada debe cumplir el estándar definido en **[¿Cómo Documentar?](/como-documentar.html)**.
+*   La documentación publicada debe cumplir el estándar definido en **[¿Cómo Documentar?](../../como-documentar.html)**.
 *   Si un repositorio cambia de nombre, responsable, estado o URL publicada, este catálogo debe actualizarse en el mismo Pull Request o en un Pull Request de mantenimiento.
 *   Este catálogo no reemplaza la arquitectura propia del sistema. Si la relación con otro repositorio requiere detalle técnico, documenta esa dependencia en `docs-repo/docs/arquitectura.md` del repositorio correspondiente.
 

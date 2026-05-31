@@ -156,4 +156,4 @@ El sistema guarda los datos básicos y permite avanzar al siguiente paso del reg
 *   Durante UAT, el PO valida que la solución cumple la necesidad de negocio.
 *   El Pull Request debe indicar qué pruebas aplican, cuáles fueron ejecutadas y qué queda como `N/A`.
 
-Para el flujo completo de ramas, PRs, QA, UAT y ambientes, consulta **[GitHub Flow LAND4](/procesos/github-flow.html)**.
+Para el flujo completo de ramas, PRs, QA, UAT y ambientes, consulta **[GitHub Flow LAND4](../procesos/github-flow.html)**.

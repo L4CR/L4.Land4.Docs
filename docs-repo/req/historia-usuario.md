@@ -37,7 +37,7 @@ flowchart TD
 *   **Tareas:** Dividen la implementación en actividades técnicas manejables.
 *   **Validación QA y UAT:** Confirma que la HU cumple los criterios de aceptación y la necesidad de negocio.
 
-Los casos de prueba se documentan en la guía técnica **[Casos de Prueba](/docs/casos-prueba.html)**. El avance operativo de la HU se rige por el **[GitHub Flow LAND4](/procesos/github-flow.html)**.
+Los casos de prueba se documentan en la guía técnica **[Casos de Prueba](../docs/casos-prueba.html)**. El avance operativo de la HU se rige por el **[GitHub Flow LAND4](../procesos/github-flow.html)**.
 
 ---
 
@@ -110,7 +110,7 @@ Los criterios deben ser:
 *   **Enfocados en el qué:** Describen comportamiento esperado, no la solución técnica.
 *   **Delimitados:** Aclaran qué entra y qué queda fuera del alcance.
 
-Consulta la **[Guía de Criterios de Aceptación](criterios-aceptacion.md)** para más ejemplos.
+Consulta la **[Guía de Criterios de Aceptación](criterios-aceptacion.html)** para más ejemplos.
 
 ---
 
@@ -138,7 +138,7 @@ Evita usar la descripción como sustituto de los criterios de aceptación. Si un
 | **Blocked** | Hay un impedimento que debe resolverse antes de continuar. |
 | **Done** | La HU fue integrada a `main`, pasó revisión/CI, completó QA/UAT cuando aplique y cumple sus criterios de aceptación. |
 
-Para el detalle de ramas, PRs, CI, aprobaciones y entrega, consulta el **[GitHub Flow LAND4](/procesos/github-flow.html)**.
+Para el detalle de ramas, PRs, CI, aprobaciones y entrega, consulta el **[GitHub Flow LAND4](../procesos/github-flow.html)**.
 
 ---
 
@@ -188,7 +188,7 @@ Validación esperada:
 - Casos de prueba: Ver docs/casos-prueba.html
 ```
 
-Los casos de prueba deben documentarse o referenciarse según el estándar definido en **[Casos de Prueba](/docs/casos-prueba.html)**.
+Los casos de prueba deben documentarse o referenciarse según el estándar definido en **[Casos de Prueba](../docs/casos-prueba.html)**.
 
 ---
 
