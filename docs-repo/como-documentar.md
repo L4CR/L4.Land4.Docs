@@ -33,7 +33,10 @@ nombre-del-repositorio/
 │   │   ├── color_schemes/land4.scss
 │   │   └── custom/custom.scss
 │   ├── assets/images/L4.png
-│   ├── docs/                # Documentación técnica publicada
+│   ├── req/                 # Requerimientos de NEGOCIO, si aplican
+│   │   └── CU-01-registro.md
+│   ├── procesos/            # Procesos propios, si aplican
+│   └── docs/                # Documentación técnica publicada
 │       ├── index.md
 │       ├── arquitectura.md
 │       ├── despliegue.md
@@ -41,9 +44,6 @@ nombre-del-repositorio/
 │       └── inteligencia-artificial/
 │           ├── index.md
 │           └── skills.md    # Generado durante el build si hay skills
-│   ├── req/                 # Requerimientos de NEGOCIO, si aplican
-│   │   └── CU-01-registro.md
-│   └── procesos/            # Procesos propios, si aplican
 ├── .agents/                 # Skills reutilizables para agentes, si aplican
 │   └── skills/
 │       └── nombre-del-skill/
