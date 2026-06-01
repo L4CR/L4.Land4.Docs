@@ -1,6 +1,7 @@
-## HU relacionada
+## US y CU relacionados
 
-- HU: <!-- HU-XXX / N/A -->
+- Issue US: <!-- URL / N/A justificado -->
+- Contratos CU: <!-- URLs a docs-repo/req/<caso-de-uso>/CONTRACT.md / N/A justificado -->
 
 ## Resumen del cambio
 
@@ -29,11 +30,14 @@
 - [ ] Revisión Markdown realizada.
 - [ ] CI requerido en verde.
 - [ ] Criterios de aceptación revisados.
+- [ ] CA revisados y CP ejecutados o marcados `N/A` con justificación.
 
 ## Aprobaciones
 
 - [ ] Revisión técnica solicitada.
 - [ ] Revisión técnica aprobada.
+- [ ] Reviewer Codex ejecutado.
+- [ ] Aprobación humana recibida.
 
 Validación de Product Owner:
 

@@ -1,0 +1,14 @@
+name: LAND4 Static Site CI/CD Template
+on: [pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "TODO install static-site dependencies"
+      - run: echo "TODO lint and static analysis"
+      - run: echo "TODO build static site"
+      - run: echo "TODO run tests and coverage when applicable"
+      - run: echo "TODO validate Docs-as-Code"
+      - run: echo "TODO run security scan"
+      - run: echo "TODO define deploy, verification and rollback"

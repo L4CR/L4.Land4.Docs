@@ -6,7 +6,7 @@ has_children: true
 permalink: /req/
 ---
 
-# 🎯 Requerimientos y Casos de Uso de Negocio
+# Requerimientos y Casos de Uso de Negocio
 
 En esta sección se consolidan los requerimientos, flujos lógicos, casos de uso e historias de usuario expresados en **lenguaje de negocio**.
 
@@ -17,10 +17,11 @@ A diferencia de `README.md` (entrada principal del repositorio) y de `docs-repo/
 ## 📂 Contenido del Directorio
 
 En este directorio encontrarás:
-*   **[📝 Plantilla de Caso de Uso](CASO_USO_TEMPLATE.html):** El estándar formal que debes copiar y completar para redactar nuevos casos de uso.
-*   **[📋 Guía: Criterios de Aceptación](criterios-aceptacion.html):** Formatos de redacción y buenas prácticas para definir criterios claros y verificables.
-*   **[🧩 Guía: Historia de Usuario](historia-usuario.html):** Estructura y buenas prácticas para crear historias de usuario derivadas de casos de uso.
-*   **[🔄 GitHub Flow LAND4](../procesos/github-flow.html):** Proceso transversal para llevar una HU desde `Backlog` hasta `Done`.
+*   **[Casos de Uso](casos-uso/):** Contratos vivos publicados bajo `Requerimientos de Negocio > Casos de Uso`.
+*   **[Plantilla de Contrato de Caso de Uso](CASO_USO_TEMPLATE.html):** Formato `docs-repo/req/<caso-de-uso>/CONTRACT.md`.
+*   **[Criterios de Aceptación](criterios-aceptacion.html):** Formato BDD para CA verificables.
+*   **[User Story](user-story.html):** Estructura de una US administrada desde el backlog.
+*   **[SDLC + AI Standard](../procesos/sdlc-ai.html):** Ciclo transversal desde Backlog hasta CI/CD.
 *   *Otros casos de uso de negocio globales cuando sea pertinente.*
 
 ---

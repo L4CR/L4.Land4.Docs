@@ -34,7 +34,7 @@ nombre-del-repositorio/
 │   │   └── custom/custom.scss
 │   ├── assets/images/L4.png
 │   ├── req/                 # Requerimientos de NEGOCIO, si aplican
-│   │   └── CU-01-registro.md
+│   │   └── registro-comercio/CONTRACT.md
 │   ├── procesos/            # Procesos propios, si aplican
 │   └── docs/                # Documentación técnica publicada
 │       ├── index.md
@@ -227,8 +227,9 @@ Además, si un repositorio se registra en el inventario central o en el `docs-re
 
 Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
 
-*   Contiene casos de uso redactados en lenguaje no técnico, facilitando la comprensión y validación entre ingenieros y tomadores de decisiones/Product Owners.
-*   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.html)**.
+*   Contiene contratos de caso de uso redactados en lenguaje no técnico y versionados junto al código.
+*   Usa `docs-repo/req/<caso-de-uso>/CONTRACT.md` con encabezados estables y tablas procesables, basado en la **[Plantilla de Contrato de Caso de Uso](req/CASO_USO_TEMPLATE.html)**.
+*   Mantiene las US, CA, CP y tareas en la plataforma de backlog. La primera implementación LAND4 usa GitHub Issues y GitHub Projects.
 
 ### 7. La carpeta `docs-repo/procesos/` (Procesos del Repositorio)
 

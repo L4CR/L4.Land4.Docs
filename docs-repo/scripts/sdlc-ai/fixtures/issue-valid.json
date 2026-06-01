@@ -1,0 +1,6 @@
+{
+  "title": "[US]: Registrar datos básicos",
+  "url": "https://github.com/L4CR/demo/issues/1",
+  "projectItems": [{ "status": { "name": "Ready" } }],
+  "body": "### CU relacionados\nhttps://github.com/L4CR/demo/blob/main/docs-repo/req/registro-comercio/CONTRACT.md\n\n### Historia\n| Campo | Valor |\n| :--- | :--- |\n| Como | Comercio |\n| Quiero | registrar mis datos básicos |\n| Para | iniciar mi alta |\n\n### Descripción\nRegistrar los datos obligatorios sin implementar aprobación.\n\n### Criterios de aceptación\n| ID | Dado | Cuando | Entonces |\n| :--- | :--- | :--- | :--- |\n| CA-001 | un comercio nuevo | envía datos válidos | se registra la información |\n\n### Casos de prueba\n| ID | CA relacionado | Tipo | Arrange | Act | Assert | Evidencia / Automatización |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| CP-001 | CA-001 | Unit | comercio nuevo | enviar datos | registro creado | pendiente |\n\n### Tareas\n| ID | Descripción | Estado |\n| :--- | :--- | :--- |\n| TASK-001 | Implementar registro | Pendiente |"
+}

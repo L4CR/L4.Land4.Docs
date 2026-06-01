@@ -72,6 +72,14 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
    node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
    ```
 
+   Para validar el MVP SDLC + AI sin acceso a GitHub:
+
+   ```bash
+   node --disable-warning=ExperimentalWarning --experimental-strip-types --test docs-repo/scripts/sdlc-ai/*.test.ts
+   node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/sdlc-ai/extract-agent-context.ts --fixture docs-repo/scripts/sdlc-ai/fixtures/issue-valid.json --out .tmp/land4-prompts/context.json
+   node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/sdlc-ai/generate-agent-prompt.ts --context .tmp/land4-prompts/context.json --role land4-implementer --out .tmp/land4-prompts/prompt.md
+   ```
+
 3. Compila el sitio:
 
    ```bash
@@ -111,7 +119,7 @@ El despliegue productivo se ejecuta automáticamente con GitHub Actions.
 | Campo | Valor |
 | :--- | :--- |
 | Workflow | `.github/workflows/docs.yml` |
-| Disparadores | `push` a `main` con `paths` limitados a documentación/configuración del portal y ejecución manual con `workflow_dispatch` |
+| Disparadores | `push` a `main` con `paths` limitados a documentación, skills, plantillas de PR, Issue Forms y configuración del portal; ejecución manual con `workflow_dispatch` |
 | Concurrencia | Grupo `pages`, con `cancel-in-progress: true` |
 | Runner | `ubuntu-latest` |
 | Ambiente GitHub | `github-pages` |
@@ -177,6 +185,7 @@ Si el problema impide navegar el portal o afecta assets críticos, prioriza reve
 Todo cambio que modifique el despliegue debe actualizar esta guía en el mismo Pull Request. Esto incluye:
 
 *   Cambios en `.github/workflows/docs.yml`.
+*   Cambios en `.github/ISSUE_TEMPLATE/` que modifiquen la captura estructurada de US.
 *   Cambios en `docs-repo/_config.yml`.
 *   Cambios en dependencias de Jekyll, `docs-repo/Gemfile` o `docs-repo/Gemfile.lock`.
 *   Cambios en `docs-repo/docker-compose.yml`.
@@ -201,5 +210,6 @@ Estos directorios son artefactos locales y no deben subirse a Git:
 *   `docs-repo/.sass-cache/`
 *   `docs-repo/docs/inteligencia-artificial/skills.md`
 *   `docs-repo/docs/pr-templates/`
+*   `.tmp/`
 
 Están excluidos en `.gitignore`.

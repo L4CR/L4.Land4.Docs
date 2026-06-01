@@ -26,9 +26,11 @@ Este índice refleja la jerarquía del menú principal del portal publicado:
 *   **[Procesos](/L4.docs-organizacion/procesos/):** Procesos transversales de colaboración entre Producto y TI.
     *   [GitHub Flow](/L4.docs-organizacion/procesos/github-flow.html): Flujo de trabajo para ramas, commits, Pull Requests y merges.
 *   **[Requerimientos de Negocio](/L4.docs-organizacion/req/):** Guías para documentar requerimientos funcionales.
+    *   [Casos de Uso](/L4.docs-organizacion/req/casos-uso/): Contratos vivos del dominio.
     *   [Plantilla de Caso de Uso](/L4.docs-organizacion/req/CASO_USO_TEMPLATE.html): Estructura base para casos de uso.
     *   [Criterios de Aceptación](/L4.docs-organizacion/req/criterios-aceptacion.html): Guía para definir validaciones de negocio.
-    *   [Historia de Usuario](/L4.docs-organizacion/req/historia-usuario.html): Estructura y estados de una historia de usuario.
+    *   [User Story](/L4.docs-organizacion/req/user-story.html): Estructura y estados de una US administrada desde backlog.
+    *   [SDLC + AI Standard](/L4.docs-organizacion/procesos/sdlc-ai.html): Flujo asistido por agentes desde Backlog hasta CI/CD.
 *   **[Onboarding](/L4.docs-organizacion/onboarding/):** Guía inicial para accesos, herramientas y entorno local.
 
 ---
@@ -40,6 +42,7 @@ La validación local se ejecuta con el servicio `docs` definido en `docs-repo/do
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
+node --disable-warning=ExperimentalWarning --experimental-strip-types --test docs-repo/scripts/sdlc-ai/*.test.ts
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle install
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml
 docker compose -f docs-repo/docker-compose.yml up docs

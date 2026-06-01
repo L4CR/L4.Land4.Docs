@@ -23,6 +23,7 @@ La documentación sigue el modelo Docs-as-Code:
 - `docs-repo/_config.yml`, `docs-repo/Gemfile`, `docs-repo/docker-compose.yml`, `docs-repo/_sass/`, `docs-repo/assets/` y `docs-repo/scripts/`: soporte de publicación, estilo y validación Jekyll.
 - `docs-repo/procesos/`: procesos transversales.
 - `docs-repo/req/`: requerimientos, historias y casos de uso.
+- `docs-repo/scripts/sdlc-ai/`: extractor de contexto Issue + CU y generador de prompts reproducibles.
 - `docs-repo/onboarding/`: guía inicial para colaboradores.
 
 ## Comandos de desarrollo
@@ -32,6 +33,7 @@ Usa el servicio `docs` definido en `docs-repo/docker-compose.yml`. Primero gener
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
+node --disable-warning=ExperimentalWarning --experimental-strip-types --test docs-repo/scripts/sdlc-ai/*.test.ts
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle install
 docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml
 docker compose -f docs-repo/docker-compose.yml up docs
@@ -87,6 +89,7 @@ Revisa que:
 - Los enlaces internos resuelven correctamente.
 - Los diagramas Mermaid renderizan sin errores.
 - No se generaron cambios innecesarios ni versionados en `_site/`, `.bundle/`, `.sass-cache/`, `vendor/`, `docs-repo/vendor/`, `docs-repo/docs/inteligencia-artificial/skills.md` o `docs-repo/docs/pr-templates/`.
+- No se versionaron artefactos temporales en `.tmp/land4-prompts/`.
 
 ## Pull Requests
 

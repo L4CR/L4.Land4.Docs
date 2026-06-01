@@ -23,6 +23,9 @@ En este directorio encontrarás:
 *   **[Catálogo de Repositorios](repositorios/):** Inventario de repositorios relacionados. En este portal central funciona como inventario de todos los repositorios LAND4.
 *   **[Inteligencia Artificial](inteligencia-artificial/):** Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
 *   **[Plantillas de Pull Request](pr-templates/):** Vista publicada de las plantillas operativas de `.github/PULL_REQUEST_TEMPLATE/`.
+*   **[Casos de Prueba](casos-prueba.html):** Trazabilidad CP desde criterios de aceptación.
+*   **[TDD y Pruebas](testing.html):** Pirámide, cobertura y Webwright para E2E web.
+*   **[CI/CD Standard](ci-cd-standard.html):** Etapas requeridas y esqueletos neutrales.
 
 ---
 

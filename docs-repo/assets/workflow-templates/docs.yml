@@ -1,0 +1,12 @@
+name: LAND4 Docs CI/CD Template
+on: [pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "TODO install documentation dependencies"
+      - run: echo "TODO generate derived documentation"
+      - run: echo "TODO build documentation site"
+      - run: echo "TODO validate links, navigation and Mermaid"
+      - run: echo "TODO define publish, verification and rollback"

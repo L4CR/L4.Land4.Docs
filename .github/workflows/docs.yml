@@ -9,6 +9,7 @@ on:
       - "docs-repo/**"
       - ".agents/skills/**"
       - ".github/PULL_REQUEST_TEMPLATE/**"
+      - ".github/ISSUE_TEMPLATE/**"
       - ".github/workflows/docs.yml"
   workflow_dispatch:
 

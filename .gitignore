@@ -9,3 +9,4 @@ docs-repo/.jekyll-cache/
 docs-repo/.sass-cache/
 docs-repo/docs/inteligencia-artificial/skills.md
 docs-repo/docs/pr-templates/
+.tmp/

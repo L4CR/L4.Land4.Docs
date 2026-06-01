@@ -39,6 +39,7 @@ exclude:
   - .sass-cache/
   - .astro/
   - _site/
+  - .tmp/
   - dist/
   - node_modules/
   - vendor/

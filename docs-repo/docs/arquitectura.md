@@ -79,6 +79,9 @@ flowchart TD
 | `docs-repo/req/` | Guías y plantillas para requerimientos de negocio. |
 | `docs-repo/procesos/` | Procesos transversales, como GitHub Flow LAND4. |
 | `.github/workflows/docs.yml` | Pipeline de compilación y despliegue a GitHub Pages. |
+| `.github/ISSUE_TEMPLATE/user-story.yml` | Captura estructurada de US para el adaptador GitHub. |
+| `docs-repo/scripts/sdlc-ai/` | Extracción normalizada de Issue + CU y generación reproducible de prompts. |
+| `docs-repo/assets/workflow-templates/` | Esqueletos CI/CD neutrales para adopción por stack. |
 
 ---
 
@@ -114,6 +117,7 @@ sequenceDiagram
 *   **Estándares abiertos para IA:** La documentación de inteligencia artificial referencia estándares externos como `AGENTS.md` y Agent Skills para mantener compatibilidad con herramientas del ecosistema.
 *   **Docker para validación local:** Evita depender de la versión de Ruby instalada en cada máquina.
 *   **Assets versionados:** El logo y estilos de LAND4 viven en el repositorio para que el build sea reproducible.
+*   **Adaptadores de backlog:** GitHub Issues y Projects son la primera implementación. El contexto normalizado evita acoplar el CU o el prompt a una única plataforma.
 
 ---
 
