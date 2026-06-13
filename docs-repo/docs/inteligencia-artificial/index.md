@@ -40,6 +40,8 @@ El archivo `SKILL.md` debe incluir frontmatter YAML con, como mínimo, `name` y 
 
 *   **[AGENTS.md](agents/):** Instrucciones operativas para agentes de código en este repositorio.
 *   **[Skills](skills.html):** Skills propias de este repositorio disponibles para agentes.
+*   **[SDLC + AI Standard](../../procesos/sdlc-ai.html):** Flujo de trabajo asistido por agentes.
+*   **[TDD y Pruebas](../testing.html):** Cobertura, capas de prueba y uso de Webwright.
 
 ## Instalación de Skills Globales
 

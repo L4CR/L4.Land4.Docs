@@ -2,13 +2,13 @@
 layout: default
 title: GitHub Flow LAND4
 parent: Procesos
-nav_order: 1
+nav_order: 2
 permalink: /procesos/github-flow.html
 ---
 
-# 🔄 GitHub Flow LAND4
+# GitHub Flow LAND4
 
-Este documento vive en `docs-repo/procesos/` porque define una forma de trabajo transversal. Explica cómo una **Historia de Usuario (HU)** avanza desde una necesidad validada por negocio hasta una entrega integrada en `main`. Es el punto de unión operativo entre Producto y TI: Producto define el valor esperado y los criterios de aceptación; TI implementa, prueba, integra y documenta el cambio.
+Este documento complementa el **[SDLC + AI Standard](sdlc-ai.html)**. Explica cómo una **User Story (US)** avanza desde una necesidad validada hasta una entrega integrada en `main`. `HU` queda únicamente como alias histórico.
 
 ---
 
@@ -25,9 +25,9 @@ En LAND4 utilizamos **GitHub Flow**:
 
 ---
 
-## 🔗 Relación entre necesidad, HU y entrega
+## Relación entre necesidad, US y entrega
 
-Todo flujo inicia con una necesidad de negocio identificada por Producto. Esa necesidad debe mapearse a un **Caso de Uso** existente o provocar la creación/actualización de uno nuevo antes de llegar a desarrollo.
+Todo flujo inicia con una necesidad identificada por Producto. Debe mapearse a un contrato `docs-repo/req/<caso-de-uso>/CONTRACT.md` existente o provocar su creación o actualización antes de llegar a desarrollo. La US, sus CA, CP y tareas viven en el Issue; su estado operativo vive en GitHub Projects.
 
 ```mermaid
 flowchart TD
@@ -35,59 +35,59 @@ flowchart TD
     ProductOwner --> UseCaseDecision{"Existe Caso de Uso"}
     UseCaseDecision -->|"Si"| ExistingUseCase["Caso de Uso existente"]
     UseCaseDecision -->|"No"| NewUseCase["Crear o actualizar Caso de Uso"]
-    ExistingUseCase --> Backlog["HU Backlog"]
+    ExistingUseCase --> Backlog["US Backlog"]
     NewUseCase --> Backlog
-    Backlog --> Ready["HU Ready"]
+    Backlog --> Ready["US Ready"]
     Ready --> Branch["Rama temporal desde main"]
-    Branch --> InProgress["HU In Progress"]
+    Branch --> InProgress["US In Progress"]
     InProgress --> DevTests["Pruebas de desarrollador"]
     DevTests --> PullRequest["Pull Request hacia main"]
-    InProgress --> Blocked["HU Blocked"]
+    InProgress --> Blocked["US Blocked"]
     Blocked --> InProgress
     PullRequest --> CI["CI verde"]
     CI --> TechReview["Revision tecnica"]
     TechReview --> QA["Validacion QA"]
     QA --> UAT["UAT Aceptacion PO"]
     UAT --> Merge["Squash merge a main"]
-    Merge --> Done["HU Done"]
+    Merge --> Done["US Done"]
 ```
 
-La HU define el alcance y los criterios de aceptación. El Pull Request demuestra que el cambio fue implementado, revisado, validado e integrado conforme a esos criterios.
+La US define el alcance y los criterios de aceptación. El Pull Request demuestra que el cambio fue implementado, revisado, validado e integrado conforme a esos criterios.
 
 ---
 
-## 📌 Estados de la Historia de Usuario
+## Estados de la User Story
 
 | Estado | Significado | Responsabilidad principal |
 | :--- | :--- | :--- |
 | **Backlog** | La necesidad existe, pero aún no está lista para desarrollo. Debe estar vinculada a un caso de uso existente o a la creación/actualización de uno nuevo. | Producto |
-| **Ready** | La HU tiene alcance, criterios de aceptación y prioridad suficiente para iniciar. | Producto + TI |
+| **Ready** | La US tiene alcance, criterios de aceptación y prioridad suficiente para iniciar. | Producto + TI |
 | **In Progress** | La implementación está en desarrollo en una rama de trabajo. | Desarrollo |
-| **Blocked** | Existe un impedimento que impide avanzar o validar la HU. | Responsable del bloqueo |
+| **Blocked** | Existe un impedimento que impide avanzar o validar la US. | Responsable del bloqueo |
 | **Done** | El cambio está integrado en `main`, con CI verde, revisión técnica, validación QA, UAT cuando aplique y documentación actualizada si corresponde. | Producto + TI |
 
-Una HU no debe pasar a `Ready` si sus criterios de aceptación no son verificables. Una HU no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main` o si quedan validaciones QA/UAT pendientes cuando apliquen.
+Una US no debe pasar a `Ready` si sus CA no son verificables, no mapean CP o el extractor falla. Una US no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main` o si quedan validaciones QA/UAT pendientes cuando apliquen.
 
 ---
 
 ## 🌿 Ramas de trabajo
 
-Toda rama debe crearse desde `main` y representar una HU o un cambio pequeño y trazable.
+Toda rama debe crearse desde `main` y representar una US o un cambio pequeño y trazable.
 
 Formato recomendado:
 
 ```text
-feature/HU-id-descripcion
+feature/US-id-descripcion
 ```
 
 Ejemplos:
 
 ```text
-feature/HU-001-registro-comercio
-feature/HU-014-validacion-correo
+feature/US-001-registro-comercio
+feature/US-014-validacion-correo
 ```
 
-Para cambios que no nacen de una HU, usa un prefijo que describa la intención:
+Para cambios que no nacen de una US, usa un prefijo que describa la intención:
 
 ```text
 fix/corregir-validacion-identificacion
@@ -103,7 +103,7 @@ La rama de trabajo es temporal. Puede desplegarse o liberarse a ambientes de val
 
 Durante `In Progress`, la persona desarrolladora debe:
 
-*   Implementar el cambio dentro del alcance de la HU.
+*   Implementar el cambio dentro del alcance de la US.
 *   Revisar los criterios de aceptación aplicables.
 *   Ejecutar las pruebas de desarrollador correspondientes al tipo de repositorio.
 *   Actualizar `README.md`, `docs-repo/docs/` o `docs-repo/req/` cuando el cambio modifique comportamiento, configuración, API, despliegue, reglas de negocio o flujos de usuario.
@@ -148,7 +148,7 @@ Reglas:
 
 ## 🔁 Pull Request
 
-Todo cambio debe integrarse mediante Pull Request hacia `main`. El PR debe ser pequeño, revisable y estar conectado con la HU o motivo del cambio.
+Todo cambio debe integrarse mediante Pull Request hacia `main`. El PR debe ser pequeño, revisable y estar conectado con la US o motivo del cambio.
 
 LAND4 usa plantillas independientes por tipo de repositorio en `.github/PULL_REQUEST_TEMPLATE/`:
 
@@ -162,8 +162,10 @@ Al abrir un PR, utiliza la plantilla que corresponda al repositorio o al cambio 
 
 Antes de solicitar revisión:
 
-*   La descripción del PR debe indicar la HU relacionada o marcar `N/A`.
-*   La HU debe estar vinculada a un caso de uso existente o a la creación/actualización de uno nuevo cuando el cambio nazca de una necesidad de negocio.
+*   La descripción del PR debe indicar el Issue de la US o marcar `N/A` con justificación.
+*   La US debe enlazar un CU existente o la creación o actualización de uno nuevo cuando el cambio nazca de una necesidad de negocio.
+*   Los CA deben mapear CP ejecutados o marcados `N/A` con justificación.
+*   Reviewer Codex debe ejecutarse antes de solicitar aprobación humana.
 *   El tipo de cambio debe estar marcado.
 *   Los criterios de aceptación aplicables deben estar chequeados o marcados como `N/A`.
 *   Las pruebas de desarrollador aplicables deben estar chequeadas.
@@ -193,7 +195,7 @@ El cierre estándar del PR es **Squash merge** hacia `main`. Esto deja un histor
 Para LAND4:
 
 *   `main` representa el estado integrado y entregable.
-*   Una HU llega a `Done` cuando el PR asociado fue aprobado, pasó CI, tuvo revisión técnica, completó QA/UAT cuando aplique y fue fusionado a `main`.
+*   Una US llega a `Done` cuando el PR asociado fue aprobado por una persona, pasó CI, tuvo revisión técnica, completó QA/UAT cuando aplique y fue fusionado a `main`.
 *   Si el repositorio tiene despliegue automático, el merge puede iniciar el flujo de entrega correspondiente.
 *   Si el repositorio requiere despliegue manual, el merge deja el cambio listo para ese proceso.
 *   Las liberaciones temporales desde ramas de trabajo solo sirven para validación en ambientes; no sustituyen el merge final a `main`.
@@ -202,6 +204,7 @@ Para LAND4:
 
 ## 🧾 Documentación relacionada
 
-*   **[Historias de Usuario](../req/historia-usuario.html):** Cómo redactar y estructurar una HU.
+*   **[User Story](../req/user-story.html):** Cómo redactar y estructurar una US.
+*   **[SDLC + AI Standard](sdlc-ai.html):** Flujo asistido por agentes desde Backlog hasta CI/CD.
 *   **[Criterios de Aceptación](../req/criterios-aceptacion.html):** Cómo definir condiciones verificables.
 *   **[¿Cómo Documentar?](../como-documentar.html):** Estándar Docs-as-Code para documentación técnica y de negocio.

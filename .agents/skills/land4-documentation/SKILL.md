@@ -15,6 +15,7 @@ La documentación LAND4 es Docs-as-Code: vive junto al código, se versiona en G
 
 - El portal central mantiene estándares transversales, procesos, onboarding, IA e inventario completo LAND4.
 - Cada repositorio mantiene solo la documentación que cambia con su código: arquitectura, despliegue, repositorios relacionados, requerimientos y procesos locales.
+- Los contratos de caso de uso viven en `docs-repo/req/<caso-de-uso>/CONTRACT.md`; las US viven en la plataforma de backlog y referencian el contrato.
 - No dupliques contenido canónico del portal central; enlázalo.
 - No documentes como página local detalles que pertenecen a estándares generales, componentes comunes o datos evidentes del repo. Ejemplo: si el repo solo tiene `src/data/`, menciona que el contenido vive ahí; no crees una página para explicar cada JSON salvo que haya reglas de negocio reales.
 
@@ -175,6 +176,7 @@ En GitHub Pages de proyecto, evita enlaces internos que empiecen con `/` sin inc
 - `docs-repo/docs/inteligencia-artificial/index.md`: índice de instrucciones para agentes y skills locales.
 - `docs-repo/docs/inteligencia-artificial/skills.md`: catálogo generado de `.agents/skills/**/SKILL.md`; no se edita manualmente si existe script generador.
 - `docs-repo/req/`: requerimientos de negocio, casos de uso, historias, criterios y reglas cuando apliquen.
+- `docs-repo/req/<caso-de-uso>/CONTRACT.md`: contrato vivo del CU con encabezados estables y tablas procesables.
 - `docs-repo/procesos/`: solo procesos propios no cubiertos por el portal central.
 
 ## Catálogo de Repositorios

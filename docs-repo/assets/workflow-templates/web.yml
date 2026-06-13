@@ -1,0 +1,23 @@
+name: LAND4 Web CI/CD Template
+on: [pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install
+        run: echo "TODO define web install command"
+      - name: Lint and static analysis
+        run: echo "TODO define web lint command"
+      - name: Build
+        run: echo "TODO define web build command"
+      - name: Unit and integration tests with coverage
+        run: echo "TODO define web test and coverage commands"
+      - name: Critical E2E flows
+        run: echo "TODO define Webwright or Playwright E2E command"
+      - name: Docs-as-Code validation
+        run: echo "TODO validate docs updated or N/A justified"
+      - name: Security scan
+        run: echo "TODO define web security scan"
+      - name: Deploy
+        run: echo "TODO define environment, deploy, verification and rollback"

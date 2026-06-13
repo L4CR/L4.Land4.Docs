@@ -19,11 +19,11 @@ search:
 
 # Enlaces auxiliares en la barra superior derecha
 aux_links:
-  "GitHub Repository": "https://github.com/L4CR/L4.docs-organizacion"
+  "GitHub Repository": "https://github.com/L4CR/L4.Land4.Docs"
 
 # Configuración de URL base para despliegue
 url: "https://l4cr.github.io"
-baseurl: "/L4.docs-organizacion"
+baseurl: "/L4.Land4.Docs"
 
 # Configuración de diagramas Mermaid
 mermaid:
@@ -39,6 +39,7 @@ exclude:
   - .sass-cache/
   - .astro/
   - _site/
+  - .tmp/
   - dist/
   - node_modules/
   - vendor/

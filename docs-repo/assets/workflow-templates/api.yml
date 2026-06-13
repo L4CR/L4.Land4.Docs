@@ -1,0 +1,14 @@
+name: LAND4 API CI/CD Template
+on: [pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "TODO install API dependencies"
+      - run: echo "TODO lint and static analysis"
+      - run: echo "TODO build API"
+      - run: echo "TODO run unit and integration tests with coverage"
+      - run: echo "TODO validate Docs-as-Code"
+      - run: echo "TODO run security scan"
+      - run: echo "TODO define environment, deploy, verification and rollback"

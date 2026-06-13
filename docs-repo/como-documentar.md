@@ -34,7 +34,7 @@ nombre-del-repositorio/
 │   │   └── custom/custom.scss
 │   ├── assets/images/L4.png
 │   ├── req/                 # Requerimientos de NEGOCIO, si aplican
-│   │   └── CU-01-registro.md
+│   │   └── registro-comercio/CONTRACT.md
 │   ├── procesos/            # Procesos propios, si aplican
 │   └── docs/                # Documentación técnica publicada
 │       ├── index.md
@@ -79,7 +79,7 @@ Un buen `README.md` contiene:
 *   Enlace rápido a la arquitectura cuando aplique: `[Arquitectura y Diseño](/<repositorio>/docs/arquitectura.html)`.
 *   Enlace rápido a la guía de despliegue y validación local cuando aplique: `[Despliegue](/<repositorio>/docs/despliegue.html)`.
 *   Enlace a la documentación publicada del propio repositorio en GitHub Pages.
-*   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios/)`.
+*   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.Land4.Docs/docs/repositorios/)`.
 *   Enlaces a casos de uso o historias relevantes cuando existan en `docs-repo/req/`.
 
 ### 2. El archivo `AGENTS.md` (Instrucciones para agentes)
@@ -194,7 +194,7 @@ Esta regla evita inconsistencias entre la configuración real del repositorio y 
 
 Cada repositorio debe registrar en `docs-repo/docs/repositorios.md` los repositorios con los que tiene relación directa. La relación puede ser una dependencia técnica, integración, repositorio consumidor, repositorio proveedor, librería compartida, infraestructura relacionada o documentación necesaria para operar el sistema.
 
-El portal central `L4.docs-organizacion`, como punto central de consulta, registra todos los repositorios LAND4 en `docs-repo/docs/repositorios.md`.
+El portal central `L4.Land4.Docs`, como punto central de consulta, registra todos los repositorios LAND4 en `docs-repo/docs/repositorios.md`.
 
 Como mínimo, cada fila debe incluir:
 
@@ -227,8 +227,9 @@ Además, si un repositorio se registra en el inventario central o en el `docs-re
 
 Esta carpeta se utiliza de forma opcional pero recomendada cuando el proyecto implementa lógicas complejas que requieren alineación con el lenguaje de negocio o de cara al cliente:
 
-*   Contiene casos de uso redactados en lenguaje no técnico, facilitando la comprensión y validación entre ingenieros y tomadores de decisiones/Product Owners.
-*   Usa archivos con nombres representativos (ej. `CU-01-registro-comercio.md`) basados en la **[Plantilla de Caso de Uso del Portal](req/CASO_USO_TEMPLATE.html)**.
+*   Contiene contratos de caso de uso redactados en lenguaje no técnico y versionados junto al código.
+*   Usa `docs-repo/req/<caso-de-uso>/CONTRACT.md` con encabezados estables y tablas procesables, basado en la **[Plantilla de Contrato de Caso de Uso](req/CASO_USO_TEMPLATE.html)**.
+*   Mantiene las US, CA, CP y tareas en la plataforma de backlog. La primera implementación LAND4 usa GitHub Issues y GitHub Projects.
 
 ### 7. La carpeta `docs-repo/procesos/` (Procesos del Repositorio)
 

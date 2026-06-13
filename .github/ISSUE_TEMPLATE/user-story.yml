@@ -1,0 +1,70 @@
+name: User Story LAND4
+description: Registrar una US refinable y trazable hacia un contrato de caso de uso.
+title: "[US]: "
+labels: ["user-story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Completa la US en lenguaje de negocio. El estado operativo se administra en GitHub Projects.
+        Conserva los encabezados y las columnas de las tablas generadas.
+  - type: input
+    id: contract_url
+    attributes:
+      label: CU relacionados
+      description: URLs GitHub a los archivos docs-repo/req/<caso-de-uso>/CONTRACT.md en main. Usa una URL por línea.
+      placeholder: https://github.com/L4CR/repositorio/blob/main/docs-repo/req/registro-comercio/CONTRACT.md
+    validations:
+      required: true
+  - type: textarea
+    id: story
+    attributes:
+      label: Historia
+      description: Describe el actor, la necesidad y el valor esperado.
+      value: |
+        | Campo | Valor |
+        | :--- | :--- |
+        | Como | [Actor] |
+        | Quiero | [Acción o funcionalidad] |
+        | Para | [Beneficio o valor esperado] |
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción
+      description: Agrega contexto, restricciones y fuera de alcance.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Criterios de aceptación
+      description: Usa IDs CA-XXX y escenarios BDD verificables.
+      value: |
+        | ID | Dado | Cuando | Entonces |
+        | :--- | :--- | :--- | :--- |
+        | CA-001 | [Contexto inicial] | [Acción] | [Resultado esperado] |
+    validations:
+      required: true
+  - type: textarea
+    id: test_cases
+    attributes:
+      label: Casos de prueba
+      description: Cada CA debe mapear al menos un CP.
+      value: |
+        | ID | CA relacionado | Tipo | Arrange | Act | Assert | Evidencia / Automatización |
+        | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+        | CP-001 | CA-001 | Unit / Integration / E2E / Manual | [Preparación] | [Acción] | [Validación] | [Enlace o pendiente] |
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tareas
+      value: |
+        | ID | Descripción | Estado |
+        | :--- | :--- | :--- |
+        | TASK-001 | [Trabajo requerido] | Pendiente |
+    validations:
+      required: true

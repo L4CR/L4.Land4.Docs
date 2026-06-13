@@ -27,12 +27,17 @@ Usa este índice como reflejo jerárquico del menú lateral del portal:
     *   [Catálogo de Repositorios](docs/repositorios/): Inventario central de repositorios LAND4 y enlaces a sus GitHub Pages.
     *   [Inteligencia Artificial](docs/inteligencia-artificial/): Implementación organizacional basada en estándares abiertos para `AGENTS.md` y Agent Skills.
     *   [Plantillas de Pull Request](docs/pr-templates/): Vista publicada de las plantillas operativas para PRs.
+    *   [Casos de Prueba](docs/casos-prueba.html): Formato trazable CP.
+    *   [TDD y Pruebas](docs/testing.html): Cobertura, capas y Webwright.
+    *   [CI/CD Standard](docs/ci-cd-standard.html): Esqueletos neutrales de pipelines.
 *   **[Procesos](procesos/):** Procesos transversales de colaboración entre Producto y TI.
+    *   [SDLC + AI Standard](procesos/sdlc-ai.html): Ciclo canónico asistido por agentes.
     *   [GitHub Flow](procesos/github-flow.html): Flujo de trabajo para ramas, commits, Pull Requests y merges.
 *   **[Requerimientos de Negocio](req/):** Guías para documentar requerimientos funcionales.
+    *   [Casos de Uso](req/casos-uso/): Contratos vivos del dominio.
     *   [Plantilla de Caso de Uso](req/CASO_USO_TEMPLATE.html): Estructura base para casos de uso.
     *   [Criterios de Aceptación](req/criterios-aceptacion.html): Guía para definir validaciones de negocio.
-    *   [Historia de Usuario](req/historia-usuario.html): Estructura y estados de una historia de usuario.
+    *   [User Story](req/user-story.html): Estructura y estados de una US administrada desde backlog.
 *   **[Onboarding](onboarding/):** Guía inicial para accesos, herramientas y entorno local.
 
 ---
