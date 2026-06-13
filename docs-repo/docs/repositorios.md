@@ -12,7 +12,7 @@ Este archivo registra los repositorios relacionados con el repositorio actual y 
 
 En un repositorio de producto, API, frontend, servicio o librería, este catálogo debe registrar los repositorios de los que depende o con los que se integra.
 
-En este portal central, el alcance es distinto: `L4.docs-organizacion` registra todos los repositorios LAND4 porque funciona como punto central de consulta de la organización.
+En este portal central, el alcance es distinto: `L4.Land4.Docs` registra todos los repositorios LAND4 porque funciona como punto central de consulta de la organización.
 
 La documentación técnica detallada vive dentro de cada repositorio individual para asegurar que evolucione junto con el código. Este catálogo debe enlazar a la documentación publicada de cada repositorio relacionado, no a archivos Markdown crudos.
 
@@ -22,7 +22,7 @@ La documentación técnica detallada vive dentro de cada repositorio individual 
 
 | Sistema / Proyecto | Repositorio | Tipo | Descripción | Documentación publicada | Responsable | Estado |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **LAND4 Knowledge** | [L4.docs-organizacion](https://github.com/L4CR/L4.docs-organizacion) | Portal de documentación | Portal central de documentación, procesos y estándares LAND4. | [Ver documentación](https://l4cr.github.io/L4.docs-organizacion/) | LAND4 | Activo |
+| **LAND4 Knowledge** | [L4.Land4.Docs](https://github.com/L4CR/L4.Land4.Docs) | Portal de documentación | Portal central de documentación, procesos y estándares LAND4. | [Ver documentación](https://l4cr.github.io/L4.Land4.Docs/) | LAND4 | Activo |
 
 ---
 
@@ -43,7 +43,7 @@ Cada fila del catálogo debe completar:
 ## Reglas de mantenimiento
 
 *   En repositorios de producto, API, frontend, servicio o librería, registra aquí los repositorios de los que depende o con los que se integra.
-*   En el portal central `L4.docs-organizacion`, registra aquí todos los repositorios LAND4.
+*   En el portal central `L4.Land4.Docs`, registra aquí todos los repositorios LAND4.
 *   El registro debe agregarse en el mismo Pull Request que habilita o actualiza la documentación publicada del repositorio relacionado.
 *   La documentación publicada debe cumplir el estándar definido en **[¿Cómo Documentar?](../../como-documentar.html)**.
 *   Si un repositorio cambia de nombre, responsable, estado o URL publicada, este catálogo debe actualizarse en el mismo Pull Request o en un Pull Request de mantenimiento.

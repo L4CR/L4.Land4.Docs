@@ -79,7 +79,7 @@ Un buen `README.md` contiene:
 *   Enlace rápido a la arquitectura cuando aplique: `[Arquitectura y Diseño](/<repositorio>/docs/arquitectura.html)`.
 *   Enlace rápido a la guía de despliegue y validación local cuando aplique: `[Despliegue](/<repositorio>/docs/despliegue.html)`.
 *   Enlace a la documentación publicada del propio repositorio en GitHub Pages.
-*   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.docs-organizacion/docs/repositorios/)`.
+*   Enlace al inventario central publicado: `[Catálogo de Repositorios LAND4](https://l4cr.github.io/L4.Land4.Docs/docs/repositorios/)`.
 *   Enlaces a casos de uso o historias relevantes cuando existan en `docs-repo/req/`.
 
 ### 2. El archivo `AGENTS.md` (Instrucciones para agentes)
@@ -194,7 +194,7 @@ Esta regla evita inconsistencias entre la configuración real del repositorio y 
 
 Cada repositorio debe registrar en `docs-repo/docs/repositorios.md` los repositorios con los que tiene relación directa. La relación puede ser una dependencia técnica, integración, repositorio consumidor, repositorio proveedor, librería compartida, infraestructura relacionada o documentación necesaria para operar el sistema.
 
-El portal central `L4.docs-organizacion`, como punto central de consulta, registra todos los repositorios LAND4 en `docs-repo/docs/repositorios.md`.
+El portal central `L4.Land4.Docs`, como punto central de consulta, registra todos los repositorios LAND4 en `docs-repo/docs/repositorios.md`.
 
 Como mínimo, cada fila debe incluir:
 

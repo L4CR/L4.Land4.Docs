@@ -39,7 +39,7 @@ docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll 
 docker compose -f docs-repo/docker-compose.yml up docs
 ```
 
-El sitio local queda disponible en `http://localhost:4003/L4.docs-organizacion/` por defecto. Si necesitas otro puerto, usa `DOCS_PORT=4004`.
+El sitio local queda disponible en `http://localhost:4003/L4.Land4.Docs/` por defecto. Si necesitas otro puerto, usa `DOCS_PORT=4004`.
 
 ## Convenciones de documentación
 
