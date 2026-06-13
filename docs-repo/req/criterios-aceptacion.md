@@ -16,6 +16,17 @@ Los **CA** son condiciones verificables para aceptar una US. Viven en el Issue d
 | :--- | :--- | :--- | :--- |
 | CA-001 | un comercio nuevo | envía datos válidos | el sistema registra la información |
 
+## Redacción Gherkin equivalente
+
+Cuando se redacte un CA en formato Gherkin, debe conservar el mismo contenido del formato BDD:
+
+```gherkin
+CA-001: [Nombre del criterio]
+Dado [contexto inicial]
+Cuando [acción o evento del usuario]
+Entonces [resultado observable esperado]
+```
+
 Reglas:
 
 *   Usa IDs `CA-XXX` únicos dentro de la US.

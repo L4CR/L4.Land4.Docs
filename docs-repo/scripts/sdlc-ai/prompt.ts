@@ -74,6 +74,7 @@ export function renderPrompt(context: Record<string, any>, role: string): string
 | :--- | :--- |
 | Role | \`${role}\` |
 | US | ${context.userStory.title} |
+| Area | ${context.userStory.area} |
 | Status | ${context.userStory.status} |
 | Issue | ${context.generatedFrom.issueUrl} |
 | Checkout commit | \`${context.generatedFrom.commit}\` |

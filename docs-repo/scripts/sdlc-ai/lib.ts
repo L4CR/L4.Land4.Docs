@@ -92,6 +92,19 @@ function statusFrom(projectItems: unknown[]): string {
   return match;
 }
 
+function areaFrom(section: string): string {
+  let area: string | undefined;
+  if (section.split('\n').some((line) => line.trim().startsWith('|'))) {
+    const table = parseTable(section, ['Campo', 'Valor']);
+    area = table.rows.find((row) => row.Campo === 'Area')?.Valor;
+  } else {
+    area = clean(section.split('\n').find((line) => line.trim()) ?? '');
+  }
+  const allowed = ['Tech', 'Business', 'Commercial'];
+  if (!area || !allowed.includes(area)) throw new Error('US Area must be Tech, Business or Commercial.');
+  return area;
+}
+
 function contractPathFromUrl(url: string): string {
   const match = url.match(/^https:\/\/github\.com\/[^/]+\/[^/]+\/blob\/main\/(docs-repo\/req\/[^/]+\/CONTRACT\.md)$/);
   if (!match) throw new Error('CU URL must point to docs-repo/req/<caso-de-uso>/CONTRACT.md on GitHub main.');
@@ -113,6 +126,7 @@ function hash(content: string): string {
 }
 
 export function buildContext(issue: BacklogIssue, cwd = process.cwd()) {
+  const area = areaFrom(issueSection(issue.body, 'Area'));
   const relatedContractUrls = contractUrls(issueSection(issue.body, 'CU relacionados'));
 
   const story = parseTable(issueSection(issue.body, 'Historia'), ['Campo', 'Valor']);
@@ -157,6 +171,7 @@ export function buildContext(issue: BacklogIssue, cwd = process.cwd()) {
     userStory: {
       title: issue.title,
       status: statusFrom(issue.projectItems),
+      area,
       story: Object.fromEntries(story.rows.map((row) => [row.Campo, row.Valor])),
       description: issueSection(issue.body, 'Descripción'),
       acceptanceCriteria,

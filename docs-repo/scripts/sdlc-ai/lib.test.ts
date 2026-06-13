@@ -28,6 +28,7 @@ test('builds normalized context from Issue and CONTRACT.md', () => {
   const { root, issue } = workspace();
   const context = buildContext(issue, root);
   assert.equal(context.userStory.status, 'Ready');
+  assert.equal(context.userStory.area, 'Business');
   assert.equal(context.userStory.acceptanceCriteria[0].ID, 'CA-001');
   assert.equal(context.contracts[0].mainFlow[0].Paso, '1');
 });
@@ -59,6 +60,11 @@ test('rejects invalid project status', () => {
 test('rejects missing Issue section', () => {
   const { root, issue } = workspace((body) => body.replace('### Tareas', '### Trabajo'));
   assert.throws(() => buildContext(issue, root), /Missing required Issue section: Tareas/);
+});
+
+test('rejects invalid US area', () => {
+  const { root, issue } = workspace((body) => body.replace('### Area\nBusiness', '### Area\nLegal'));
+  assert.throws(() => buildContext(issue, root), /US Area must be Tech, Business or Commercial/);
 });
 
 test('rejects incomplete Issue table', () => {

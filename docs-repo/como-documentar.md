@@ -136,13 +136,14 @@ Cada skill debe vivir en su propia carpeta y contener un `SKILL.md` con frontmat
 
 ```markdown
 ---
-name: nombre-del-skill
+name: l4-nombre-del-skill
 description: Describe qué hace el skill y cuándo debe usarse.
 ---
 ```
 
 Reglas mínimas:
 
+*   La nomenclatura estándar LAND4 es `l4-<nombre>`.
 *   El `name` debe coincidir con el nombre de la carpeta.
 *   Usa solo minúsculas, números y guiones en el nombre.
 *   La `description` debe explicar qué hace el skill y en qué tareas debe activarse.

@@ -27,7 +27,7 @@ Cuando un repositorio necesite capacidades reutilizables para agentes, puede usa
 ```text
 .agents/
 └── skills/
-    └── nombre-del-skill/
+    └── l4-nombre-del-skill/
         ├── SKILL.md
         ├── scripts/
         ├── references/
@@ -35,6 +35,29 @@ Cuando un repositorio necesite capacidades reutilizables para agentes, puede usa
 ```
 
 El archivo `SKILL.md` debe incluir frontmatter YAML con, como mínimo, `name` y `description`, siguiendo la especificación abierta de Agent Skills.
+
+## Nomenclatura de skills
+
+Las skills propias de LAND4 deben nombrarse con el prefijo estándar `l4-`:
+
+```text
+l4-<nombre>
+```
+
+El nombre de la carpeta y el valor `name` del frontmatter deben coincidir exactamente. Ejemplo:
+
+```text
+.agents/skills/l4-pm/SKILL.md
+```
+
+```yaml
+---
+name: l4-pm
+description: Ayudar a humanos a redactar Casos de Uso, Criterios de Aceptación y User Stories LAND4.
+---
+```
+
+Usa solo minúsculas, números y guiones. No mezcles prefijos alternos para nuevas skills LAND4.
 
 ## Contenido
 
