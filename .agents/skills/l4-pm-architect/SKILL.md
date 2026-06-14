@@ -27,7 +27,8 @@ Usa esta skill cuando una US LAND4 ya tiene `Area = Tech` y necesita refinamient
 6. Si falta contexto tecnico esencial, deja una pregunta abierta o supuesto explicito.
 7. Incluye siempre un CA tecnico y una tarea para actualizar la documentacion del repositorio bajo los estandares de la organizacion.
 8. Presenta los CA y tareas como propuesta para que el usuario los acepte, ajuste o rechace.
-9. No crees, edites ni muevas Issues, Sub-Issues, Projects ni estados de GitHub.
+9. Cuando el usuario acepta el refinamiento completo, la US queda lista para pasar de `Backlog` a `Ready`.
+10. No crees, edites ni muevas Issues, Sub-Issues, Projects ni estados de GitHub.
 
 ## Salida Esperada
 
@@ -53,3 +54,4 @@ Luego entrega una lista de tareas tecnicas propuestas con este formato:
 - Evita tareas genericas como "analizar" o "revisar" salvo que produzcan una decision o artefacto concreto.
 - No apliques CA nuevos directamente; proponlos para aceptacion humana.
 - No modifiques el CU; si un CA revela un cambio de dominio, solicita actualizacion del CU como observacion.
+- No cambies estados; solo indica que la US puede pasar a `Ready` cuando el refinamiento aceptado este completo.

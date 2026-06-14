@@ -26,7 +26,8 @@ Usa esta skill cuando una US LAND4 ya tiene `Area = Commercial` y necesita refin
 5. Propone solo tareas iniciales necesarias; no conviertas el refinamiento en plan comercial completo.
 6. Si falta contexto comercial esencial, deja una pregunta abierta o supuesto explicito.
 7. Presenta los CA y tareas como propuesta para que el usuario los acepte, ajuste o rechace.
-8. No crees, edites ni muevas Issues, Sub-Issues, Projects ni estados de GitHub.
+8. Cuando el usuario acepta el refinamiento completo, la US queda lista para pasar de `Backlog` a `Ready`.
+9. No crees, edites ni muevas Issues, Sub-Issues, Projects ni estados de GitHub.
 
 ## Salida Esperada
 
@@ -50,3 +51,4 @@ Luego entrega una lista de tareas comerciales propuestas con este formato:
 - Evita tareas genericas como "analizar" o "revisar" salvo que produzcan una decision, definicion, validacion o insumo comercial concreto.
 - No apliques CA nuevos directamente; proponlos para aceptacion humana.
 - No modifiques el CU; si el refinamiento revela cambio de dominio, solicita actualizacion del CU como observacion.
+- No cambies estados; solo indica que la US puede pasar a `Ready` cuando el refinamiento aceptado este completo.
