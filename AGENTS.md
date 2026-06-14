@@ -23,7 +23,8 @@ La documentación sigue el modelo Docs-as-Code:
 - `docs-repo/_config.yml`, `docs-repo/Gemfile`, `docs-repo/docker-compose.yml`, `docs-repo/_sass/`, `docs-repo/assets/` y `docs-repo/scripts/`: soporte de publicación, estilo y validación Jekyll.
 - `docs-repo/procesos/`: procesos transversales.
 - `docs-repo/req/`: requerimientos, historias y casos de uso.
-- `docs-repo/scripts/sdlc-ai/`: extractor de contexto Issue + CU y generador de prompts reproducibles.
+- `docs-repo/scripts/sdlc-ai/`: scripts MVP globales de referencia para extraer contexto Issue + CU y generar prompts reproducibles.
+- `.agents/skills/l4-architect/scripts/`: scripts autocontenidos para generar contexto, prompt y plan temporal desde insumos locales.
 - `docs-repo/onboarding/`: guía inicial para colaboradores.
 
 ## Comandos de desarrollo
@@ -89,7 +90,7 @@ Revisa que:
 - Los enlaces internos resuelven correctamente.
 - Los diagramas Mermaid renderizan sin errores.
 - No se generaron cambios innecesarios ni versionados en `_site/`, `.bundle/`, `.sass-cache/`, `vendor/`, `docs-repo/vendor/`, `docs-repo/docs/inteligencia-artificial/skills.md` o `docs-repo/docs/pr-templates/`.
-- No se versionaron artefactos temporales en `.tmp/land4-prompts/`.
+- No se versionaron artefactos temporales en `.tmp/land4-prompts/` ni `.tmp/plans/`.
 
 ## Pull Requests
 

@@ -50,6 +50,12 @@ flowchart LR
 
 ## Automatización MVP
 
+La automatización queda separada por responsabilidad:
+
+- Una skill de administración de GitHub Projects prepara insumos locales desde GitHub.
+- `l4-architect` trabaja con esos insumos locales, genera contexto, prompt y plan sin leer GitHub Projects.
+- Los scripts globales en `docs-repo/scripts/sdlc-ai/` permanecen como MVP de referencia y compatibilidad mientras se consolida la lógica autocontenida en skills.
+
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types \
   docs-repo/scripts/sdlc-ai/extract-agent-context.ts \
@@ -65,7 +71,29 @@ node --disable-warning=ExperimentalWarning --experimental-strip-types \
 
 Para pruebas reproducibles sin red, sustituye `--issue` por `--fixture <issue.json>`.
 
-El extractor implementa un adaptador GitHub mediante `gh issue view`. El modelo normalizado permite agregar adaptadores para Jira, Azure DevOps u otras plataformas sin cambiar el contrato CU ni el generador de prompts. El prompt conserva trazabilidad, tareas, CA, CP y el contexto completo de cada CU relacionado.
+El extractor global implementa un adaptador GitHub mediante `gh issue view`; por eso no debe confundirse con skills que no administran GitHub Projects. El modelo normalizado permite agregar adaptadores para Jira, Azure DevOps u otras plataformas sin cambiar el contrato CU ni el generador de prompts.
+
+Para el flujo autocontenido de `l4-architect`, usa insumos locales:
+
+```bash
+node --disable-warning=ExperimentalWarning --experimental-strip-types \
+  .agents/skills/l4-architect/scripts/extract-agent-context.ts \
+  --fixture <issue.json> \
+  --out .tmp/plans/<user-story>/context.json
+
+node --disable-warning=ExperimentalWarning --experimental-strip-types \
+  .agents/skills/l4-architect/scripts/generate-agent-prompt.ts \
+  --context .tmp/plans/<user-story>/context.json \
+  --out .tmp/plans/<user-story>/prompt.md
+
+node --disable-warning=ExperimentalWarning --experimental-strip-types \
+  .agents/skills/l4-architect/scripts/create-implementation-plan.ts \
+  --context .tmp/plans/<user-story>/context.json \
+  --prompt .tmp/plans/<user-story>/prompt.md \
+  --out .tmp/plans/<user-story>/implementation-plan.md
+```
+
+El prompt y el plan conservan trazabilidad, tareas, CA, CP y el contexto completo de cada CU relacionado. Los artefactos en `.tmp/plans/` no se versionan hasta aprobación humana.
 
 ## Gates
 

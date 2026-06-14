@@ -78,6 +78,9 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
    node --disable-warning=ExperimentalWarning --experimental-strip-types --test docs-repo/scripts/sdlc-ai/*.test.ts
    node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/sdlc-ai/extract-agent-context.ts --fixture docs-repo/scripts/sdlc-ai/fixtures/issue-valid.json --out .tmp/land4-prompts/context.json
    node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/sdlc-ai/generate-agent-prompt.ts --context .tmp/land4-prompts/context.json --role land4-implementer --out .tmp/land4-prompts/prompt.md
+   node --disable-warning=ExperimentalWarning --experimental-strip-types .agents/skills/l4-architect/scripts/extract-agent-context.ts --fixture docs-repo/scripts/sdlc-ai/fixtures/issue-valid.json --out .tmp/plans/fixture/context.json
+   node --disable-warning=ExperimentalWarning --experimental-strip-types .agents/skills/l4-architect/scripts/generate-agent-prompt.ts --context .tmp/plans/fixture/context.json --out .tmp/plans/fixture/prompt.md
+   node --disable-warning=ExperimentalWarning --experimental-strip-types .agents/skills/l4-architect/scripts/create-implementation-plan.ts --context .tmp/plans/fixture/context.json --prompt .tmp/plans/fixture/prompt.md --out .tmp/plans/fixture/implementation-plan.md
    ```
 
 3. Compila el sitio:

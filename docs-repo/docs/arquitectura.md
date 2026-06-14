@@ -80,7 +80,8 @@ flowchart TD
 | `docs-repo/procesos/` | Procesos transversales, como GitHub Flow LAND4. |
 | `.github/workflows/docs.yml` | Pipeline de compilación y despliegue a GitHub Pages. |
 | `.github/ISSUE_TEMPLATE/user-story.yml` | Captura estructurada de US para el adaptador GitHub. |
-| `docs-repo/scripts/sdlc-ai/` | Extracción normalizada de Issue + CU y generación reproducible de prompts. |
+| `docs-repo/scripts/sdlc-ai/` | Scripts MVP globales de referencia para extracción normalizada de Issue + CU y generación reproducible de prompts. |
+| `.agents/skills/l4-architect/scripts/` | Scripts autocontenidos del skill Architect para generar contexto, prompt y plan desde insumos locales sin leer GitHub Projects. |
 | `docs-repo/assets/workflow-templates/` | Esqueletos CI/CD neutrales para adopción por stack. |
 
 ---
