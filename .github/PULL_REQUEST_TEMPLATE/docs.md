@@ -22,7 +22,7 @@
 - [ ] Referencias relacionadas actualizadas.
 - [ ] Separación entre `README.md`, `AGENTS.md`, `docs-repo/docs/`, `docs-repo/req/` y `docs-repo/procesos/` respetada.
 - [ ] `docs-repo/docs/repositorios.md` actualizado si cambian repositorios relacionados o dependencias.
-- [ ] `.agents/skills` actualizado si cambian instrucciones reutilizables para agentes.
+- [ ] `.agents/skills` actualizado solo si cambian skills propias del workspace; las organizacionales se gestionan en `L4.Land4.Core.Packages`.
 - [ ] N/A
 
 ## Pruebas y documentación

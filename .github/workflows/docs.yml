@@ -1,6 +1,16 @@
 name: Desplegar GitHub Pages
 
 on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "README.md"
+      - "AGENTS.md"
+      - "docs-repo/**"
+      - ".agents/skills/**"
+      - ".github/PULL_REQUEST_TEMPLATE/**"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/workflows/docs.yml"
   push:
     branches: ["main"]
     paths:
@@ -15,15 +25,53 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
+  validate:
+    name: Continuous integration
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generar documentación de Skills
+        run: node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
+
+      - name: Generar documentación de PR Templates
+        run: node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts
+
+      - name: Ejecutar pruebas SDLC
+        run: node --disable-warning=ExperimentalWarning --experimental-strip-types --test docs-repo/scripts/sdlc-ai/*.test.ts
+
+      - name: Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+          working-directory: docs-repo
+
+      - name: Compilar Jekyll
+        env:
+          BUNDLE_GEMFILE: docs-repo/Gemfile
+        run: bundle exec jekyll build --config docs-repo/_config.yml --destination ./_site
+
   deploy:
+    name: Deploy GitHub Pages
+    if: github.event_name != 'pull_request'
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -44,7 +44,7 @@ nombre-del-repositorio/
 │       └── inteligencia-artificial/
 │           ├── index.md
 │           └── skills.md    # Generado durante el build si hay skills
-├── .agents/                 # Skills reutilizables para agentes, si aplican
+├── .agents/                 # Solo skills propias del workspace, si aplican
 │   └── skills/
 │       └── nombre-del-skill/
 │           └── SKILL.md
@@ -128,9 +128,15 @@ Es la página principal del repositorio cuando su documentación se publica en G
 
 En sitios de proyecto publicados bajo `https://<organizacion>.github.io/<repositorio>/`, evita enlaces internos que empiecen con `/`: apuntan al dominio sin el prefijo del repositorio. Usa enlaces relativos entre páginas publicadas.
 
-### 4. La carpeta `.agents/skills` (Agent Skills)
+### 4. Agent Skills organizacionales y propias del workspace
 
-Esta carpeta es opcional. Se usa cuando el repositorio necesita skills reutilizables para enseñar a agentes un flujo, herramienta, dominio o procedimiento específico de LAND4.
+Las skills organizacionales compartidas tienen una única fuente versionada: [`L4.Land4.Core.Packages`](https://github.com/L4CR/L4.Land4.Core.Packages). Su catálogo raíz vive en ese repositorio y cada skill se mantiene en [`packages/skills/<skill>`](https://github.com/L4CR/L4.Land4.Core.Packages/tree/main/packages/skills).
+
+La instalación predeterminada de una skill organizacional es `~/.agents/skills/<skill>`, con alcance de usuario o máquina. `LAND4_SKILLS_HOME` puede cambiar el directorio base y `--target` puede seleccionar otro destino soportado por el instalador central. Estos overrides solo controlan dónde se instala: la fuente de verdad continúa en Core.Packages.
+
+No se documentan aquí comandos de autenticación ni mecanismos de pinning que todavía no tengan contrato publicado. La definición de releases, autenticación y selección reproducible de versiones queda como seguimiento; tampoco se presume que los cambios actuales estén disponibles como una nueva versión npm.
+
+La carpeta `.agents/skills` es opcional y se reserva para capacidades realmente propias del workspace: instrucciones, scripts o recursos acoplados a ese repositorio y sin vocación organizacional. No debe contener copias de skills centrales.
 
 Cada skill debe vivir en su propia carpeta y contener un `SKILL.md` con frontmatter YAML obligatorio:
 
@@ -149,13 +155,15 @@ Reglas mínimas:
 *   Mantén `SKILL.md` enfocado; mueve documentación extensa a `references/`.
 *   Usa `scripts/` para automatizaciones reutilizables y `assets/` para plantillas o recursos.
 
-Las skills no se duplican manualmente dentro de `docs-repo/docs/`. El pipeline de GitHub Pages detecta los archivos `.agents/skills/**/SKILL.md` y genera durante el despliegue la página publicada de Skills dentro de la sección de Inteligencia Artificial.
+Las skills propias no se duplican manualmente dentro de `docs-repo/docs/`. El pipeline puede detectar los archivos `.agents/skills/**/SKILL.md` y generar durante el despliegue una página publicada solo cuando el workspace contiene al menos una skill local.
 
 Con esta convención:
 
-*   `.agents/skills/**/SKILL.md` es el source of truth.
+*   `L4.Land4.Core.Packages/packages/skills/<skill>` es el source of truth de las skills organizacionales.
+*   `.agents/skills/**/SKILL.md` es el source of truth únicamente de las skills propias del workspace.
 *   `docs-repo/docs/inteligencia-artificial/skills.md` se genera como artefacto temporal del build.
 *   El archivo generado no debe versionarse.
+*   Si no existen skills locales, el generador elimina u omite la página y los índices no deben enlazarla.
 *   Si una skill no declara `name` o `description`, el deploy debe fallar para proteger el estándar.
 
 Consulta **[Inteligencia Artificial](docs/inteligencia-artificial/)** y la documentación oficial enlazada ahí antes de crear o modificar skills.
@@ -186,7 +194,7 @@ Cuando una página sea derivada de metadata o contratos del repositorio, debe ge
 
 | Fuente | Página generada | Motivo |
 | :--- | :--- | :--- |
-| `.agents/skills/**/SKILL.md` | `docs-repo/docs/inteligencia-artificial/skills.md` | Listar skills disponibles con `name` y `description` |
+| `.agents/skills/**/SKILL.md` | `docs-repo/docs/inteligencia-artificial/skills.md` | Listar skills propias del workspace con `name` y `description`, solo cuando existan |
 
 Esta regla evita inconsistencias entre la configuración real del repositorio y la documentación publicada.
 
@@ -259,6 +267,6 @@ Esta carpeta solo debe existir cuando el repositorio necesite documentar proceso
 Cuando agregues una nueva funcionalidad, cambies una variable de entorno o modifiques la base de datos:
 
 1. Crea tu rama de Git para desarrollar la funcionalidad.
-2. Realiza los cambios en el código **y edita los archivos correspondientes en `README.md`, `AGENTS.md`, `docs-repo/docs/`, `docs-repo/req/`, `docs-repo/procesos/` o `.agents/skills/` en esa misma rama**.
+2. Realiza los cambios en el código **y edita los archivos correspondientes en `README.md`, `AGENTS.md`, `docs-repo/docs/`, `docs-repo/req/`, `docs-repo/procesos/` o `.agents/skills/` cuando exista una skill propia del workspace, en esa misma rama**.
 3. Envía tu Pull Request. El revisor evaluará tanto la calidad del código como que la documentación refleje el nuevo cambio.
 4. Una vez fusionado en `main`, tu documentación estará actualizada.

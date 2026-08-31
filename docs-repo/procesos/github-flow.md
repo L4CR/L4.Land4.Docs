@@ -66,7 +66,7 @@ La US define el alcance y los criterios de aceptación. El Pull Request demuestr
 | **Blocked** | Existe un impedimento que impide avanzar o validar la US. | Responsable del bloqueo |
 | **Done** | El cambio está integrado en `main`, con CI verde, revisión técnica, validación QA, UAT cuando aplique y documentación actualizada si corresponde. | Producto + TI |
 
-Una US no debe pasar a `Ready` si sus CA no son verificables, no mapean CP o el extractor falla. Una US no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main` o si quedan validaciones QA/UAT pendientes cuando apliquen.
+Una US no debe pasar a `Ready` si sus CA no son verificables o no mapean CP. La extracción SDLC + AI y la generación del plan de implementación ocurren al inicio de `In Progress`, no como prerrequisito para `Ready`. Una US no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main` o si quedan validaciones QA/UAT pendientes cuando apliquen.
 
 ---
 
@@ -104,6 +104,7 @@ La rama de trabajo es temporal. Puede desplegarse o liberarse a ambientes de val
 Durante `In Progress`, la persona desarrolladora debe:
 
 *   Implementar el cambio dentro del alcance de la US.
+*   Ejecutar al inicio la extracción de contexto y la generación del plan de implementación cuando aplique el flujo SDLC + AI.
 *   Revisar los criterios de aceptación aplicables.
 *   Ejecutar las pruebas de desarrollador correspondientes al tipo de repositorio.
 *   Actualizar `README.md`, `docs-repo/docs/` o `docs-repo/req/` cuando el cambio modifique comportamiento, configuración, API, despliegue, reglas de negocio o flujos de usuario.
@@ -185,6 +186,26 @@ La aprobación mínima para fusionar un PR es:
 *   **Product Owner / UAT** cuando el cambio afecte comportamiento funcional, experiencia de usuario, criterios de aceptación, alcance, reglas de negocio o interpretación del valor esperado.
 
 La validación QA y la validación UAT/PO pueden marcarse como `N/A`, `Pendiente` o `Completada` en el template del PR.
+
+---
+
+## 🔒 Ruleset estándar de `main`
+
+`main` es la única rama permanente. Cada repositorio LAND4 debe protegerla con un ruleset que aplique, sin bypass, estas reglas:
+
+*   Exigir Pull Request antes de fusionar.
+*   Exigir al menos una aprobación humana.
+*   Exigir todos los checks de CI configurados como requeridos.
+*   Exigir que la rama del Pull Request esté actualizada con `main` antes del merge.
+*   Exigir que todas las conversaciones de revisión estén resueltas.
+*   Descartar aprobaciones anteriores cuando se agreguen nuevos commits al Pull Request.
+*   Permitir únicamente `Squash merge` como estrategia de integración.
+*   Prohibir bypass del ruleset para administradores, aplicaciones y automatizaciones.
+*   Prohibir push directo a `main`.
+*   Prohibir force-push sobre `main`.
+*   Prohibir la eliminación de `main`.
+
+Las ramas temporales y los previews opcionales no crean ramas permanentes adicionales ni reducen estas protecciones.
 
 ---
 

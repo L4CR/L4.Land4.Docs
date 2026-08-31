@@ -43,6 +43,7 @@ Una US puede pasar a `Ready` cuando:
 *   Define `Como / Quiero / Para` y contexto suficiente.
 *   Cada CA es verificable y tiene ID único.
 *   Cada CA mapea al menos un CP.
-*   El extractor SDLC + AI genera contexto sin errores.
+
+La extracción SDLC + AI y la generación del plan de implementación ocurren al pasar de `Ready` a `In Progress`, como parte del arranque técnico.
 
 Consulta **[SDLC + AI Standard](../procesos/sdlc-ai.html)** para el flujo completo.

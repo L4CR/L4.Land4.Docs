@@ -23,7 +23,9 @@ La documentación sigue el modelo Docs-as-Code:
 - `docs-repo/_config.yml`, `docs-repo/Gemfile`, `docs-repo/docker-compose.yml`, `docs-repo/_sass/`, `docs-repo/assets/` y `docs-repo/scripts/`: soporte de publicación, estilo y validación Jekyll.
 - `docs-repo/procesos/`: procesos transversales.
 - `docs-repo/req/`: requerimientos, historias y casos de uso.
-- `docs-repo/scripts/sdlc-ai/`: extractor de contexto Issue + CU y generador de prompts reproducibles.
+- `docs-repo/scripts/sdlc-ai/`: scripts MVP globales de referencia para extraer contexto Issue + CU y generar prompts reproducibles.
+- `L4.Land4.Core.Packages`: fuente central de las skills organizacionales instalables y versionables.
+- `.agents/skills/`: fuente opcional de skills propias de este workspace; no contiene copias de las skills organizacionales.
 - `docs-repo/onboarding/`: guía inicial para colaboradores.
 
 ## Comandos de desarrollo
@@ -56,7 +58,10 @@ El sitio local queda disponible en `http://localhost:4003/L4.Land4.Docs/` por de
 - Sigue la guía publicada en `docs-repo/docs/inteligencia-artificial/index.md`.
 - La organización implementa `AGENTS.md` y Agent Skills con base en estándares abiertos, no en una especificación interna propia.
 - `AGENTS.md` debe contener instrucciones operativas para agentes: estructura, comandos, estilo, validación, seguridad y criterios de PR.
-- Los Agent Skills deben vivir en una carpeta con un `SKILL.md` que incluya frontmatter YAML con `name` y `description`.
+- Las skills organizacionales se versionan en `L4.Land4.Core.Packages/packages/skills/<skill>` y se instalan, por defecto, en `~/.agents/skills/<skill>`.
+- Las skills realmente propias del workspace se versionan en `.agents/skills/<skill>` dentro del repositorio.
+- `LAND4_SKILLS_HOME` y `--target` permiten cambiar el destino de instalación; no cambian la fuente de verdad.
+- Todo Agent Skill debe vivir en una carpeta con un `SKILL.md` que incluya frontmatter YAML con `name` y `description`.
 - El `name` de un skill debe coincidir con el nombre de su carpeta y usar solo minúsculas, números y guiones.
 - Mantén cada `SKILL.md` enfocado. Mueve material largo a `references/`, scripts reutilizables a `scripts/` y plantillas o recursos a `assets/`.
 
