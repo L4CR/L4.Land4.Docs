@@ -30,11 +30,12 @@ flowchart LR
     Backlog["1. Backlog<br/>Humano + PM"] --> Refine["2. Refinamiento<br/>PMA / PMB / PMC"]
     Refine --> Contract["3. CU actualizado<br/>CONTRACT.md"]
     Contract --> Ready["4. US Ready<br/>Issue + CA + CP"]
-    Ready --> Extract["5. Extracción<br/>Issue + CU"]
-    Extract --> Prompt["6. Prompt<br/>rol técnico"]
-    Prompt --> Implement["7. Implementación<br/>TDD"]
-    Implement --> Review["8. PR<br/>Reviewer Codex + humano"]
-    Review --> Delivery["9. CI/CD<br/>checks + deploy"]
+    Ready --> InProgress["5. US In Progress<br/>inicio técnico"]
+    InProgress --> Extract["6. Extracción<br/>Issue + CU"]
+    Extract --> Prompt["7. Prompt<br/>rol técnico"]
+    Prompt --> Implement["8. Implementación<br/>TDD"]
+    Implement --> Review["9. PR<br/>Reviewer Codex + humano"]
+    Review --> Delivery["10. CI/CD<br/>checks + deploy"]
     Delivery -. feedback .-> Backlog
 ```
 
@@ -49,6 +50,14 @@ flowchart LR
 | Documentación técnica | `README.md`, `AGENTS.md` y `docs-repo/` del repositorio. |
 
 ## Automatización MVP
+
+La automatización queda separada por responsabilidad:
+
+- Una skill de administración de GitHub Projects prepara insumos locales desde GitHub.
+- `l4-architect` trabaja con esos insumos locales, genera contexto, prompt y plan sin leer GitHub Projects.
+- Los scripts globales en `docs-repo/scripts/sdlc-ai/` permanecen como MVP de referencia y compatibilidad mientras se consolida la lógica autocontenida en skills.
+
+La extracción y la generación del plan arrancan cuando la US pasa de `Ready` a `In Progress`. `Ready` indica que la US está suficientemente refinada para iniciar; no obliga a ejecutar todavía el extractor.
 
 ```bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types \
@@ -71,6 +80,7 @@ El extractor implementa un adaptador GitHub mediante `gh issue view`. El modelo 
 
 | Gate | Condiciones |
 | :--- | :--- |
-| `Ready` | CU vigente, US completa, CA verificables, CA → CP trazable y extractor exitoso. |
+| `Ready` | CU vigente, US completa, CA verificables y CA → CP trazable. |
+| `In Progress` técnico | La US ya pasó a `In Progress` y el flujo técnico puede ejecutar extracción, prompt y plan sin bloquear el refinamiento previo. |
 | PR revisable | Implementación acotada, pruebas ejecutadas, cobertura reportada y decisión Docs-as-Code explícita. |
 | `Done` | CI verde, Reviewer Codex ejecutado, aprobación humana, documentación actualizada y merge completado. |

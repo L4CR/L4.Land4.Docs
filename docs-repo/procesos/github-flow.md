@@ -66,7 +66,7 @@ La US define el alcance y los criterios de aceptación. El Pull Request demuestr
 | **Blocked** | Existe un impedimento que impide avanzar o validar la US. | Responsable del bloqueo |
 | **Done** | El cambio está integrado en `main`, con CI verde, revisión técnica, validación QA, UAT cuando aplique y documentación actualizada si corresponde. | Producto + TI |
 
-Una US no debe pasar a `Ready` si sus CA no son verificables, no mapean CP o el extractor falla. Una US no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main` o si quedan validaciones QA/UAT pendientes cuando apliquen.
+Una US no debe pasar a `Ready` si sus CA no son verificables o no mapean CP. La extracción SDLC + AI y la generación del plan de implementación ocurren al inicio de `In Progress`, no como prerrequisito para `Ready`. Una US no debe pasar a `Done` si el Pull Request relacionado no fue integrado a `main` o si quedan validaciones QA/UAT pendientes cuando apliquen.
 
 ---
 
@@ -104,6 +104,7 @@ La rama de trabajo es temporal. Puede desplegarse o liberarse a ambientes de val
 Durante `In Progress`, la persona desarrolladora debe:
 
 *   Implementar el cambio dentro del alcance de la US.
+*   Ejecutar al inicio la extracción de contexto y la generación del plan de implementación cuando aplique el flujo SDLC + AI.
 *   Revisar los criterios de aceptación aplicables.
 *   Ejecutar las pruebas de desarrollador correspondientes al tipo de repositorio.
 *   Actualizar `README.md`, `docs-repo/docs/` o `docs-repo/req/` cuando el cambio modifique comportamiento, configuración, API, despliegue, reglas de negocio o flujos de usuario.

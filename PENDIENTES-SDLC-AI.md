@@ -22,6 +22,7 @@ Notas de continuidad para retomar el diseño y la implementación del estándar 
 
 ## Extracción y Prompting
 
+- Ejecutar extracción y generación de plan al pasar la US de `Ready` a `In Progress`, no como prerrequisito para `Ready`.
 - Adaptar `GitHubBacklogAdapter` para usar datos completos de GitHub Projects CLI y Sub-Issues.
 - Revisar el contrato normalizado `context.json` después de probar una US real.
 - Definir prompts especializados por rol: Architect, Implementer, Refactorizer, QA y Reviewer.
