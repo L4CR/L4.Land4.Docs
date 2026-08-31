@@ -48,13 +48,15 @@ flowchart LR
 | Estado de US | GitHub Projects en la primera implementación. |
 | Prompt | Artefacto temporal reproducible generado desde US + CU. |
 | Documentación técnica | `README.md`, `AGENTS.md` y `docs-repo/` del repositorio. |
+| Skills organizacionales | [`L4.Land4.Core.Packages/packages/skills/<skill>`](https://github.com/L4CR/L4.Land4.Core.Packages/tree/main/packages/skills). |
+| Skills propias del workspace | `.agents/skills/<skill>` en el repositorio que necesita esa capacidad local. |
 
 ## Automatización MVP
 
 La automatización queda separada por responsabilidad:
 
-- Una skill de administración de GitHub Projects prepara insumos locales desde GitHub.
-- `l4-architect` trabaja con esos insumos locales, genera contexto, prompt y plan sin leer GitHub Projects.
+- La skill organizacional de administración de GitHub Projects prepara insumos locales desde GitHub.
+- La skill organizacional [`l4-architect`](https://github.com/L4CR/L4.Land4.Core.Packages/tree/main/packages/skills/l4-architect) trabaja con esos insumos locales, genera contexto, prompt y plan sin leer GitHub Projects.
 - Los scripts globales en `docs-repo/scripts/sdlc-ai/` permanecen como MVP de referencia y compatibilidad mientras se consolida la lógica autocontenida en skills.
 
 La extracción y la generación del plan arrancan cuando la US pasa de `Ready` a `In Progress`. `Ready` indica que la US está suficientemente refinada para iniciar; no obliga a ejecutar todavía el extractor.
@@ -74,7 +76,13 @@ node --disable-warning=ExperimentalWarning --experimental-strip-types \
 
 Para pruebas reproducibles sin red, sustituye `--issue` por `--fixture <issue.json>`.
 
-El extractor implementa un adaptador GitHub mediante `gh issue view`. El modelo normalizado permite agregar adaptadores para Jira, Azure DevOps u otras plataformas sin cambiar el contrato CU ni el generador de prompts. El prompt conserva trazabilidad, tareas, CA, CP y el contexto completo de cada CU relacionado.
+El extractor global implementa un adaptador GitHub mediante `gh issue view`; por eso no debe confundirse con skills que no administran GitHub Projects. El modelo normalizado permite agregar adaptadores para Jira, Azure DevOps u otras plataformas sin cambiar el contrato CU ni el generador de prompts.
+
+Para el flujo autocontenido, invoca `l4-architect` mediante la interfaz descrita por su `SKILL.md` instalado. La instalación predeterminada vive en `~/.agents/skills/l4-architect`; `LAND4_SKILLS_HOME` o `--target` pueden cambiar el destino sin cambiar la fuente versionada en Core.Packages. El proceso no debe depender de una copia en `.agents/skills/l4-architect` dentro del repositorio consumidor.
+
+La publicación reproducible de releases, el mecanismo de autenticación y el pinning de versiones del instalador central siguen pendientes de contrato. Hasta resolverlos, cada ejecución debe registrar la revisión de Core.Packages utilizada y no asumir que el contenido actual ya existe como una nueva versión npm.
+
+El prompt y el plan conservan trazabilidad, tareas, CA, CP y el contexto completo de cada CU relacionado. Los artefactos en `.tmp/plans/` no se versionan hasta aprobación humana.
 
 ## Gates
 

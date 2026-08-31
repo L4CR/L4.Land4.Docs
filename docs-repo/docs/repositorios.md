@@ -23,6 +23,8 @@ La documentación técnica detallada vive dentro de cada repositorio individual 
 | Sistema / Proyecto | Repositorio | Tipo | Descripción | Documentación publicada | Responsable | Estado |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **LAND4 Knowledge** | [L4.Land4.Docs](https://github.com/L4CR/L4.Land4.Docs) | Portal de documentación | Portal central de documentación, procesos y estándares LAND4. | [Ver documentación](https://l4cr.github.io/L4.Land4.Docs/) | LAND4 | Activo |
+| **LAND4 Web** | [L4.Land4.Web](https://github.com/L4CR/L4.Land4.Web) | Frontend web | Sitio web LAND4 y consumidor de estándares, componentes y skills compartidas. | Pendiente de documentación publicada verificada | LAND4 | Pendiente de documentación |
+| **LAND4 Core Packages** | [L4.Land4.Core.Packages](https://github.com/L4CR/L4.Land4.Core.Packages) | Paquetes compartidos | Fuente central versionada de paquetes y skills organizacionales instalables; el catálogo raíz enlaza `packages/skills/<skill>`. | Pendiente de documentación publicada verificada | LAND4 | Pendiente de documentación |
 
 ---
 

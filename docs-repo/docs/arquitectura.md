@@ -30,7 +30,9 @@ graph TD
     A --> T["/docs"]
     A --> K["docs-repo/req"]
     A --> M["AGENTS.md"]
-    A --> N[".agents/skills/my-skill/SKILL.md"]
+    A --> N["Referencia a skills organizacionales"]
+    N --> O["L4.Land4.Core.Packages/packages/skills"]
+    A --> W[".agents/skills/<skill> opcional"]
 
     T --> D["Catalogo de Repositorios<br/>relacion con otros repositorios"]
 
@@ -45,7 +47,7 @@ graph TD
 4. **Catálogo de Repositorios:** en cada repositorio documenta sus repositorios relacionados o dependencias. En el portal central registra todos los repositorios LAND4 y enlaza a su documentación publicada, no a archivos Markdown crudos.
 5. **Requerimientos en `docs-repo/req/`:** documentan casos de uso, historias, criterios de aceptación y reglas cuando aplican.
 6. **Procesos en `docs-repo/procesos/`:** describen cómo colaboran Producto y TI para desarrollar, revisar, integrar y entregar cambios.
-7. **AGENTS.md y Agent Skills:** el portal central también es un repositorio LAND4, por eso puede tener instrucciones para agentes y skills reutilizables igual que cualquier otro repositorio.
+7. **AGENTS.md y Agent Skills:** el portal publica instrucciones operativas y referencia las skills organizacionales versionadas en `L4.Land4.Core.Packages`; `.agents/skills/` queda reservado para capacidades realmente propias de un workspace.
 
 ---
 
@@ -75,12 +77,13 @@ flowchart TD
 | `docs-repo/docs/` | Documentación técnica del propio portal. |
 | `docs-repo/docs/inteligencia-artificial/index.md` | Referencia organizacional para el uso de estándares abiertos de inteligencia artificial, incluyendo `AGENTS.md` y Agent Skills. |
 | `docs-repo/docs/repositorios.md` | Repositorios relacionados del repo actual; en el portal central, inventario de todos los repositorios LAND4. |
-| `.agents/skills/` | Ubicación recomendada para Agent Skills versionados cuando un repositorio necesite capacidades reutilizables. |
+| [`L4.Land4.Core.Packages/packages/skills/`](https://github.com/L4CR/L4.Land4.Core.Packages/tree/main/packages/skills) | Fuente central versionada de las skills organizacionales instalables. |
+| `.agents/skills/` | Fuente opcional de skills propias de este workspace; no almacena copias de las skills organizacionales. |
 | `docs-repo/req/` | Guías y plantillas para requerimientos de negocio. |
 | `docs-repo/procesos/` | Procesos transversales, como GitHub Flow LAND4. |
 | `.github/workflows/docs.yml` | Pipeline de compilación y despliegue a GitHub Pages. |
 | `.github/ISSUE_TEMPLATE/user-story.yml` | Captura estructurada de US para el adaptador GitHub. |
-| `docs-repo/scripts/sdlc-ai/` | Extracción normalizada de Issue + CU y generación reproducible de prompts. |
+| `docs-repo/scripts/sdlc-ai/` | Scripts MVP globales de referencia para extracción normalizada de Issue + CU y generación reproducible de prompts. |
 | `docs-repo/assets/workflow-templates/` | Esqueletos CI/CD neutrales para adopción por stack. |
 
 ---
@@ -103,7 +106,7 @@ sequenceDiagram
     Dev->>PR: Propone cambios de documentación
     PR->>Main: Merge aprobado
     Main->>Actions: Dispara workflow docs.yml
-    Actions->>Actions: Genera catálogo de skills y compila Jekyll
+    Actions->>Actions: Genera catálogo local si hay skills propias y compila Jekyll
     Actions->>Pages: Publica artefacto estático
 ```
 
@@ -115,6 +118,7 @@ sequenceDiagram
 *   **GitHub Pages:** Reduce la operación del portal; el hosting y despliegue viven dentro de GitHub.
 *   **Docs-as-Code:** La documentación se revisa, versiona y despliega con el mismo flujo que el código.
 *   **Estándares abiertos para IA:** La documentación de inteligencia artificial referencia estándares externos como `AGENTS.md` y Agent Skills para mantener compatibilidad con herramientas del ecosistema.
+*   **Distribución central de skills:** `L4.Land4.Core.Packages` versiona las skills organizacionales; la instalación predeterminada vive en `~/.agents/skills/<skill>` y no altera su fuente de verdad.
 *   **Docker para validación local:** Evita depender de la versión de Ruby instalada en cada máquina.
 *   **Assets versionados:** El logo y estilos de LAND4 viven en el repositorio para que el build sea reproducible.
 *   **Adaptadores de backlog:** GitHub Issues y Projects son la primera implementación. El contexto normalizado evita acoplar el CU o el prompt a una única plataforma.

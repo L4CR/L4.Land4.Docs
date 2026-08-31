@@ -24,6 +24,8 @@ El portal aplica el estándar que documenta para otros repositorios: mantiene `R
 
 Actualmente este portal no define un ambiente separado de staging. Si se agrega uno, el cambio debe incluir la configuración técnica y la actualización de esta guía.
 
+La identidad publicada y el `baseurl` canónico son `L4.Land4.Docs`. Algunos checkouts existentes pueden conservar un remoto histórico llamado `L4.docs-organizacion`; ese dato operativo no cambia las rutas publicadas ni implica por sí solo que el remoto haya sido renombrado.
+
 ---
 
 ## Requerimientos
@@ -65,7 +67,7 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
    docker compose -f docs-repo/docker-compose.yml run --rm docs bundle install
    ```
 
-2. Ejecuta el generador de documentación para las skills. Es el mismo script que usa el workflow antes de compilar Jekyll:
+2. Ejecuta los generadores de documentación derivada. El generador de skills solo inspecciona skills propias del workspace en `.agents/skills/`; con cero skills locales elimina u omite la página de catálogo:
 
    ```bash
    node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts
@@ -79,6 +81,8 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
    node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/sdlc-ai/extract-agent-context.ts --fixture docs-repo/scripts/sdlc-ai/fixtures/issue-valid.json --out .tmp/land4-prompts/context.json
    node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/sdlc-ai/generate-agent-prompt.ts --context .tmp/land4-prompts/context.json --role land4-implementer --out .tmp/land4-prompts/prompt.md
    ```
+
+   La validación del flujo autocontenido de `l4-architect` se realiza mediante la interfaz de la skill organizacional instalada desde [`L4.Land4.Core.Packages/packages/skills/l4-architect`](https://github.com/L4CR/L4.Land4.Core.Packages/tree/main/packages/skills/l4-architect), no mediante scripts copiados a este workspace. Su destino predeterminado es `~/.agents/skills/l4-architect`; `LAND4_SKILLS_HOME` y `--target` solo cambian ese destino.
 
 3. Compila el sitio:
 
@@ -100,7 +104,7 @@ El contenedor local está definido en `docs-repo/docker-compose.yml` con el serv
 
 Antes de abrir un Pull Request, valida:
 
-*   El script `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts` se ejecuta correctamente y genera/actualiza la documentación de las skills en `docs-repo/docs/inteligencia-artificial/skills.md`.
+*   El script `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts` se ejecuta correctamente: genera o actualiza el catálogo si existen skills propias del workspace, y elimina u omite la salida con cero skills locales.
 *   El script `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts` se ejecuta correctamente y genera/actualiza la documentación de PR templates en `docs-repo/docs/pr-templates/`.
 *   El comando `docker compose -f docs-repo/docker-compose.yml run --rm docs bundle exec jekyll build --config docs-repo/_config.yml` termina sin errores.
 *   La página principal carga localmente.
@@ -119,8 +123,8 @@ El despliegue productivo se ejecuta automáticamente con GitHub Actions.
 | Campo | Valor |
 | :--- | :--- |
 | Workflow | `.github/workflows/docs.yml` |
-| Disparadores | `push` a `main` con `paths` limitados a documentación, skills, plantillas de PR, Issue Forms y configuración del portal; ejecución manual con `workflow_dispatch` |
-| Concurrencia | Grupo `pages`, con `cancel-in-progress: true` |
+| Disparadores | `pull_request` hacia `main` para CI y `push` a `main` para publicar, ambos con `paths` limitados a documentación, skills propias del workspace, plantillas de PR, Issue Forms y configuración del portal; ejecución manual con `workflow_dispatch`. |
+| Concurrencia | El job de publicación usa el grupo `pages`, con `cancel-in-progress: true`; los PR se validan de forma independiente. |
 | Runner | `ubuntu-latest` |
 | Ambiente GitHub | `github-pages` |
 | Configuración Jekyll | `docs-repo/_config.yml` |
@@ -132,18 +136,19 @@ El despliegue productivo se ejecuta automáticamente con GitHub Actions.
 
 ### Pasos de despliegue
 
-1. Un Pull Request aprobado se fusiona en `main`.
-2. GitHub ejecuta `.github/workflows/docs.yml`.
-3. `actions/checkout@v4` descarga el contenido del repositorio.
-4. Se configura Node.js 22 y se ejecutan los mismos generadores usados localmente:
+1. El Pull Request ejecuta el job requerido `Continuous integration`, incluidos generadores, pruebas SDLC y build Jekyll, sin permisos de Pages.
+2. Un Pull Request aprobado y con CI verde se fusiona en `main`.
+3. GitHub ejecuta el job productivo de `.github/workflows/docs.yml`.
+4. `actions/checkout@v4` descarga el contenido del repositorio.
+5. Se configura Node.js 22 y se ejecutan los mismos generadores usados localmente; el catálogo de skills solo se crea cuando existen skills propias en `.agents/skills/`:
    * `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts`
    * `node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-pr-template-docs.ts`
-5. `actions/configure-pages@v5` prepara el entorno de GitHub Pages.
-6. `ruby/setup-ruby@v1` configura Ruby 3.3 con caché de Bundler.
-7. `bundle exec jekyll build --config docs-repo/_config.yml --destination ./_site` compila el sitio desde la raíz con configuración de `docs-repo/` hacia `./_site`.
-8. `actions/upload-pages-artifact@v3` empaqueta el sitio generado.
-9. `actions/deploy-pages@v4` publica el artefacto en GitHub Pages.
-10. GitHub actualiza la URL productiva del portal.
+6. `actions/configure-pages@v5` prepara el entorno de GitHub Pages.
+7. `ruby/setup-ruby@v1` configura Ruby 3.3 con caché de Bundler.
+8. `bundle exec jekyll build --config docs-repo/_config.yml --destination ./_site` compila el sitio desde la raíz con configuración de `docs-repo/` hacia `./_site`.
+9. `actions/upload-pages-artifact@v3` empaqueta el sitio generado.
+10. `actions/deploy-pages@v4` publica el artefacto en GitHub Pages.
+11. GitHub actualiza la URL productiva del portal.
 
 Si el build falla, revisa la pestaña **Actions** del repositorio y corrige el error en una nueva rama antes de intentar desplegar de nuevo.
 

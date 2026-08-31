@@ -24,4 +24,4 @@ Los repositorios LAND4 deben adaptar un pipeline al stack real del proyecto. El 
 | Review y aprobación | Reviewer Codex externo y al menos una aprobación humana. |
 | Deploy | Adaptar ambientes, secretos, verificación y rollback al proyecto. |
 
-Branch protection debe impedir el merge si fallan checks requeridos o falta aprobación humana.
+El ruleset de `main` debe exigir Pull Request, una aprobación humana, checks CI requeridos, rama actualizada, conversaciones resueltas y descarte de aprobaciones tras nuevos commits. Solo permite squash merge y prohíbe bypass, push directo, force-push y eliminación de la rama. Consulta **[GitHub Flow LAND4](../procesos/github-flow.html)** para el contrato completo.

@@ -133,7 +133,7 @@ permalink: /docs/inteligencia-artificial/skills.html
 
 # Skills
 
-Esta página se genera automáticamente durante el despliegue de GitHub Pages a partir del front matter de los archivos \`.agents/skills/*/SKILL.md\`.
+Esta página se genera automáticamente durante el despliegue de GitHub Pages a partir del front matter de las skills propias de este workspace en \`.agents/skills/*/SKILL.md\`.
 
 | Skill | Descripción |
 | :--- | :--- |
@@ -141,7 +141,7 @@ ${rows}
 
 ## Generación Local de la Documentación
 
-Si agregas o modificas una skill en \`.agents/skills/*/SKILL.md\` y deseas actualizar esta lista de skills localmente, puedes ejecutar el siguiente comando desde la raíz del repositorio:
+Si agregas o modificas una skill propia del workspace en \`.agents/skills/*/SKILL.md\` y deseas actualizar esta lista localmente, puedes ejecutar el siguiente comando desde la raíz del repositorio:
 
 \`\`\`bash
 node --disable-warning=ExperimentalWarning --experimental-strip-types docs-repo/scripts/generate-skills-docs.ts

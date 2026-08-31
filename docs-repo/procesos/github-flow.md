@@ -189,6 +189,26 @@ La validación QA y la validación UAT/PO pueden marcarse como `N/A`, `Pendiente
 
 ---
 
+## 🔒 Ruleset estándar de `main`
+
+`main` es la única rama permanente. Cada repositorio LAND4 debe protegerla con un ruleset que aplique, sin bypass, estas reglas:
+
+*   Exigir Pull Request antes de fusionar.
+*   Exigir al menos una aprobación humana.
+*   Exigir todos los checks de CI configurados como requeridos.
+*   Exigir que la rama del Pull Request esté actualizada con `main` antes del merge.
+*   Exigir que todas las conversaciones de revisión estén resueltas.
+*   Descartar aprobaciones anteriores cuando se agreguen nuevos commits al Pull Request.
+*   Permitir únicamente `Squash merge` como estrategia de integración.
+*   Prohibir bypass del ruleset para administradores, aplicaciones y automatizaciones.
+*   Prohibir push directo a `main`.
+*   Prohibir force-push sobre `main`.
+*   Prohibir la eliminación de `main`.
+
+Las ramas temporales y los previews opcionales no crean ramas permanentes adicionales ni reducen estas protecciones.
+
+---
+
 ## 🚀 Merge y entrega
 
 El cierre estándar del PR es **Squash merge** hacia `main`. Esto deja un historial limpio y permite trazar cada entrega integrada a un PR concreto.
